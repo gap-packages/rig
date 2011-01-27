@@ -1,0 +1,18 @@
+TODO LIST
+=========
+* To add: CayleyGraph, Betti, Torsion, abelian extensions, Center, IsSimple
+* Notation for knot theory, check (co)homology.
+* Polynomials invariants of racks: improve
+* Manual: 
+	Examples: (co)homology, AlexanderRacks, IsFaithFul, Polynomial invariants
+    Subracks, Nichols algebras
+	Background and References
+* General:
+	Labels!
+	Topology or algebra?
+* base?
+* Rename: basis --> gens
+* The inner group is a normal subgroup of the automorphism group!
+* SAGE interface
+* Category: IsRack
+* Method: Rack(i,j)=i>j in order to define racks as a list of permutations!
