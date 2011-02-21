@@ -1,0 +1,2 @@
+DeclareGlobalFunction("PolynomialInvariant");
+DeclareGlobalFunction("NelsonInvariant");
