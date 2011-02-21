@@ -3,7 +3,7 @@ PackageName := "rig",
 Subtitle := "Racks in GAP",
 Version := "0.6",
 Date := "05/01/2011",
-ArchiveURL := "http://mate.dm.uba.ar/~lvendram/rig",
+ArchiveURL := "http://code.google.com/p/rig/",
 ArchiveFormats := ".zoo",
 Persons := [
   rec( 
