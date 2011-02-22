@@ -2446,6 +2446,7 @@ SMALL_I_QUANDLES[23].rack[21] := rec( size := 23, matrix :=
   [ 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 23 ] ]);
 
 # size 24
+SMALL_I_QUANDLES[25] := rec( total := -1, implemented := 42, size := 24, rack := [ ] );
 SMALL_I_QUANDLES[24].implemented := 1;
 SMALL_I_QUANDLES[24].rack[1] := rec( size := 24, matrix :=
 [ [ 1, 2, 5, 6, 3, 4, 8, 7, 21, 22, 18, 17, 23, 24, 19, 20, 12, 11, 15, 16, 9, 10, 13, 14 ], 
