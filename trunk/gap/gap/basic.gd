@@ -29,6 +29,7 @@ DeclareGlobalFunction("RackAction");
 ### internal use ###
 ####################
 DeclareGlobalFunction("IsRack");
+DeclareGlobalFunction("IsCrossedSet");
 DeclareGlobalFunction("IsRackMatrix");
 DeclareGlobalFunction("ApplyLabels");
 DeclareGlobalFunction("NewRack");

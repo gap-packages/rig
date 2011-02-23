@@ -542,7 +542,19 @@ InstallGlobalFunction("Components", function(rack)
 	fi;
 end);
 
-
+### Checks if the rack is a crossed set
+### i>j=j if and only if j>i=i
+InstallGlobalFunction(IsCrossedSet, function(rack)
+  local i,j;
+  for i in [1..Size(rack)] do
+    for j in [1..Size(rack)] do
+      if RackAction(r, i, j) = j and RackAction(r, j, i) <> i then
+        return false;
+      fi;
+    od;
+  od;
+  return true;
+end);
 
 InstallGlobalFunction("Permutations", function(rack)
 	local i, g;
