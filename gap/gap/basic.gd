@@ -2,7 +2,7 @@
 ### functions used to define racks ###
 ######################################
 DeclareGlobalFunction("Rack");
-DeclareGlobalFunction("RackFromListOfPermutations");
+DeclareGlobalFunction("RackFromPermutations");
 DeclareGlobalFunction("AffineCyclicRack");
 DeclareGlobalFunction("TrivialRack");
 DeclareGlobalFunction("CyclicRack");

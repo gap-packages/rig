@@ -94,7 +94,7 @@ InstallGlobalFunction("ConjugationRack", function(group, n)
 end);
 
 ### This function creates a rack object with the list of permutation given by <list>
-InstallGlobalFunction("RackFromListOfPermutations", function(list)
+InstallGlobalFunction("RackFromPermutations", function(list)
   local i,j,n,m,rack;
   
 	n := Size(list);
@@ -232,17 +232,20 @@ InstallGlobalFunction("InnerGroup", function(rack)
 		if rack.inn <> "" then
 			return rack.inn;
 		else
-			if rack.permutations = "" then
-        rack.permutations := [];
-        for i in [1..rack.size] do
-          Add(rack.permutations, PermList(rack.matrix[i]));
-        od;
-		  	rack.inn := Group(rack.permutations);
-        return rack.inn;
-			else
-				return Group(rack.permutations);
-			fi;
-		fi;
+    	rack.inn := Group(Permutations(rack));
+      return rack.inn;
+    fi;
+#			if rack.permutations = "" then
+#        rack.permutations := [];
+#        for i in [1..rack.size] do
+#          Add(rack.permutations, PermList(rack.matrix[i]));
+#        od;
+#		  	rack.inn := Group(Permutations(rack));
+#        return rack.inn;
+#			else
+#				return Group(rack.permutations);
+#			fi;
+#		fi;
 	else
 		Error("usage: InnerGroup( <rack> )");
 		return fail;
@@ -545,14 +548,15 @@ end);
 InstallGlobalFunction("Permutations", function(rack)
 	local i, g;
 	if IsRack(rack) then
-		if rack.permutations = "" then
-      g := [];
-      for i in [1..rack.size] do
-        Add(g, PermList(rack.matrix[i]));
-      od;
-      rack.permutations := g;
-    fi;
-	  return rack.permutations;
+    return List([1..Size(rack)], x->PermList(rack.matrix[x]));
+#		if rack.permutations = "" then
+#      g := [];
+#      for i in [1..rack.size] do
+#        Add(g, PermList(rack.matrix[i]));
+#      od;
+#      rack.permutations := g;
+#    fi;
+#	  return rack.permutations;
 	else
 		Error("Use Permutations(<rack>);");
 	fi;
@@ -719,8 +723,9 @@ end);
 
 ### This function computes the i-th power of the rack
 InstallGlobalFunction("Power", function(rack, i)
-  Permutations(rack);
-  return RackFromListOfPermutations(List([1..Size(rack)], x->rack.permutations[x]^i));
+  local perms;
+  perms := Permutations(rack);
+  return RackFromPermutations(List([1..Size(rack)], x->perms[x]^i));
 end);
 
 InstallOtherMethod(Hom,
