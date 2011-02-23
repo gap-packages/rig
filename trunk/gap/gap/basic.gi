@@ -7,7 +7,6 @@ InstallGlobalFunction("NewRack", function(n)
     size := n,
     basis := "",				
     comments := "",         
-  	permutations := "",
     inn := "",
     aut := "",
     env := ""
