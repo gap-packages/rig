@@ -548,7 +548,7 @@ InstallGlobalFunction(IsCrossedSet, function(rack)
   local i,j;
   for i in [1..Size(rack)] do
     for j in [1..Size(rack)] do
-      if RackAction(r, i, j) = j and RackAction(r, j, i) <> i then
+      if RackAction(rack, i, j) = j and RackAction(rack, j, i) <> i then
         return false;
       fi;
     od;
