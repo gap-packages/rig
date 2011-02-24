@@ -272,3 +272,34 @@ InstallGlobalFunction("Constant2Cocycle", function(lambda, n)
   return lambda*(NullMat(n,n)+1);
 end);
 
+InstallGlobalFunction("CheckTypeD", function(group, x)
+  local sg, y, c;
+  c := ConjugacyClass(group, x); 
+  for y in c do
+    if not (x*y)^2 = (y*x)^2 then 
+      sg := Subgroup(group, [x,y]);
+      if IsConjugate(sg, x, y) = false then
+        return [x,y];
+      fi;
+    fi;
+  od;
+  return fail;
+end);
+
+InstallGlobalFunction("CheckTypeDRandom", function(group, x, n)
+  local sg, i, t, y;
+  Print("### Trying with n=", n, "\n");
+  for i in [1..n] do
+    t := Random(group);
+    y := t*x*Inverse(t);
+    if not (x*y)^2 = (y*x)^2 then 
+      sg := Subgroup(group, [x,y]);
+      if IsConjugate(sg, x, y) = false then
+        return [x,y];
+      fi;
+    fi;
+  od;
+  return fail;
+end);
+
+

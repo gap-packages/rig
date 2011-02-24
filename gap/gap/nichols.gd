@@ -14,4 +14,6 @@ DeclareGlobalFunction("MatrixOfRestrictedBraiding");
 DeclareGlobalFunction("QuantumSymmetrizer");
 DeclareGlobalFunction("Relations4GAP");
 
-#DeclareOperation("Dimension", [IsRack, IsMatrix, IsInt]);
+DeclareGlobalFunction("CheckTypeD");
+DeclareGlobalFunction("CheckTypeDRandom");
+
