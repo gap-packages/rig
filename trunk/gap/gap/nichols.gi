@@ -112,7 +112,7 @@ InstallGlobalFunction("YetterDrinfeldDatum", function(group, g)
   );		 
 
   rack_data := GetRack(group, g);
-  data.rack := Rack(rack_data.m);
+  data.rack := RackFromAMatrix(rack_data.m);
   gamma := GammaMatrix(rack_data);
 
   n := Size(gamma);

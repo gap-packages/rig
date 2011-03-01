@@ -9358,12 +9358,12 @@ InstallGlobalFunction("SmallIndecomposableQuandle",
     if not IsBound(SMALL_I_QUANDLES[size].rack[number]) then
       Error("There is no rack known of size ", size, " and number ", number, " to this library.");
     fi;
-    return Rack(SMALL_I_QUANDLES[size].rack[number].matrix);
+    return RackFromAMatrix(SMALL_I_QUANDLES[size].rack[number].matrix);
   else
     if not IsBound(SMALL_I_QUANDLES_C[size].rack[number - implemented_in_a]) then
       Error("There is no rack known of size ", size, " and number ", number, " to this library.");
     fi;
-    return Rack(SMALL_I_QUANDLES_C[size].rack[number - implemented_in_a].matrix);
+    return RackFromAMatrix(SMALL_I_QUANDLES_C[size].rack[number - implemented_in_a].matrix);
   fi;
 end);
 

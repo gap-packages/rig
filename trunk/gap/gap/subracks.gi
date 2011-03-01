@@ -18,7 +18,7 @@ InstallGlobalFunction("CanonicalSubrack", function(rack, subset)
       subrack[i][j] := rack!.matrix[tmp[i]][tmp[j]]; 
     od;
   od;
-  return Rack(ApplyLabels(subrack, tmp)); 
+  return RackFromAMatrix(ApplyLabels(subrack, tmp)); 
 end);
 
 InstallGlobalFunction("SubrackAsSubset",
@@ -74,7 +74,7 @@ InstallGlobalFunction("SubracksGeneratedByUpToIso", function(r,n)
 			od;
 		od;
 		#Add(sr, Rack(TranslateRack(m,t)));
-		Add(sr, Rack(ApplyLabels(m,t)));
+		Add(sr, RackFromAMatrix(ApplyLabels(m,t)));
 	od;
 	subracks := Set([]);
 	for t in sr do
@@ -124,7 +124,7 @@ function(r,l,n)
 				m[i][j] := r!.matrix[t[i]][t[j]]; 
 			od;
 		od;
-		Add(sr, Rack(ApplyLabels(m,t)));
+		Add(sr, RackFromAMatrix(ApplyLabels(m,t)));
 	od;
 	subracks := Set([]);
 	for t in sr do
@@ -160,7 +160,7 @@ function(rack, subr, n)
 	m[i][j] := rack!.matrix[r[i]][r[j]]; 
       od;
     od;
-    tmp := Rack(ApplyLabels(m,r));
+    tmp := RackFromAMatrix(ApplyLabels(m,r));
     tmp.labels := List(r, x->rack.labels[x]);
     Add(subracksstr, tmp);
     ##Add(subracksstr, Rack(ApplyLabels(m,r)));
