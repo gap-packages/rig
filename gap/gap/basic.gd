@@ -2,6 +2,8 @@
 ### functions used to define racks ###
 ######################################
 DeclareGlobalFunction("Rack");
+DeclareGlobalFunction("Quandle");
+DeclareGlobalFunction("RackFromAMatrix");
 DeclareGlobalFunction("RackFromPermutations");
 DeclareGlobalFunction("AffineCyclicRack");
 DeclareGlobalFunction("TrivialRack");
@@ -52,7 +54,7 @@ DeclareGlobalFunction("Permutations");
 DeclareGlobalFunction("InnerGroup");
 DeclareGlobalFunction("RackOrbit");
 DeclareGlobalFunction("EnvelopingGroup");
-DeclareGlobalFunction("YDGroup");
+DeclareGlobalFunction("YetterDrinfeldGroup");
 DeclareGlobalFunction("IsFaithful");
 DeclareGlobalFunction("IsHomogeneous");
 DeclareGlobalFunction("IsDecomposable");

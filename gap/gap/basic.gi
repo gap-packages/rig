@@ -1,7 +1,8 @@
+
 InstallGlobalFunction("NewRack", function(n)
 	local rack; 
   rack := rec(
-    isRack := true,
+    isRack := false,
     matrix := NullMat(n,n),
     labels := [1..n],
     size := n,
@@ -33,10 +34,11 @@ InstallGlobalFunction("IsRackMatrix", function(matrix)
   return true;
 end);
 
-InstallGlobalFunction("Rack", function(matrix)
+InstallGlobalFunction("RackFromAMatrix", function(matrix)
   local rack;
   if IsRackMatrix(matrix) = true then
     rack := NewRack(Size(matrix));
+    rack.isRack := true;
 		rack.matrix := matrix;
     return rack;
   else
@@ -45,20 +47,24 @@ InstallGlobalFunction("Rack", function(matrix)
   fi;
 end);
 
+### This function checks if the rack is indeed a rack
+### If so, the flag isRack is setted to true
 InstallGlobalFunction("IsRack", function(obj)
-  return IsRecord(obj) and IsBound(obj.isRack) and obj.isRack=true;
+  if IsRecord(obj) and IsBound(obj.isRack) then
+    if IsRackMatrix(obj.matrix) = true then
+      obj.isRack := true;
+      return true;
+    fi;
+  fi;
+  return false;
 end);
 
-##########################################################
-### AlexanderRack																			 ###
-###                                                    ###
-### This function computes the Alexander rack          ###
-### given by: i>j = si+tj                              ### 
-### Condition: s(t+s+-1)=0                             ###
-### Note: if s=1-t the result is the Alexander quandle ###
-##########################################################
+### This function computes the alexander rack 
+### given by: i>j = si+tj                              
+### Condition: s(t+s+-1)=0                            
+### REMARK: if s=1-t the result is the Alexander quandle
 InstallGlobalFunction("AlexanderRack", function(n,s,t)
-  local i,j,m;
+  local i,j,m; 
   if (s*(t+s-1) mod n) <> 0 then
     return fail;
   else
@@ -71,7 +77,7 @@ InstallGlobalFunction("AlexanderRack", function(n,s,t)
         fi;
       od;
     od;
-    return Rack(m);
+    return RackFromAMatrix(m);
   fi;
 end);
 
@@ -89,7 +95,7 @@ InstallGlobalFunction("ConjugationRack", function(group, n)
       m[i][j] := Position(e, e[i]^n*e[j]*Inverse(e[i]^n));
     od;
   od;
-  return Rack(m);
+  return RackFromAMatrix(m);
 end);
 
 ### This function creates a rack object with the list of permutation given by <list>
@@ -98,36 +104,18 @@ InstallGlobalFunction("RackFromPermutations", function(list)
   
 	n := Size(list);
   m := NullMat(n,n);
-#  rack := rec(
-#    isRack := true,
-#    matrix := NullMat(n,n),
-#    labels := [1..n],     
-#    size := n,
-#		basis := "",				
-#    comments := "",         
-#		permutations := list,
-#    inn := "",
-#    aut := "",
-#		env := ""
-#  );    
-
   for i in [1..n] do
     for j in [1..n] do
-      #rack.matrix[i][j] := j^list[i]; 
       m[i][j] := j^list[i]; 
     od;
   od;
-  return Rack(m);
+  return RackFromAMatrix(m);
 end);
 
 InstallOtherMethod(Size, 
 	[IsRecord],
   function(rack)
-	if IsRack(rack) then
   	return rack.size;
-	else
-		Error("It is not a rack");
-	fi;
 end);
 
 ### Creates a cyclic rack", 
@@ -142,11 +130,11 @@ InstallGlobalFunction("CyclicRack", function(n)
       fi;
     od;
   od;
-  return Rack(m);
+  return RackFromAMatrix(m);
 end);
 
+### This function creates a dihedral quandle 
 InstallGlobalFunction("DihedralRack", function(n)
-### Creates a Dihedral rack", 
   local m, i, j;
   m := NullMat(n,n);
   for i in [1..n] do
@@ -157,11 +145,11 @@ InstallGlobalFunction("DihedralRack", function(n)
       fi;
     od;
   od;
-  return Rack(m);
+  return RackFromAMatrix(m);
 end);
 
+### This function creates a trivial quandle 
 InstallGlobalFunction("TrivialRack", function(n)
-### Creates a trivial rack
   local i, j, m;
   m := NullMat(n,n);
   for i in [1..n] do
@@ -169,11 +157,11 @@ InstallGlobalFunction("TrivialRack", function(n)
       m[i][j] := j;
     od;
   od;
-  return Rack(m);
+  return RackFromAMatrix(m);
 end);
 
+### This function creates an affine quandle associated to (Z_n, g)
 InstallGlobalFunction("AffineCyclicRack", function(n, g)
-### Creates an affine rack associated to (F_n, g)
   local i, j, m;
   if Gcd(n,g) <> 1 then
     return fail;
@@ -187,32 +175,31 @@ InstallGlobalFunction("AffineCyclicRack", function(n, g)
       fi;
     od;
   od;
-  return Rack(m);
+  return RackFromAMatrix(m);
 end);
 
-InstallGlobalFunction("AffineRack", function(k, z)
-### Creates an affine rack (k, z)
-### <k> is a finite field
+### This function creates an affine quandle over (field, z)
+### <field> is a finite field of q elements
 ### <z> is a non-zero element of <k>
-#  [IsField and IsFinite, IS_FFE],
+### REMARK: [IsField and IsFinite, IS_FFE],
+InstallGlobalFunction("AffineRack", function(field, z)
   local rack, x, y, i, j;
-  if not z in k then
+  if not z in field then
     return fail;
   fi;
-  rack := NullMat(Size(k), Size(k));
-  for x in k do
-    for y in k do
-      i := Position(Elements(k), x);
-      j := Position(Elements(k), y);
-      rack[i][j] := Position(Elements(k), (One(k)-z)*x+z*y);
+  rack := NullMat(Size(field), Size(field));
+  for x in field do
+    for y in field do
+      i := Position(Elements(field), x);
+      j := Position(Elements(field), y);
+      rack[i][j] := Position(Elements(field), (One(field)-z)*x+z*y);
     od;
   od;
-  return Rack(rack);
+  return RackFromAMatrix(rack);
 end);
 
+### This function apply a permutation to a rack 
 InstallGlobalFunction("PermuteRack", function(rack, p)
-### Apply a permutation to a rack 
-###  [IsRack, IsPerm],
   local tmp, i, j, m;
   m := rack.matrix;
   tmp := NullMat(rack.size, rack.size);
@@ -221,55 +208,35 @@ InstallGlobalFunction("PermuteRack", function(rack, p)
       tmp[i^p][j^p] := m[i][j]^p;
     od;
   od;
-  return Rack(tmp);
+  return RackFromAMatrix(tmp);
 end);
 
-### Computes the Inner group of <rack> 
+### Computes the inner group of a <rack> 
 InstallGlobalFunction("InnerGroup", function(rack)
   local i;
-	if IsRack(rack) then
-		if rack.inn <> "" then
-			return rack.inn;
-		else
-    	rack.inn := Group(Permutations(rack));
-      return rack.inn;
-    fi;
-#			if rack.permutations = "" then
-#        rack.permutations := [];
-#        for i in [1..rack.size] do
-#          Add(rack.permutations, PermList(rack.matrix[i]));
-#        od;
-#		  	rack.inn := Group(Permutations(rack));
-#        return rack.inn;
-#			else
-#				return Group(rack.permutations);
-#			fi;
-#		fi;
+	if rack.inn <> "" then
+		return rack.inn;
 	else
-		Error("usage: InnerGroup( <rack> )");
-		return fail;
-	fi;
+   	rack.inn := Group(Permutations(rack));
+    return rack.inn;
+  fi;
 end);
 
+### This function returns a minimal generating subset for the <rack>
 InstallGlobalFunction("MinimalGeneratingSubset", function(rack)
-### Returns the minimal generating subset for the rack
   local i, j, c, tmp;
-	if IsRack(rack) then
-		if rack.basis = "" then
-      for i in [1..Size(rack)] do
-        for c in Combinations(rack!.matrix[1], i) do
-          tmp := CanonicalSubrack(rack, c);
-          if Size(tmp) = Size(rack) then
-						rack.basis := c;
-            return c;
-          fi;
-        od;
+	if rack.basis = "" then
+    for i in [1..Size(rack)] do
+      for c in Combinations(rack!.matrix[1], i) do
+        tmp := CanonicalSubrack(rack, c);
+        if Size(tmp) = Size(rack) then
+					rack.basis := c;
+          return c;
+        fi;
       od;
-		fi;
-		return rack.basis;
-	else
-		Error("usage: MinimalGeneratingSubset(<rack>)");
+    od;
 	fi;
+	return rack.basis;
 end);
 
 InstallGlobalFunction("IsIsomorphicByPermutation", function(rack1, rack2, p) 
@@ -295,25 +262,22 @@ InstallGlobalFunction("IsIsomorphicByPermutation", function(rack1, rack2, p)
 end);
 
 InstallGlobalFunction("IsQuotient", function(rack1, rack2)
-###  "",
-###  [IsRack, IsRack],
-    local a, f, g, i, gen;
-    gen := MinimalGeneratingSubset(rack1);
-    for a in Arrangements([1..Size(rack2)], Size(gen)) do
-      f := [1..Size(rack1)]*0;
-      for i in [1..Size(gen)] do
-        f[gen[i]] := a[i];
-      od;
-      g := ExtendMorphism(rack1, rack2, f);
-      if g <> false then
-        return g;
-      fi;
+  local a, f, g, i, gen;
+  gen := MinimalGeneratingSubset(rack1);
+  for a in Arrangements([1..Size(rack2)], Size(gen)) do
+    f := [1..Size(rack1)]*0;
+    for i in [1..Size(gen)] do
+      f[gen[i]] := a[i];
     od;
-    return fail;
+    g := ExtendMorphism(rack1, rack2, f);
+    if g <> false then
+      return g;
+    fi;
+  od;
+  return fail;
 end);
 
 InstallGlobalFunction("ExtendMorphism", function(rack1, rack2, f)
-###  [IsRack, IsRack, IsList],
   local c, done, i, j;
 
   c := true;
@@ -343,16 +307,16 @@ InstallGlobalFunction("ExtendMorphism", function(rack1, rack2, f)
   od;
 end);
 
+### This function checks if <rack1> and <rack2> are isomorphic
+### For that purpose a minimimal generating subset of <rack1> is computes
 InstallGlobalFunction("IsomorphismRacks", function(rack1, rack2)
-### Checks if <rack1> and <rack2> are isomorphic
-###  [IsRack, IsRack],
   local i, basis, f, s, pi, p; 
 
   if Size(rack1) <> Size(rack2) then
     return false;
   fi;
 
-  ### Minimal generating set 
+  ### compute a minimal generating set 
   basis := MinimalGeneratingSubset(rack1);
 
   for f in Combinations([1..Size(rack1)], Size(basis)) do
@@ -372,9 +336,8 @@ InstallGlobalFunction("IsomorphismRacks", function(rack1, rack2)
   return fail;
 end);
 
-InstallGlobalFunction("ApplyLabels", function(matrix, labels)
 ### Apply labels to a matrix and returns the new matrix
-###  [IsMatrix, IsList], 
+InstallGlobalFunction("ApplyLabels", function(matrix, labels)
   local i, j, tmp;
   tmp := NullMat(Size(matrix), Size(matrix));
   for i in [1..Size(matrix)] do
@@ -385,8 +348,8 @@ InstallGlobalFunction("ApplyLabels", function(matrix, labels)
   return tmp;
 end);
 
-InstallGlobalFunction("IsFaithful", function(rack)
 ### Is the rack faithful?
+InstallGlobalFunction("IsFaithful", function(rack)
   local i, s, p;
   s := [];
   for i in [1..Size(rack)] do
@@ -400,17 +363,15 @@ InstallGlobalFunction("IsFaithful", function(rack)
   return true;
 end);
 
+### Is the rack homogeneous?
+### A rack is homogeneous if its automorphism group acts transitively 
 InstallGlobalFunction("IsHomogeneous", function(rack)
-  if IsRack(rack) then
-		return IsTransitive(AutomorphismGroup(rack), [1..Size(rack)]);
-  else
-    Error("usage: IsHomogeneous( <rack> )");
-  fi;
+  return IsTransitive(AutomorphismGroup(rack), [1..Size(rack)]);
 end);
 
-InstallGlobalFunction("CoreRack", function(group)
+
 ### Creates the core rack
-###  [IsGroup],
+InstallGlobalFunction("CoreRack", function(group)
   local m, x, y, i, j;
   m := NullMat(Size(group),Size(group));
   for x in group do
@@ -420,13 +381,11 @@ InstallGlobalFunction("CoreRack", function(group)
       m[i][j] := Position(Elements(group), x*Inverse(y)*x);
     od;
   od;
-  return Rack(m);
+  return RackFromAMatrix(m);
 end);
 
-
-InstallGlobalFunction("RackFromAConjugacyClass", function(group, g)
 ### Creates a Rack object from the conjugacy classes of <g> in the group <group>
-### [IsGroup, IsObject],
+InstallGlobalFunction("RackFromAConjugacyClass", function(group, g)
   return RackFromConjugacyClasses(group, [g]);
 end);
 
@@ -442,11 +401,9 @@ InstallGlobalFunction("InverseTetrahedronRack", function()
   return RackFromAConjugacyClass(AlternatingGroup(4),(1,3,2));
 end);
 
-InstallGlobalFunction("RackFromConjugacyClasses", function(group, list)
 ### Creates a Rack object from the conjugacy classes of <g1,g2,...> in the group <group>
-### [IsGroup, IsCollection] 
+InstallGlobalFunction("RackFromConjugacyClasses", function(group, list)
   local c, z, xx, gg, t, i, j, g, m, tmp;
-
   gg := [];
   for g in list do
     c := ConjugacyClass(group, g);
@@ -458,23 +415,18 @@ InstallGlobalFunction("RackFromConjugacyClasses", function(group, list)
       m[i][j] := Position(gg, gg[i]*gg[j]*Inverse(gg[i]));
     od;
   od;
-	tmp := Rack(m);
+	tmp := RackFromAMatrix(m);
 	tmp.labels := gg;
   return tmp;
-	###Rack(m); ### labels: gg
 end);
 
 InstallGlobalFunction("RackOrbit", function(rack, i)
-	if IsRack(rack) then
-    if not i in [1..Size(rack)] then
-      return fail;
-    else
-		  return Orbit(InnerGroup(rack), i);
-      #return Set(InnerGroup(rack), g->i^g);
-    fi;
-	else
-		Error("usage: RackOrbit( <rack>, <subset> )");
-	fi;
+  if not i in [1..Size(rack)] then
+    return fail;
+  else
+	  return Orbit(InnerGroup(rack), i);
+    #return Set(InnerGroup(rack), g->i^g);
+  fi;
 end);
 
 
@@ -493,12 +445,11 @@ InstallGlobalFunction("DirectProductOfRacks", function(rack1, rack2)
       m[Position(xy,x)][Position(xy,y)] := Position(xy, tmp); 
     od;
   od;
-  return Rack(m);
+  return RackFromAMatrix(m);
 end);
 
-InstallGlobalFunction("YDGroup", function(rack, q)
-### Returns the Yetter-Drinfeld group of a rack
-###  [IsRack, IsMatrix], 
+### This function returns the Yetter-Drinfeld group of a rack
+InstallGlobalFunction("YetterDrinfeldGroup", function(rack, q)
   local gg, i, x, y, tmp;
   gg := [];
   for i in [1..Size(rack)] do
@@ -515,9 +466,8 @@ InstallGlobalFunction("YDGroup", function(rack, q)
   return Group(gg);
 end);
 
+### This function returns the Enveloping group of a rack
 InstallGlobalFunction(EnvelopingGroup, function(rack)
-### Returns the Enveloping group of a rack
-###  [IsRack], 
 	local n, f, x, rels, i, j;
  	n := Size(rack);
 
@@ -534,12 +484,9 @@ InstallGlobalFunction(EnvelopingGroup, function(rack)
 	return f/rels;
 end);
 
+### This function returns the set of orbits of a rack
 InstallGlobalFunction("Components", function(rack)
-	if IsRack(rack) then
-		return Orbits(InnerGroup(rack));
-	else
-		Error("usage: Components( <rack> )");
-	fi;
+  return Orbits(InnerGroup(rack));
 end);
 
 ### Checks if the rack is a quandle 
@@ -568,49 +515,29 @@ InstallGlobalFunction(IsCrossedSet, function(rack)
   return true;
 end);
 
+### This function returns the list of permutations of the rack
 InstallGlobalFunction("Permutations", function(rack)
-	local i, g;
-	if IsRack(rack) then
-    return List([1..Size(rack)], x->PermList(rack.matrix[x]));
-#		if rack.permutations = "" then
-#      g := [];
-#      for i in [1..rack.size] do
-#        Add(g, PermList(rack.matrix[i]));
-#      od;
-#      rack.permutations := g;
-#    fi;
-#	  return rack.permutations;
-	else
-		Error("Use Permutations(<rack>);");
-	fi;
+  return List([1..Size(rack)], x->PermList(rack.matrix[x]));
 end);
 
+### Is the rack indecomposable?
+### REMARK: indecomposable is the same as connected
 InstallGlobalFunction("IsIndecomposable", function(rack)
-  if IsRack(rack) then
-		return IsConnected(rack);
-#		return Size(RackOrbit(rack, 1)) = Size(rack);
-  else
-    Error("usage: IsIndecomposable( <rack> )");
-  fi;
+  return IsConnected(rack);
 end);
 
+### Is the rack indecomposable?
+### REMARK: indecomposable is the same as connected
 InstallGlobalFunction("IsConnected", function(rack)
-  if IsRack(rack) then
-		return IsTransitive(InnerGroup(rack), [1..Size(rack)]);
-  else
-    Error("usage: IsConnected( <rack> )");
-  fi;
+	return IsTransitive(InnerGroup(rack), [1..Size(rack)]);
 end);
 
+### Is the rack decomposable?
 InstallGlobalFunction("IsDecomposable", function(rack)
-  if IsRack(rack) then
-    return not IsIndecomposable(rack);
-  else
-    Error("usage: IsDecomposable( <rack> )");
-  fi;
+  return not IsIndecomposable(rack);
 end);
 
-###  Creates an noncommutative affine rack
+### This function creates a non-commutative affine rack
 InstallGlobalFunction("HomogeneousRack", function(group, s)
   local m, x, y, i, j, e;
   m := NullMat(Size(group), Size(group));
@@ -622,9 +549,11 @@ InstallGlobalFunction("HomogeneousRack", function(group, s)
       m[i][j] := Position(e, Image(s, y*Inverse(x))*x);
     od;
   od;
-  return Rack(m);
+  return RackFromAMatrix(m);
 end);
 
+### This function creates a twisted homogeneous rack
+### FIXME: we need the orbits!
 InstallGlobalFunction("TwistedHomogeneousRack", function(group, s)
   local m, x, y, i, j, e;
   m := NullMat(Size(group), Size(group));
@@ -636,7 +565,7 @@ InstallGlobalFunction("TwistedHomogeneousRack", function(group, s)
       m[i][j] := Position(e, x*Image(s, y*Inverse(x)));
     od;
   od;
-  return Rack(m);
+  return RackFromAMatrix(m);
 end);
 
 #####################
@@ -648,13 +577,9 @@ InstallOtherMethod(AutomorphismGroup,
   function(rack)
   local i, f, s, pi, p, gens; 
 
-	if not IsRack(rack) then
-		Error("usage: AutomorphismGroup( <rack> )");
-	fi;
-
   gens := [];
 
-  ### Minimal generating set 
+  ### compute a minimal generating set 
 	if rack.basis = "" then
     rack.basis := MinimalGeneratingSubset(rack);
 	fi;
@@ -674,37 +599,33 @@ InstallOtherMethod(AutomorphismGroup,
   return Group(gens);
 end);
 
+### This function computes the inverse of the rack 
 InstallOtherMethod(Inverse,
   "Returns the inverse rack",
   [IsRecord],
   function(rack)
-    local i,j,m;
-  	if not IsRack(rack) then
-   		Error("usage: Rank( <rack> )");
-  	fi;
-
-    m := NullMat(Size(rack),Size(rack));
-    for i in [1..Size(rack)] do
-      for j in [1..Size(rack)] do
-        m[i][j] := First([1..Size(rack)], k->rack.matrix[i][k]=j);
-      od;
-    od;
-    return Rack(m);
+    return RackFromPermutations(List(Permutations(rack), Inverse));
+#    local i,j,m;
+#    m := NullMat(Size(rack),Size(rack));
+#    for i in [1..Size(rack)] do
+#      for j in [1..Size(rack)] do
+#        m[i][j] := First([1..Size(rack)], k->rack.matrix[i][k]=j);
+#      od;
+#    od;
+#    return RackFromAMatrix(m);
 end);
 
+### This function computes the rank of a rack
 InstallOtherMethod(Rank,
-"Computes the rank of a rack", [IsRecord],
-function(rack)
-  local i,p;
-	if not IsRack(rack) then
-		Error("usage: Rank( <rack> )");
-	fi;
-
-  p := [];
-  for i in [1..Size(rack)] do
-    Add(p, rack.matrix[i][i]);
-  od;
-  return Order(PermList(p));
+  "Computes the rank of a rack", 
+  [IsRecord],
+  function(rack)
+    local i,p;
+    p := [];
+    for i in [1..Size(rack)] do
+      Add(p, rack.matrix[i][i]);
+    od;
+    return Order(PermList(p));
 end);
 
 ### This function returns the element k such that i>j=k
@@ -751,46 +672,49 @@ InstallGlobalFunction("Power", function(rack, i)
   return RackFromPermutations(List([1..Size(rack)], x->perms[x]^i));
 end);
 
+### This function computes the set of morphism from one rack to another
 InstallOtherMethod(Hom,
-"Computes the set of morphism from <rack1> to <rack2>", [IsRecord, IsRecord],
-function(rack1, rack2)
-  local l,o,w,i,j,f,g;
-  l := [List([1..Size(rack1)], x->0)];
-  o := [];
-  while not Size(l) = 0 do
-    w := l[1];
-    Remove(l,1);
-    #if w 
-      if not 0 in w then
-        Add(o,w);
-      else
-        i := Position(w,0);
-        for j in [1..Size(rack2)] do
-          f := ShallowCopy(w);
-          f[i] := j;
-          g := ExtendMorphism(rack1, rack2, f);
-          if not g = false then
-            Add(l,f);
-          fi;
-        od;
-      fi;
-    od;
-#  fi;
-  return o;
+  "Computes the set of morphism from <rack1> to <rack2>", 
+  [IsRecord, IsRecord],
+  function(rack1, rack2)
+    local l,o,w,i,j,f,g;
+    l := [List([1..Size(rack1)], x->0)];
+    o := [];
+    while not Size(l) = 0 do
+      w := l[1];
+      Remove(l,1);
+      #if w 
+        if not 0 in w then
+          Add(o,w);
+        else
+          i := Position(w,0);
+          for j in [1..Size(rack2)] do
+            f := ShallowCopy(w);
+            f[i] := j;
+            g := ExtendMorphism(rack1, rack2, f);
+            if not g = false then
+              Add(l,f);
+            fi;
+          od;
+        fi;
+      od;
+  #  fi;
+    return o;
 end);
     
 InstallOtherMethod(Degree,
-"Computes the set of degrees of the <rack>", [IsRecord],
-function(rack)
-  local i,d,m;
-  d := [];
-  for i in [1..Size(rack)] do
-    m := Order(PermList(rack.matrix[i]));
-    if not m in d then
-      Add(d, m);
-    fi;
-  od;
-  return d;
+  "Computes the set of degrees of the <rack>", 
+  [IsRecord],
+  function(rack)
+    local i,d,m;
+    d := [];
+    for i in [1..Size(rack)] do
+      m := Order(PermList(rack.matrix[i]));
+      if not m in d then
+        Add(d, m);
+      fi;
+    od;
+    return d;
 end);
 
 ### This function checks if the <rack> is braided
@@ -806,7 +730,8 @@ InstallGlobalFunction("IsBraided", function(rack)
   od;
   return true;
 end);
-### This functions is useful for checking if angiven rack is affine
+
+### This functions is useful for checking if a given rack is affine
 ### Written by Andreas Lochmann
 InstallGlobalFunction("Affinise", function(rack, neutralelement)
  local i,j,m;
@@ -817,6 +742,78 @@ InstallGlobalFunction("Affinise", function(rack, neutralelement)
   od;
  od;
  return MagmaWithInversesByMultiplicationTable(m);
+end);
+
+### General function to constructing racks
+###
+### EXAMPLES: 
+### Construct the rack associated to a conjugacy class of a group
+###     gap> Rack(SymmetricGroup(3), (1,2));
+###     gap> Rack(SymmetricGroup(3), (), (1,2));
+###     gap> Rack(SymmetricGroup(3), [(), (1,2))];
+###     gap> Rack(ConjugacyClass(SymmetricGroup(3), (1,2)));
+###     gap> Rack(ConjugacyClasses(SymmetricGroup(3));
+###
+### EXAMPLE: 
+### Construct the rack with a given matrix
+###     gap> Rack([[1, 3, 2], [3, 2, 1], [2, 1, 3]]); 
+###
+### EXAMPLE: 
+### Contruct the rack given by permutations
+###     gap> Rack((2,3), (1,3), (1,2));
+###     gap> Rack([(2,3), (1,3), (1,2)]);
+InstallGlobalFunction("Rack", function(arg)
+  local group, reps;
+
+  # The first argument is a group
+  if IsGroup(arg[1]) then
+    group := arg[1];
+    # remove the group from the argument
+    Remove(arg, 1); 
+    if IsList(arg[1]) then
+      return RackFromConjugacyClasses(group, arg[1]);
+    else
+      return RackFromConjugacyClasses(group, arg);
+    fi;
+  fi;
+
+  # The argument is the matrix of the rack
+  if IsMatrix(arg[1]) then
+    return RackFromAMatrix(arg[1]);
+  fi;
+
+  # The argument is a list
+  # OPTIONS
+  # 1) A list of conjugacy classes (all clases *MUST* have the same acting domain!)
+  # 2) A list of permutations
+  if IsList(arg[1]) then
+    if IsConjugacyClassGroupRep(arg[1][1]) then
+      return RackFromConjugacyClasses(ActingDomain(arg[1][1]), List(arg[1], Representative));
+    elif IsPerm(arg[1][1]) then
+      return RackFromPermutations(arg[1]);
+    fi;
+  fi;
+
+  # Only conjugacy classes in the argument 
+  if IsConjugacyClassGroupRep(arg[1]) then
+    return RackFromConjugacyClasses(ActingDomain(arg[1]), List(arg, Representative));
+  fi;
+
+  # Permutations
+  if IsPerm(arg[1]) then
+    return RackFromPermutations(arg);
+  fi;
+  return Error("wrong parameters!");
+end);
+
+InstallGlobalFunction("Quandle", function(arg)
+  local r, params;
+  r := CallFuncList(Rack, arg);
+  if IsQuandle(r) then
+    return r;
+  else
+    Error("The rack is not a quandle");
+  fi;
 end);
 
 # vim: ft=gap: ts=2: sw=2
