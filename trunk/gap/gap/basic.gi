@@ -542,6 +542,18 @@ InstallGlobalFunction("Components", function(rack)
 	fi;
 end);
 
+### Checks if the rack is a quandle 
+### i>i=i for all i  
+InstallGlobalFunction(IsQuandle, function(rack)
+  local i;
+  for i in [1..Size(rack)] do
+    if not RackAction(rack, i, i) = i then 
+      return false;
+    fi;
+  od;
+  return true;
+end);
+
 ### Checks if the rack is a crossed set
 ### i>j=j if and only if j>i=i
 InstallGlobalFunction(IsCrossedSet, function(rack)
