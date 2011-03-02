@@ -281,7 +281,9 @@ InstallGlobalFunction("DegeneratedRackHomology",
 end);
 
 ### This function checks if two cycles are homologous
-InstallGlobalFunction("AreHomologous", function(rack, q1, q2)
+### EXAMPLE:
+###   gap> IsHomologous(DihedralRack(3), [1,0,0,0,1,0,1,1,1], [1,1,1,1,1,1,1,1,1]);
+InstallGlobalFunction("IsHomologous", function(rack, q1, q2)
   local a,b,n,s,r,i,j,t,d,col;
 
   n := 2;
@@ -390,7 +392,7 @@ end);
 #end);
 
 ### This function checks if the matrix is a rack 2-cocycle 
-InstallGlobalFunction(Is2Cocycle, function(rack, q)
+InstallGlobalFunction("Is2Cocycle", function(rack, q)
   local i, j, k;
   for i in [1..Size(rack)] do
     for j in [1..Size(rack)] do
@@ -412,12 +414,33 @@ InstallGlobalFunction("Betti", function(rack, n)
   return Size(rack)^n-Rank(a)-Rank(b);
 end);
 
-### This function computes the torsion part of the rack homology
+### This function computes the torsion subgroup of the homology
 InstallGlobalFunction("Torsion", function(rack, n)
   local x, b;
   b := SmithNormalFormIntegerMat(BoundaryMap(rack, n));
   return Filtered(DiagonalOfMat(b), x->x>1);
 end);
 
-
-
+### This function checks if two cycles are homologous
+#InstallGlobalFunction("IsHomologous", function(rack, u, v)
+#  local a, b;
+#
+#  a := BoundaryMap(r, n-1);
+#  b := SmithNormalFormIntegerMatTransforms(BoundaryMap(r, n));
+#
+#  s := b.normal;
+#  r := TransposedMat(b.rowtrans);
+#  d := DiagonalOfMat(b.normal);
+#  t := Filtered([1..Size(d)], x->d[x]>1);
+#  #t := [i for i in range(min(s.nrows(),s.ncols())) if s[i,i]>1]
+#  for x in t do
+#    tmp := r{[1..Size(r)]}[x];
+#      for i in [1..Size(tmp)] do
+#        if not q1[i]-q2[i] mod d[x][x] = 0 then
+#          return false;
+#        fi;
+#      od;
+#    od;
+#  od;
+#  return true;
+#end);
