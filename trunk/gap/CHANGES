@@ -1,42 +1,49 @@
+0.7 
+	Added: complete classification of indecmposable quandles of order < 32
+	Added: IsGoodInvolution
+	Added: IsCycle, IsCohomologous2Cocycle
+	Added: Betti, Torsion, TorsionGenerators
+	Added: Rack and Quandles to construct racks or quandles
+
 0.6 
-    Added: Library for small braided racks (by Andreas Lochmann)
-    Added: examples/
-    Added: SizesHurwitzOrbits, HurwitzOrbitsRepresentatives and HurwitzOrbitsRepresentativesWS 
-    Added: ConjugationRack
-    Added: HurwitzAction, HurwitzOrbit, HurwitzOrbits, NrHurwitzOrbits
-    Renamed: TwoRackCohomologyTorsionGenerators --> TwoCohomologyTorsionGenerators
-    Added: IsBraided
-    Added: Mult2Cocycle
-    Added: Degree
-    Added: Hom
-    Fixed: TorsionGenerators
-    Added: FK2Cocycle
-    Added: Constant2Cocycle
-    Added: AreHomologous
-    Fixed: RackFromListOfPermutations
-    Added: Power
-    Added: LocalExponent and LocalExponents
-    Added: RackAction and InverseRackAction 
-    Added: DegeneratedRackHomology
-    Added: DegeneratedBoundaryMap
-    Added: InverseTetrahedronRack
-    Added: TetrahedronRack
+	Added: Library for small braided racks (by Andreas Lochmann)
+	Added: examples/
+	Added: SizesHurwitzOrbits, HurwitzOrbitsRepresentatives and HurwitzOrbitsRepresentativesWS 
+	Added: ConjugationRack
+	Added: HurwitzAction, HurwitzOrbit, HurwitzOrbits, NrHurwitzOrbits
+	Renamed: TwoRackCohomologyTorsionGenerators --> TwoCohomologyTorsionGenerators
+	Added: IsBraided
+	Added: Mult2Cocycle
+	Added: Degree
+	Added: Hom
+	Fixed: TorsionGenerators
+	Added: FK2Cocycle
+	Added: Constant2Cocycle
+	Added: AreHomologous
+	Fixed: RackFromListOfPermutations
+	Added: Power
+	Added: LocalExponent and LocalExponents
+	Added: RackAction and InverseRackAction 
+	Added: DegeneratedRackHomology
+	Added: DegeneratedBoundaryMap
+	Added: InverseTetrahedronRack
+	Added: TetrahedronRack
 
 0.5 
-    Added: TwoRackCohomologyTorsionGenerators
+	Added: TwoRackCohomologyTorsionGenerators
 
 0.4	
-    Fixed: IsIndecomposable
+	Fixed: IsIndecomposable
 	Fixed: Subracks
-    Added: IsHomogeneous
-    Improved: Nichols algebras in arbitrary fields
+	Added: IsHomogeneous
+	Improved: Nichols algebras in arbitrary fields
 
 0.3	
-    Added: RackFromListOfPermutations
+    	Added: RackFromListOfPermutations
 	Added: Rank
 	Added: DirectProductOfRacks
 	Added: AlexanderRack
-	Added: IsFaithFul
+	Added: IsFaithful
 	Added: Polynomial invariants of racks
 	Added: Braided actions of racks of group-type
 
