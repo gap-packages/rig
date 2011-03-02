@@ -11,8 +11,10 @@ DeclareGlobalFunction("QuandleBoundaryMap");
 DeclareGlobalFunction("DegeneratedBoundaryMap");
 
 DeclareGlobalFunction("SecondCohomologyTorsionGenerators");
+DeclareGlobalFunction("Mult2Cocycles");
+
 DeclareGlobalFunction("TorsionGenerators");
 DeclareGlobalFunction("IsHomologous");
-DeclareGlobalFunction("Mult2Cocycles");
 DeclareGlobalFunction("Betti");
 DeclareGlobalFunction("Torsion");
+DeclareGlobalFunction("IsCycle");
