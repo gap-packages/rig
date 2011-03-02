@@ -1,18 +1,38 @@
 TODO LIST
 =========
-* To add: CayleyGraph, Betti, Torsion, abelian extensions, Center, IsSimple
-* Notation for knot theory, check (co)homology.
-* Polynomials invariants of racks: improve
-* Manual: 
-	Examples: (co)homology, AlexanderRacks, IsFaithFul, Polynomial invariants
-    Subracks, Nichols algebras
-	Background and References
-* General:
-	Labels!
-	Topology or algebra?
-* base?
+* To add: CayleyGraph
+* To add: Betti, Torsion, Generators for the free part
+* To fix: AreHomologous: general not only n=2, AreHomologous<-->IsHomologous
+* To add: IsCohomologous, at least for n=2
+* To add: abelian extensions
+* To add: Center, IsSimple
+* To add: Display functions, notation for knot theory
+* To add: Alternatives to compute the automorphism group
+* To fix: LocalExponent and LocalExponents
+* To fix: labels and subracks
+* To fix: SmallQuandles library
+* To fix: SmallQuandle and NrSmallQuandles to get the list of all indecomposable quandles
+* To fix: SmallQuandle(p, i) should be the affine rack (p, i)
+* To fix: YetterDrinfeldGroup should be a permutation group
+
+TO CHECK
+========
+* IsGoodInvolution
+
+MANUAL
+======
+* Subracks 
+* (Finite) enveloping group
+* Hurwitz actions
+* Nichols algebras  
+* Background and References
+
+IDEAS
+=====
 * Rename: basis --> gens
 * The inner group is a normal subgroup of the automorphism group!
-* SAGE interface
-* Category: IsRack
-* Method: Rack(i,j)=i>j in order to define racks as a list of permutations!
+* SAGE interface?
+* Derivations for Nichols algebras?
+* Category: IsRack?
+* To add: typeD for racks?
+* Gauss diagrams?
