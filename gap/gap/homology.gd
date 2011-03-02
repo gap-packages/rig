@@ -12,7 +12,7 @@ DeclareGlobalFunction("DegeneratedBoundaryMap");
 
 DeclareGlobalFunction("SecondCohomologyTorsionGenerators");
 DeclareGlobalFunction("TorsionGenerators");
-DeclareGlobalFunction("AreHomologous");
+DeclareGlobalFunction("IsHomologous");
 DeclareGlobalFunction("Mult2Cocycles");
 DeclareGlobalFunction("Betti");
 DeclareGlobalFunction("Torsion");

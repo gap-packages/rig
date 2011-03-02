@@ -1,11 +1,3 @@
-### This function computes the generators of the torsion subgroup of the homology
-### EXAMPLE:
-###   gap> r := TetrahedronRack();;
-###   gap> q := TorsionGenerators(r,2)[1];
-###   [ [ 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0 ] ]
-###   gap> AreHomologous(r,q,q);
-###   true
-
 InstallGlobalFunction(GetRack, function(group, g)
 ### Rack
   local data, c, z, t, i, j;
