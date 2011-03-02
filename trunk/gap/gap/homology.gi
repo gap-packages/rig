@@ -280,9 +280,10 @@ InstallGlobalFunction("DegeneratedRackHomology",
     return [M-m, t];
 end);
 
-### This function checks if two cycles are homologous
+### This function checks if two cycles are homologous.
 ### EXAMPLE:
 ###   gap> IsHomologous(DihedralRack(3), [1,0,0,0,1,0,1,1,1], [1,1,1,1,1,1,1,1,1]);
+###   true
 InstallGlobalFunction("IsHomologous", function(rack, q1, q2)
   local a,b,n,s,r,i,j,t,d,col;
 
@@ -444,3 +445,11 @@ end);
 #  od;
 #  return true;
 #end);
+
+### This function checks if the list <c> is a cycle 
+InstallGlobalFunction("IsCycle", function(rack, c) 
+  local n;
+  n := LogInt(Size(c), Size(rack));
+  return IsZero(BoundaryMap(rack, n-1)*c);
+end);
+
