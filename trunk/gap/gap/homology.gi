@@ -287,7 +287,8 @@ end);
 InstallGlobalFunction("IsHomologous", function(rack, q1, q2)
   local a,b,n,s,r,i,j,t,d,col;
 
-  n := 2;
+  n := LogInt(Size(q1), Size(rack));
+  #Iterated(DimensionsMat(q1), \*), Size(rack));
   a := BoundaryMap(rack, n-1);
   b := SmithNormalFormIntegerMatTransforms(BoundaryMap(rack, n));
 
@@ -422,30 +423,6 @@ InstallGlobalFunction("Torsion", function(rack, n)
   return Filtered(DiagonalOfMat(b), x->x>1);
 end);
 
-### This function checks if two cycles are homologous
-#InstallGlobalFunction("IsHomologous", function(rack, u, v)
-#  local a, b;
-#
-#  a := BoundaryMap(r, n-1);
-#  b := SmithNormalFormIntegerMatTransforms(BoundaryMap(r, n));
-#
-#  s := b.normal;
-#  r := TransposedMat(b.rowtrans);
-#  d := DiagonalOfMat(b.normal);
-#  t := Filtered([1..Size(d)], x->d[x]>1);
-#  #t := [i for i in range(min(s.nrows(),s.ncols())) if s[i,i]>1]
-#  for x in t do
-#    tmp := r{[1..Size(r)]}[x];
-#      for i in [1..Size(tmp)] do
-#        if not q1[i]-q2[i] mod d[x][x] = 0 then
-#          return false;
-#        fi;
-#      od;
-#    od;
-#  od;
-#  return true;
-#end);
-
 ### This function checks if the list <c> is a cycle 
 InstallGlobalFunction("IsCycle", function(rack, c) 
   local n;
@@ -453,3 +430,23 @@ InstallGlobalFunction("IsCycle", function(rack, c)
   return IsZero(BoundaryMap(rack, n-1)*c);
 end);
 
+### This function checks if two 2-cocycles are cohomologous
+### IMPORTANT: These are additive 2-cocycles! 
+### EXAMPLES:
+###   gap> r := Rack(SymmetricGroup(4),(1,2));;
+###   gap> IsCohomologous2Cocycle(r, (1+FK2Cocycle(4))/2, NullMat(6,6));  
+###   false
+###   gap> IsCohomologous2Cocycle(r, (1+FK2Cocycle(3))/2, NullMat(3,3));
+###   true
+InstallGlobalFunction("IsCohomologous2Cocycle", function(rack, q1, q2)
+  local c1, c2, i, j;
+  c1 := [];
+  c2 := [];
+  for i in [1..Size(rack)] do
+    for j in [1..Size(rack)] do
+      Add(c1, q1[i][j]); 
+      Add(c2, q2[i][j]); 
+    od;
+  od;
+  return IsHomologous(rack, c1, c2);
+end);
