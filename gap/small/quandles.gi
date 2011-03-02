@@ -11,6 +11,9 @@ QUANDLES[1].rack[1] := rec( size := 1, matrix :=
   [[1]], 
 );
 
+## size 2
+QUANDLES[2] := rec( total := -1, implemented := 0, size := 2, rack := [ ] );
+
 ## size 3 
 QUANDLES[3] := rec( total := -1, implemented := 1, size := 3, rack := [ ] );
 QUANDLES[3].implemented := 1;
@@ -261,24 +264,28 @@ InstallGlobalFunction("SmallQuandle", function(size, number)
       Error("Indecomposable quandles of size ", size, " are not implemented");
     fi;
   fi;
-  return Rack(QUANDLES[size].rack[number].matrix);
+  if number <= QUANDLES[size].implemented then
+    return Rack(QUANDLES[size].rack[number].matrix);
+  else
+    Error("there are just ", NrSmallQuandles(size), " indecomposable quandles of size ", size);
+  fi;
 end);
 
 ### This function returns the list of all indecomposable quandles implemented  
 InstallGlobalFunction("SmallQuandlesInformation",
   function(size)
     return Concatenation(
-      "Size ", String(size), ": ", String(NrSmallIndecomposableQuandlesImplemented(size)), " rack(s) known. ");
+      "Size ", String(size), ": ", String(NrSmallQuandles(size)), " rack(s) known. ");
 end);
 
 ### This function returns the list of sizes of indecomposable quandles
 ### implemented in rig
-InstallGlobalFunction("SmallQuandleSizesImplemented",
+InstallGlobalFunction("SmallQuandleSizes",
   function()
   local l, j;
   l := [ ];
   for j in [1..360] do
-    if NrQuandlesImplemented(j) > 0 then
+    if NrSmallQuandles(j) > 0 then
       Add(l, j);
     fi;
   od;

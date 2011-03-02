@@ -1,5 +1,5 @@
 DeclareGlobalFunction("NrSmallQuandles");
 DeclareGlobalFunction("SmallQuandle");
 DeclareGlobalFunction("SmallQuandlesInformation");
-DeclareGlobalFunction("SmallQuandleSizesImplemented");
+DeclareGlobalFunction("SmallQuandleSizes");
  
