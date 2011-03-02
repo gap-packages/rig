@@ -297,7 +297,6 @@ InstallGlobalFunction("AreHomologous", function(rack, q1, q2)
 
   s := b.normal;
   r := TransposedMat(b.rowtrans);
-  #r := b.rowtrans;
 
   t := [];
   for i in [1..Minimum(Size(s), Size(s[1]))] do
@@ -325,7 +324,6 @@ InstallGlobalFunction("Mult2Cocycles", function(q1, q2)
   if DimensionsMat(q1) <> DimensionsMat(q2) then
     return fail;
   fi;
-
   n := Size(q1);
   q := NullMat(n,n);
   for i in [1..n] do

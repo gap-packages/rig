@@ -816,4 +816,21 @@ InstallGlobalFunction("Quandle", function(arg)
   fi;
 end);
 
+### This function checks if a permutation p of order 1 or 2 
+### is a good involution: x>p(x)>y=y and p(x>y)=x>p(y)
+InstallGlobalFunction("IsGoodInvolution", function(rack, p)
+  local i, j;
+  if not Order(p) in [1,2] or MovedPoints(p) not = Size(rack) then
+    return false;
+  fi;
+  for i in [1..Size(rack)] do
+    for j in [1..Size(rack)] do
+      if not RackAction(rack, i, RackAction(rack, i^p, j)) = j or not RackAction(rack, i, j)^p = RackAction(rack, i, j^p) then
+        return false;
+      fi;
+    od;
+  od;
+  return true;
+end);
+
 # vim: ft=gap: ts=2: sw=2

@@ -60,6 +60,7 @@ DeclareGlobalFunction("IsHomogeneous");
 DeclareGlobalFunction("IsDecomposable");
 DeclareGlobalFunction("IsIndecomposable");
 DeclareGlobalFunction("IsConnected");
+DeclareGlobalFunction("IsGoodInvolution");
 DeclareGlobalFunction("IsBraided");
 DeclareGlobalFunction("Affinise");
 
