@@ -8,7 +8,7 @@ TODO LIST
 * To add: Center, IsSimple
 * To add: Display functions, notation for knot theory
 * To add: Alternatives to compute the automorphism group
-* To fix: LocalExponent and LocalExponents
+* To fix: LocalExponent and LocalExponents (exclude the trivial case)
 * To fix: labels and subracks
 * To fix: SmallQuandles library
 * To fix: SmallQuandle and NrSmallQuandles to get the list of all indecomposable quandles

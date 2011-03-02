@@ -820,7 +820,7 @@ end);
 ### is a good involution: x>p(x)>y=y and p(x>y)=x>p(y)
 InstallGlobalFunction("IsGoodInvolution", function(rack, p)
   local i, j;
-  if not Order(p) in [1,2] or MovedPoints(p) not = Size(rack) then
+  if not Order(p) in [1,2] or not MovedPoints(p) = Size(rack) then
     return false;
   fi;
   for i in [1..Size(rack)] do
