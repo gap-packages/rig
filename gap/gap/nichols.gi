@@ -6,37 +6,6 @@
 ###   gap> AreHomologous(r,q,q);
 ###   true
 
-InstallGlobalFunction(TorsionGenerators, 
-function(rack, n)
-  local a, b, r, t, m, M, i, x, d, q, z, pos, tmp, gens;
-
-  a := SmithNormalFormIntegerMat(BoundaryMap(rack, n-1));
-  b := SmithNormalFormIntegerMatTransforms(BoundaryMap(rack, n));
- 
-  M := Size(rack)^n-Rank(a);
-
-  # non-zero rows of the matrix b, the n-th boundary map
-  m := Rank(b.normal);
-  
-  r := TransposedMat(b.rowtrans);
-
-  d := DiagonalOfMat(b.normal);
-  t := Filtered([1..Size(d)], x->d[x]>1);
-
-  gens := [];
-
-  for x in t do
-    q := [];
-    tmp := r{[1..Size(r)]}[x];
-    for i in [1..Size(tmp)] do
-      pos := NumberToBasisVector(i, n, Size(rack));
-      Add(q, tmp[i] mod d[x]);
-    od;
-    Add(gens, q);
-  od;
-  return gens;
-end);
-
 InstallGlobalFunction(GetRack, function(group, g)
 ### Rack
   local data, c, z, t, i, j;
@@ -77,21 +46,6 @@ InstallGlobalFunction(GammaMatrix, function(data)
   od;
   return m;
 
-end);
-
-### Is2Cocycle
-InstallGlobalFunction(Is2Cocycle, function(rack, q)
-  local i, j, k;
-  for i in [1..Size(rack)] do
-    for j in [1..Size(rack)] do
-      for k in [1..Size(rack)] do
-        if q[i][rack[j][k]]*q[j][k] <> q[rack[i][j]][rack[i][k]]*q[i][k] then
-          return fail;
-        fi;
-      od;
-    od;
-  od;
-  return true;
 end);
 
 ### CollectAllNicholsData

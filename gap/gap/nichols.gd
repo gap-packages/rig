@@ -1,4 +1,3 @@
-DeclareGlobalFunction("TorsionGenerators");
 DeclareGlobalFunction("GetRack");
 DeclareGlobalFunction("GammaMatrix");
 DeclareGlobalFunction("TwoCocycle");

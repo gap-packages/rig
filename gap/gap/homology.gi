@@ -1,6 +1,4 @@
 InstallGlobalFunction("BoundaryMap2",
-###  "Returns de 2nd boundary map matrix", 
-###  [IsRack],
   function(rack)
     local m, n, i, x, y, xy;
     n := Size(rack);
@@ -17,8 +15,6 @@ InstallGlobalFunction("BoundaryMap2",
 end);
 
 InstallGlobalFunction("BoundaryMap3",
-###  "Returns de 3th boundary map matrix", 
-###  [IsRack],
   function(rack)
     local m, n, i, x, y, z, xy, xz, yz;
     n := Size(rack);
@@ -41,8 +37,6 @@ InstallGlobalFunction("BoundaryMap3",
 end);
 
 InstallGlobalFunction("BoundaryMap4",
-###  "Returns de 4th boundary map matrix", 
-###  [IsRack],
   function(rack)
     local a, b, c, d, ab, ac, ad, bc, bd, cd, i, n, m;
     n := Size(rack);
@@ -109,7 +103,8 @@ InstallGlobalFunction("RackCohomology",
 
     # ok?
     b := TransposedMat(SmithNormalFormIntegerMat(BoundaryMap(rack, n-1)));
-    a := TransposedMat(SmithNormalFormIntegerMat(BoundaryMap(rack, n)));
+    a := BoundaryMap(rack, n);
+#    a := TransposedMat(SmithNormalFormIntegerMat(BoundaryMap(rack, n)));
 
     # null columns of the matrix a, the (n-1)-th boundary map
     M := Size(rack)^n-Rank(a);
@@ -213,16 +208,14 @@ end);
 
 ### This function returns the list of 2-cocycles that generate tor(H^2(X))
 InstallGlobalFunction("SecondCohomologyTorsionGenerators", function(rack)
-  local a, b, r, t, m, M, i, x, d, q, z, pos, tmp, gens,n;
+  local a, b, r, t, m, M, i, x, d, q, z, pos, tmp, gens;#,n;
 
-  n := 2;
-
-  a := SmithNormalFormIntegerMat(BoundaryMap(rack, n-1));
-  b := SmithNormalFormIntegerMatTransforms(BoundaryMap(rack, n));
+  a := BoundaryMap(rack, 1);
+  b := SmithNormalFormIntegerMatTransforms(BoundaryMap(rack, 2));
  
-  M := Size(rack)^n-Rank(a);
+  M := Size(rack)^2-Rank(a);
 
-  # non-zero rows of the matrix b, the n-th boundary map
+  # non-zero rows of the matrix b, the 2-th boundary map
   m := Rank(b.normal);
   
   r := TransposedMat(b.rowtrans);
@@ -237,7 +230,7 @@ InstallGlobalFunction("SecondCohomologyTorsionGenerators", function(rack)
     z := E(d[x]);
     tmp := r{[1..Size(r)]}[x];
     for i in [1..Size(tmp)] do
-      pos := NumberToBasisVector(i, n, Size(rack));
+      pos := NumberToBasisVector(i, 2, Size(rack));
       q[pos[1]][pos[2]] := z^tmp[i];
     od;
     Add(gens, q);
@@ -333,4 +326,98 @@ InstallGlobalFunction("Mult2Cocycles", function(q1, q2)
   od;
   return q;
 end);
+
+### This function computes the Betti numbers 
+
+
+### This function computes the torsion and its generators
+InstallGlobalFunction("TorsionGenerators", function(rack, n)
+  local a, b, d, t, x, gens, q, s, r, c, m, i, tmp;
+  a := BoundaryMap(rack, n-1);
+  b := SmithNormalFormIntegerMatTransforms(BoundaryMap(rack, n));
+
+  r := TransposedMat(b.rowtrans);
+  s := b.normal;
+
+  # non-zero rows of the matrix b, the n-th boundary map
+  m := Rank(b.normal);
+
+  d := DiagonalOfMat(b.normal);
+  t := Filtered([1..Size(d)], x->d[x]>1);
+
+  gens := [];
+  for x in t do
+    q := 0*List([1..Size(rack)^2]);
+    tmp := r{[1..Size(r)]}[x];
+    for i in [1..Size(tmp)] do
+      q[i] := tmp[i] mod s[x][x];
+    od;
+    Add(gens, q);
+  od;
+  return gens;
+end);
+
+#InstallGlobalFunction(TorsionGenerators, 
+#function(rack, n)
+#  local a, b, r, t, m, M, i, x, d, q, z, pos, tmp, gens;
+#
+#  a := #SmithNormalFormIntegerMat(BoundaryMap(rack, n-1));
+#  a := BoundaryMap(rack, n-1);
+#  b := SmithNormalFormIntegerMatTransforms(BoundaryMap(rack, n));
+# 
+#  M := Size(rack)^n-Rank(a);
+#
+#  # non-zero rows of the matrix b, the n-th boundary map
+#  m := Rank(b.normal);
+#  
+#  r := TransposedMat(b.rowtrans);
+#
+#  d := DiagonalOfMat(b.normal);
+#  t := Filtered([1..Size(d)], x->d[x]>1);
+#
+#  gens := [];
+#
+#  for x in t do
+#    q := [];
+#    tmp := r{[1..Size(r)]}[x];
+#    for i in [1..Size(tmp)] do
+#      pos := NumberToBasisVector(i, n, Size(rack));
+#      Add(q, tmp[i] mod d[x]);
+#    od;
+#    Add(gens, q);
+#  od;
+#  return gens;
+#end);
+
+### This function checks if the matrix is a rack 2-cocycle 
+InstallGlobalFunction(Is2Cocycle, function(rack, q)
+  local i, j, k;
+  for i in [1..Size(rack)] do
+    for j in [1..Size(rack)] do
+      for k in [1..Size(rack)] do
+        if q[i][RackAction(rack, j, k)]*q[j][k] <> q[RackAction(rack, i, j)][RackAction(rack, i, k)]*q[i][k] then
+          return false;
+        fi;
+      od;
+    od;
+  od;
+  return true;
+end);
+
+### This function computes the Betti numbers of the rack homology
+InstallGlobalFunction("Betti", function(rack, n)
+  local a, b;
+  a := BoundaryMap(rack, n-1);
+  b := BoundaryMap(rack, n);
+  return Size(rack)^n-Rank(a)-Rank(b);
+end);
+
+### This function computes the torsion part of the rack homology
+InstallGlobalFunction("Torsion", function(rack, n)
+  local x, b;
+  b := SmithNormalFormIntegerMat(BoundaryMap(rack, n));
+  return Filtered(DiagonalOfMat(b), x->x>1);
+end);
+
+
 
