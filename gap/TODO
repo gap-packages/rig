@@ -1,10 +1,7 @@
 TODO LIST
 =========
 * To add: CayleyGraph
-* To add: Betti, Torsion, Generators for the free part
-* To fix: AreHomologous: general not only n=2, AreHomologous<-->IsHomologous
-* To add: IsCohomologous, at least for n=2
-* To add: abelian extensions
+* To add: Generators for the free part
 * To add: Center, IsSimple
 * To add: Display functions, notation for knot theory
 * To add: Alternatives to compute the automorphism group
@@ -18,6 +15,7 @@ TODO LIST
 TO CHECK
 ========
 * IsGoodInvolution
+* AbelianExtensioins
 
 MANUAL
 ======
@@ -30,6 +28,7 @@ MANUAL
 IDEAS
 =====
 * Rename: basis --> gens
+* To add: IsCohomologous for n>2
 * The inner group is a normal subgroup of the automorphism group!
 * SAGE interface?
 * Derivations for Nichols algebras?
