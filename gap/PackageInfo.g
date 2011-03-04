@@ -1,8 +1,8 @@
 SetPackageInfo( rec(
 PackageName := "rig",
 Subtitle := "Racks in GAP",
-Version := "0.6",
-Date := "05/01/2011",
+Version := "0.7",
+Date := "01/02/2011",
 ArchiveURL := "http://code.google.com/p/rig/",
 ArchiveFormats := ".zoo",
 Persons := [
@@ -28,8 +28,8 @@ Persons := [
     Email         := "matiasg@dm.uba.ar",
     WWWHome       := "http://mate.dm.uba.ar/~matiasg",
     PostalAddress := Concatenation( [
-                       "Departamento de matemática, FCEyN, UBA",
-                       "Ciudad Universitaria, Pabellón 1,\n",
+                       "Departamento de matem�tica, FCEyN, UBA",
+                       "Ciudad Universitaria, Pab. 1,\n",
                        "Buenos Aires, Argentina" ] ),
     Place         := "Buenos Aires",
     Institution   := "UBA"
@@ -77,14 +77,7 @@ Dependencies := rec(
 
 AvailabilityTest := ReturnTrue,
 BannerString := Concatenation( 
-  "--\nRiG, A GAP package for racks, Version ", ~.Version, "\n",
-   ~.ArchiveURL,"\n"),
-#  "Version ", ~.Version, "\n"),
-#  "by ", ~.Persons[2].FirstNames, " ", ~.Persons[2].LastName,
-#        " (", ~.Persons[2].WWWHome, ")\n",
-#  "   ", ~.Persons[1].FirstNames, " ", ~.Persons[1].LastName,
-#        " (", ~.Persons[1].WWWHome, ")\n",
-#  "-------------------------------------------------------\n" ),
+  "--\nRiG, A GAP package for racks, Version ", ~.Version, "\n", ~.ArchiveURL,"\n"),
 Autoload := false,
 Keywords := ["racks", "quandles", "nichols algebras"]
 ));

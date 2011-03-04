@@ -1,19 +1,26 @@
 TODO LIST
 =========
-* To add: CayleyGraph
-* To add: Generators for the free part
-* To add: Center, IsSimple
-* To add: Display functions, notation for knot theory
-* To add: Alternatives to compute the automorphism group
-* To fix: LocalExponent and LocalExponents (exclude the trivial case)
-* To fix: labels and subracks
-* To fix: SmallQuandles library
-* To fix: SmallQuandle and NrSmallQuandles to get the list of all indecomposable quandles
-* To fix: SmallQuandle(p, i) should be the affine rack (p, i)
-* To fix: YetterDrinfeldGroup should be a permutation group
 
-TO CHECK
-========
+TO ADD
+======
+* CayleyGraph
+* Generators for the free part
+* Center, IsSimple
+* Display functions, notation for knot theory
+* Alternatives to compute the automorphism group
+
+TO FIX
+======
+* LocalExponent and LocalExponents (exclude the trivial case)
+* Labels and subracks
+
+TO IMPROVE
+==========
+* SmallQuandles library for (affine) racks of p elements
+* YetterDrinfeldGroup should be a permutation group
+
+CHECK
+=====
 * IsGoodInvolution
 * AbelianExtensioins
 
@@ -24,6 +31,7 @@ MANUAL
 * Hurwitz actions
 * Nichols algebras  
 * Background and References
+* Small library of indecomposable quandles
 
 IDEAS
 =====
