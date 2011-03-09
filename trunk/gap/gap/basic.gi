@@ -833,4 +833,15 @@ InstallGlobalFunction("IsGoodInvolution", function(rack, p)
   return true;
 end);
 
+InstallGlobalFunction("IsLatin", function(rack)
+  local m, i;
+  m := TransposedMat(rack.matrix);
+  for i in [1..Size(rack)] do
+    if PermList(m[i]) = fail then
+      return false;
+    fi;
+  od;
+  return true;
+end);
+
 # vim: ft=gap: ts=2: sw=2
