@@ -63,6 +63,7 @@ DeclareGlobalFunction("IsConnected");
 DeclareGlobalFunction("IsGoodInvolution");
 DeclareGlobalFunction("IsBraided");
 DeclareGlobalFunction("Affinise");
+DeclareGlobalFunction("IsLatin");
 
 ##################
 ### operations ###
