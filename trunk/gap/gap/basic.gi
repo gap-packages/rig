@@ -833,6 +833,7 @@ InstallGlobalFunction("IsGoodInvolution", function(rack, p)
   return true;
 end);
 
+### This function checks if the the function f(y)=x>y is bijective
 InstallGlobalFunction("IsLatin", function(rack)
   local m, i;
   m := TransposedMat(rack.matrix);
@@ -842,6 +843,26 @@ InstallGlobalFunction("IsLatin", function(rack)
     fi;
   od;
   return true;
+end);
+
+### This function returns the table (or matrix) of the rack
+InstallGlobalFunction("Table", function(rack)
+  Display(rack.matrix);
+  return;
+end);
+
+### This function returns the table (or matrix) of the rack
+### The table is defined as M(i,j)=i>j
+InstallGlobalFunction("TableL", function(rack)
+  Display(rack.matrix);
+  return;
+end);
+
+### This function returns the transposed table (or matrix) of the rack 
+### The transposed table is defined as M(j,i)=i>j
+InstallGlobalFunction("TableR", function(rack)
+  Display(TransposedMat(rack.matrix));
+	return;
 end);
 
 # vim: ft=gap: ts=2: sw=2

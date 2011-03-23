@@ -71,3 +71,7 @@ DeclareGlobalFunction("IsLatin");
 DeclareGlobalFunction("DirectProductOfRacks");
 DeclareGlobalFunction("PermuteRack");
 DeclareGlobalFunction("Power");
+DeclareGlobalFunction("Table");
+DeclareGlobalFunction("TableL");
+DeclareGlobalFunction("TableR");
+
