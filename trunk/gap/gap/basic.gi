@@ -198,6 +198,27 @@ InstallGlobalFunction("AffineRack", function(field, z)
   return RackFromAMatrix(rack);
 end);
 
+### This function creates an Alexander (=affine) quandle over (field, z)
+### <field> is a finite field of q elements
+### <z> is a non-zero element of <k>
+### REMARK: [IsField and IsFinite, IS_FFE],
+InstallGlobalFunction("AlexanderQuandle", function(field, z)
+  local rack, x, y, i, j;
+  if not z in field then
+    return fail;
+  fi;
+  rack := NullMat(Size(field), Size(field));
+  for x in field do
+    for y in field do
+      i := Position(Elements(field), x);
+      j := Position(Elements(field), y);
+      rack[i][j] := Position(Elements(field), (One(field)-z)*x+z*y);
+    od;
+  od;
+  return RackFromAMatrix(rack);
+end);
+
+
 ### This function apply a permutation to a rack 
 InstallGlobalFunction("PermuteRack", function(rack, p)
   local tmp, i, j, m;
