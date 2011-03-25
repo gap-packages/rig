@@ -13,6 +13,7 @@ DeclareGlobalFunction("ConjugationRack");
 DeclareGlobalFunction("DihedralRack");
 DeclareGlobalFunction("AlexanderRack");
 DeclareGlobalFunction("AffineRack");
+DeclareGlobalFunction("AlexanderQuandle");
 DeclareGlobalFunction("RackFromAConjugacyClass");
 DeclareGlobalFunction("RackFromConjugacyClasses");
 DeclareGlobalFunction("CoreRack");
