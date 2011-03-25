@@ -202,7 +202,7 @@ end);
 ### <field> is a finite field of q elements
 ### <z> is a non-zero element of <k>
 ### REMARK: [IsField and IsFinite, IS_FFE],
-InstallGlobalFunction("AlexanderQuandle", function(field, z)
+InstallGlobalFunction("AffineSimpleQuandle", function(field, z)
   local rack, x, y, i, j;
   if not z in field then
     return fail;
