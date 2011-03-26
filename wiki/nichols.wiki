@@ -1,0 +1,1 @@
+#summary Nichols algebras
