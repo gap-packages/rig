@@ -1,6 +1,14 @@
-#summary One-sentence summary of this page.
+How to install Rig
+
+= Requirements =
+
+The package requires GAP 4.4.10 (or a newer version of GAP).
 
 = Installing =
+
+To install the package unpack the archive file in a directory in the `pkg' hierarchy of your version of GAP4. See section "Installing GAP Packages" of the GAP4 reference manual for more information about installing packages.
+
+
 
 {{{
 gap> LoadPackage("rig");
