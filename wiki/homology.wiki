@@ -1,8 +1,8 @@
 #summary Computations related to rack (co)homology
 
-= Rack (co)homology =
+= Rack and quandle (co)homology =
 
-=== Computing homology groups ===
+=== Computing rack homology groups ===
 
   * `RackHomology( rack, n )` returns the n^th^ homology group of the `rack`.
 {{{
