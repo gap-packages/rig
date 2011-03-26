@@ -1,12 +1,15 @@
 #summary Nichols algebras
 
+We show some examples related to computations of well-known Nichols algebras. 
+Most of these computations use the GAP Gröbner basis package [http://mathdox.org/products/gbnp/ gbnp] (written by A. M. Cohen and J. W. Knopper). 
+
 = Functions =
 
   * `NicholsDatum( rack, q, field )` returns the Nichols algebra over `field` associated to the `rack` and the 2-cocycle `q`.
 
   * `Dimension( datum, d )` returns the dimension of the homogeneous component of degree `d`.
 
-  * `Relations4GAP( datum, d )` returns the relations of the homogeneous component of degree `d`. The GAP Gröbner basis package [http://mathdox.org/products/gbnp/ gbnp] (written by A. M. Cohen and J. W. Knopper) is needed.  
+  * `Relations4GAP( datum, d )` returns the relations of the homogeneous component of degree `d`. 
 
 === Example. A non-diagonal Nichols algebra of dimension 12 ===
 
@@ -24,9 +27,8 @@ gap> for i in [1..4] do
 1
 }}}
 
-=== Example. Computing relations ===
-
-Please notice that the functions `PrintNPList`, `Grobner`, `DimQA` and `BasisQA` belong to the gbnp package. They are not included in Rig.
+Now we compute the Gröbner basis and the set of relations. For that purpose we
+use the GAP Gröbner basis package [http://mathdox.org/products/gbnp/ gbnp] (written by A. M. Cohen and J. W. Knopper). 
 {{{
 gap> r := DihedralRack(3);;
 gap> q := NullMat(3,3)-1;;
@@ -55,3 +57,5 @@ gap> PrintNPList(BaseQA(G, 3, 0));
  bac 
  abac 
 }}}
+
+Please notice that the functions `PrintNPList`, `Grobner`, `DimQA` and `BasisQA` belong to the gbnp package. They are not included in Rig.
