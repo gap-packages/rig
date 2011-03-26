@@ -1,4 +1,4 @@
-How to install Rig
+#summary Installing Rig
 
 = Requirements =
 
