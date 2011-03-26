@@ -13,6 +13,9 @@ Most of these computations use the GAP Gröbner basis package [http://mathdox.or
 
 === Example. A non-diagonal Nichols algebra of dimension 12 ===
 
+The following example appeared in  
+*A. Milinski* and *H.-J. Schneider*, Pointed Indecomposable Hopf Algebras over Coxeter Groups, in "New Trends in Hopf Algebra Theory"; _Contemp. Math. 267 (2000)_, 215-236. 
+
 {{{
 gap> r := DihedralRack(3);;
 gap> q := NullMat(3,3)-1;;
