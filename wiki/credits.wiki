@@ -1,0 +1,15 @@
+#summary Credits
+
+=== Main developers ===
+
+  * M. Graña
+  * L. Vendramin
+
+=== Contributors ===
+
+  * A. Lochmann: Affinise function
+
+=== Special thanks to ===
+
+  * A. Hulpke (for his library of transitive groups)
+  * D. Holt (for his classification of transitive groups of degree 32)
