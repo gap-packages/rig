@@ -8,8 +8,7 @@
 
 Rig provides several functions for creating racks and quandles. For example
 
-* `DihedralRack( n )` returns the dihedral quandle of n elements.
-  # Example: The dihedral quandle of 5 elements.
+  * `DihedralRack( n )` returns the dihedral quandle of n elements.
 {{{
 gap> r := DihedralRack(5);;
 gap> Table(r);
@@ -20,8 +19,7 @@ gap> Table(r);
   [  4,  3,  2,  1,  5 ] ]
 }}}
 
-* `TrivialRack( n )` returns the trivial quandle of n elements.
-  # Example: The trivial rack of 3 elements.
+  * `TrivialRack( n )` returns the trivial quandle of n elements.
 {{{
 gap> r := TrivialRack(3);;
 gap> Table(r);
@@ -30,8 +28,7 @@ gap> Table(r);
   [  1,  2,  3 ] ]
 }}}
 
-* `SmallQuandle( n, i )` returns the quandle `i` of size `n` stored in the small quandles library.  This library includes all non-isomorphic quandles of size <36.
-  # Example: The only indecomposable quandle of 4 elements is the rack associated to the vertices of the tetrahedron. 
+  * `SmallQuandle( n, i )` returns the quandle `i` of size `n` stored in the small quandles library.  This library includes all non-isomorphic quandles of size <36.
 {{{
 gap> NrSmallQuandles(4);                        
 1
@@ -43,8 +40,8 @@ gap> Table(r);
   [  3,  1,  2,  4 ] ]
 }}}
 
-* `Rack( data )` is the generic function to construct racks. 
-  # Example: the rack associated to a conjugacy class of a group.
+  * `Rack( data )` is the generic function to construct racks. Here you have some examples. 
+    * To construct the rack associated to a conjugacy class of a group:
 {{{
 gap> r := Rack(AlternatingGroup(4), (1,2,3));;
 gap> Table(r);
@@ -53,3 +50,9 @@ gap> Table(r);
   [  2,  4,  3,  1 ],
   [  3,  1,  2,  4 ] ]
 }}} 
+    * To contruct the rack with a given matrix (or table):
+{{{
+gap> r := Rack( [[ 1, 2 ], [ 1, 2 ]] );;
+gap> IsomorphismRacks(r, TrivialRack(2));
+()
+}}}
