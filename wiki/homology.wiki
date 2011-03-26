@@ -15,16 +15,28 @@ gap> RackHomology(T, 4);
 [ 1, [ 2, 2, 2, 2, 2, 4, 4 ] ]
 }}}
 
-  * `TorsionGenerators( rack, n )` returns the generators of the torsion part of the n^th^ homology group of the `rack`.
+  * `TorsionGenerators( rack, n )` returns the set of generators of the torsion part of the n^th^ homology group of the `rack`.
 {{{
 gap> T := TetrahedronRack();;
 gap> TorsionGenerators(T, 2);
 [ [ 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0 ] ]
 }}}
 
-  * `SecondCohomologyTorsionGenerators( rack )` returns the generators of the torsion part of the 2^nd^ cohomology group of the `rack` (multiplicative notation).
+  * `SecondCohomologyTorsionGenerators( rack )` returns the set of generators of the torsion part of the 2^nd^ cohomology group of the `rack` (multiplicative notation).
+    # Example: The rack associated to the vertices of the tetrahedron.
 {{{
 gap> T := TetrahedronRack();;
-gap> SecondCohomologyTorsionGenerators(T);
-[ [ [ 1, -1, -1, 1 ], [ -1, 1, -1, 1 ], [ -1, -1, 1, 1 ], [ 1, 1, 1, 1 ] ] ] 
+gap> Display(SecondCohomologyTorsionGenerators(T)[1]);
+[ [   1,  -1,  -1,   1 ],
+  [  -1,   1,  -1,   1 ],
+  [  -1,  -1,   1,   1 ],
+  [   1,   1,   1,   1 ] ]
+}}}
+    # Example. The rack associated to the conjugacy class of (1,2)(3,4,5) in S5. 
+{{{
+gap> r := Rack(SymmetricGroup(5), (1,2)(3,4,5));;
+gap> RackHomology(r, 2);
+[ 1, [ 6 ] ]
+gap> gap> Display(SecondCohomologyTorsionGenerators(r)[1]);
+
 }}}
