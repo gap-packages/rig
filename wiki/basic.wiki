@@ -1,8 +1,19 @@
 #summary How to construct racks and quandles?
 
-= Creating racks and quandles =
+= Constructing racks = 
 
 Rig provides several functions for creating racks and quandles. For example
+
+  * `CyclicRack( n )` returns the rack structure over 1,2,...,n with the action given by x>y=y+1 (mod n).
+{{{
+gap> r := CyclicRack(5);
+gap> Table(r);
+[ [  2,  3,  4,  5,  1 ],
+  [  2,  3,  4,  5,  1 ],
+  [  2,  3,  4,  5,  1 ],
+  [  2,  3,  4,  5,  1 ],
+  [  2,  3,  4,  5,  1 ] ]
+}}}
 
   * `ConjutationRack( group, n )` returns the conjugation rack associated to the group `group` with the rack action given by x>y = x^n^yx^-n^.
 {{{
