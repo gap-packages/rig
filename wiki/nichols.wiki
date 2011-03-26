@@ -1,1 +1,57 @@
 #summary Nichols algebras
+
+= Functions =
+
+  * `NicholsDatum( rack, q, field )` returns the Nichols algebra over `field` associated to the `rack` and the 2-cocycle `q`.
+
+  * `Dimension( datum, d )` returns the dimension of the homogeneous component of degree `d`.
+
+  * `Relations4GAP( datum, d )` returns the relations of the homogeneous component of degree `d`. The GAP Gröbner basis package [http://mathdox.org/products/gbnp/ gbnp] (written by A. M. Cohen and J. W. Knopper) is needed.  
+
+=== Example. A non-diagonal Nichols algebra of dimension 12 ===
+
+{{{
+gap> r := DihedralRack(3);;
+gap> q := NullMat(3,3)-1;;
+gap> n := NicholsDatum(r, q, Rationals);;
+gap> for i in [1..4] do
+> Display(Dimension(n, i));
+> od;
+1
+3
+4
+3
+1
+}}}
+
+=== Example. Computing relations ===
+
+Please notice that the functions `PrintNPList`, `Grobner`, `DimQA` and `BasisQA` belong to the gbnp package. They are not included in Rig.
+{{{
+gap> r := DihedralRack(3);;
+gap> q := NullMat(3,3)-1;;
+gap> n := NicholsDatum(r, q, Rationals);;
+gap> K := Relations4GAP(n, 2);;
+gap> PrintNPList(K);
+ a^2 
+ b^2 
+ ab + bc + ca 
+ ac + ba + cb 
+ c^2
+gap> G := Grobner(K);;
+gap> DimQA(G, 3); 
+12
+gap> PrintNPList(BaseQA(G, 3, 0));  
+ 1 
+ a 
+ b 
+ c 
+ ab 
+ ac 
+ ba 
+ bc 
+ aba 
+ abc 
+ bac 
+ abac 
+}}}
