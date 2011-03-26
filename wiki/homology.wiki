@@ -2,12 +2,9 @@
 
 = Rack (co)homology =
 
-== Examples ==
-
-
 === Computing homology groups ===
 
-`RackHomology( rack, n )` returns the n^th^ homology group of the `rack`.
+  * `RackHomology( rack, n )` returns the n^th^ homology group of the `rack`.
 {{{
 gap> T := TetrahedronRack();;
 gap> RackHomology(T, 2);
@@ -18,14 +15,14 @@ gap> RackHomology(T, 4);
 [ 1, [ 2, 2, 2, 2, 2, 4, 4 ] ]
 }}}
 
-`TorsionGenerators( rack, n )` returns the generators of the torsion part of the n^th^ homology group of the `rack`.
+  * `TorsionGenerators( rack, n )` returns the generators of the torsion part of the n^th^ homology group of the `rack`.
 {{{
 gap> T := TetrahedronRack();;
 gap> TorsionGenerators(T, 2);
 [ [ 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0 ] ]
 }}}
 
-`SecondCohomologyTorsionGenerators( rack )` returns the generators of the torsion part of the 2^nd^ cohomology group of the `rack`.
+  * `SecondCohomologyTorsionGenerators( rack )` returns the generators of the torsion part of the 2^nd^ cohomology group of the `rack`.
 {{{
 gap> T := TetrahedronRack();;
 gap> SecondCohomologyTorsionGenerators(T);
