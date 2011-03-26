@@ -16,4 +16,4 @@ To load the package:
 gap> LoadPackage("rig");
 }}}
 
-You can automate this process this by adding `LoadPackage("rig")` to your .gaprc file. 
+You can automate this process by adding `LoadPackage("rig")` to your .gaprc file. 
