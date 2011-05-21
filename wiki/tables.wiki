@@ -23,29 +23,29 @@ The following tables contain some homology groups of all indecomposable quandles
 || 2 || !ZxZ4||!ZxZ4xZ24||
 
 || *Q=Q,,7,i,,* || *H,,2,,(Q)* || *H,,3,,(Q)*||
-|| 1 || Z||ZxZ7||
+|| 1 || Z||!ZxZ7||
 || 2 || Z||Z||
 || 3 || Z||Z||
 || 4 || Z||Z||
 || 5 || Z||Z||
 
 || *Q=Q,,8,i,,* || *H,,2,,(Q)* || *H,,3,,(Q)*||
-|| 1 || Z||ZxZ8||
-|| 2 || Z||ZxZ2||
-|| 3 || Z||ZxZ2||
+|| 1 || Z||!ZxZ8||
+|| 2 || Z||!ZxZ2||
+|| 3 || Z||!ZxZ2||
 
 || *Q=Q,,9,i,,* || *H,,2,,(Q)* ||
 || 1 || Z||
-|| 2 || ZxZ3||
-|| 3 || ZxZ3||
+|| 2 || !ZxZ3||
+|| 3 || !ZxZ3||
 || 4 || Z||
 || 5 || Z||
-|| 6 || ZxZ3||
+|| 6 || !ZxZ3||
 || 7 || Z||
 || 8 || Z||
 
 || *Q=Q,,10,i,,* || *H,,2,,(Q)* ||
-|| 1 || ZxZ2||
+|| 1 || !ZxZ2||
 
 || *Q=Q,,11,i,,* || *H,,2,,(Q)* ||
 || 1 || Z ||
@@ -59,16 +59,16 @@ The following tables contain some homology groups of all indecomposable quandles
 || 9 || Z ||
 
 || *Q=Q,,12,i,,* || *H,,2,,(Q)* ||
-|| 1 || ZxZ2||
-|| 2 || ZxZ2||
-|| 3 || ZxZ10||
-|| 4 || ZxZ2||
-|| 5 || ZxZ4||
-|| 6 || ZxZ4||
-|| 7 || ZxZ2xZ4||
-|| 8 || ZxZ2xZ2xZ2||
-|| 9 || ZxZ4xZ4||
-|| 10 || ZxZ6||
+|| 1 || !ZxZ2||
+|| 2 || !ZxZ2||
+|| 3 || !ZxZ10||
+|| 4 || !ZxZ2||
+|| 5 || !ZxZ4||
+|| 6 || !ZxZ4||
+|| 7 || !ZxZ2xZ4||
+|| 8 || !ZxZ2xZ2xZ2||
+|| 9 || !ZxZ4xZ4||
+|| 10 || !ZxZ6||
 
 || *Q=Q,,13,i,,* || *H,,2,,(Q)* ||
 || 1 || Z ||
@@ -85,21 +85,21 @@ The following tables contain some homology groups of all indecomposable quandles
 
 || *Q=Q,,15,i,,* || *H,,2,,(Q)* ||
 || 1 || Z||
-|| 2 || ZxZ2xZ2||
+|| 2 || !ZxZ2xZ2||
 || 3 || Z||
 || 4 || Z||
-|| 5 || ZxZ5||
-|| 6 || ZxZ5||
-|| 7 || ZxZ2||
+|| 5 || !ZxZ5||
+|| 6 || !ZxZ5||
+|| 7 || !ZxZ2||
 
 || *Q=Q,,16,i,,* || *H,,2,,(Q)* ||
-|| 1 || ZxZ4||
-|| 2 || ZxZ2xZ2xZ2xZ2||
-|| 3 || ZxZ2xZ2||
-|| 4 || ZxZ2xZ2||
-|| 5 || ZxZ2||
-|| 6 || ZxZ2||
-|| 7 || ZxZ4||
+|| 1 || !ZxZ4||
+|| 2 || !ZxZ2xZ2xZ2xZ2||
+|| 3 || !ZxZ2xZ2||
+|| 4 || !ZxZ2xZ2||
+|| 5 || !ZxZ2||
+|| 6 || !ZxZ2||
+|| 7 || !ZxZ4||
 || 8 || Z||
 || 9 || Z||
 
@@ -121,18 +121,18 @@ The following tables contain some homology groups of all indecomposable quandles
 || 15 || Z ||
 
 || *Q=Q_,,18,i,,* || *H,,2,,(Q)* ||
-|| 1 || ZxZ6||
-|| 2 || ZxZ2||
-|| 3 || ZxZ4||
-|| 4 || ZxZ12||
-|| 5 || ZxZ12||
-|| 6 || ZxZ4||
-|| 7 || ZxZ4||
-|| 8 || ZxZ6||
-|| 9 || ZxZ2||
-|| 10 || ZxZ2||
-|| 11 || ZxZ6||
-|| 12 || ZxZ6||
+|| 1 || !ZxZ6||
+|| 2 || !ZxZ2||
+|| 3 || !ZxZ4||
+|| 4 || !ZxZ12||
+|| 5 || !ZxZ12||
+|| 6 || !ZxZ4||
+|| 7 || !ZxZ4||
+|| 8 || !ZxZ6||
+|| 9 || !ZxZ2||
+|| 10 || !ZxZ2||
+|| 11 || !ZxZ6||
+|| 12 || !ZxZ6||
 
 || *Q=Q,,19,i,,* || *H,,2,,(Q)* ||
 || 1 || Z ||
@@ -154,16 +154,16 @@ The following tables contain some homology groups of all indecomposable quandles
 || 17 || Z ||
 
 || *Q=Q,,20,i,,* || *H,,2,,(Q)* ||
-|| 1 || ZxZ6||
-|| 2 || ZxZ6||
-|| 3 || ZxZ6||
-|| 4 || ZxZ2||
-|| 5 || ZxZ2xZ2||
-|| 6 || ZxZ2xZ4||
-|| 7 || ZxZ2||
-|| 8 || ZxZ2||
-|| 9 || ZxZ2xZ2||
-|| 10 || ZxZ4||
+|| 1 || !ZxZ6||
+|| 2 || !ZxZ6||
+|| 3 || !ZxZ6||
+|| 4 || !ZxZ2||
+|| 5 || !ZxZ2xZ2||
+|| 6 || !ZxZ2xZ4||
+|| 7 || !ZxZ2||
+|| 8 || !ZxZ2||
+|| 9 || !ZxZ2xZ2||
+|| 10 || !ZxZ4||
 
 || *Q=Q,,21,i,,* || *H,,2,,(Q)* ||
 || 1 || Z||
@@ -171,10 +171,10 @@ The following tables contain some homology groups of all indecomposable quandles
 || 3 || Z||
 || 4 || Z||
 || 5 || Z||
-|| 6 || ZxZ2xZ2||
-|| 7 || ZxZ7||
-|| 8 || ZxZ7||
-|| 9 || ZxZ2||
+|| 6 || !ZxZ2xZ2||
+|| 7 || !ZxZ7||
+|| 8 || !ZxZ7||
+|| 9 || !ZxZ2||
 
 || *Q=Q,,23,i,,* || *H,,2,,(Q)* ||
 || 1 || Z ||
