@@ -4,16 +4,16 @@
 
 The following tables contain some homology groups of all indecomposable quandles of size < 24.
 
-|| *Q=Q,,1,i,,* || *H,,2,,(Q)* || *H,,3,,(Q)*||
-|| 1 || Z||Z||
+|| *Q=Q,,1,i,,* || *H,,2,,(Q)* || *H,,3,,(Q)* ||
+|| 1 || Z || Z ||
 
-|| *Q=Q,,3,i,,* || *H,,2,,(Q)* || *H,,3,,(Q)*||
-|| 1 || Z||ZxZ3||
+|| *Q=Q,,3,i,,* || *H,,2,,(Q)* || *H,,3,,(Q)* ||
+|| 1 || Z || ZxZ3 ||
 
-|| *Q=Q,,4,i,,* || *H,,2,,(Q)* || *H,,3,,(Q)*||
-|| 1 || ZxZ2||ZxZ2xZ2xZ4||
+|| *Q=Q,,4,i,,* || *H,,2,,(Q)* || *H,,3,,(Q)* ||
+|| 1 || ZxZ2 || ZxZ2xZ2xZ4 ||
 
-|| *Q=Q,,5,i,,* || *H,,2,,(Q)* || *H,,3,,(Q)*||
+|| *Q=Q,,5,i,,* || *H,,2,,(Q)* || *H,,3,,(Q)* ||
 || 1 || Z||ZxZ5||
 || 2 || Z||Z||
 || 3 || Z||Z||
@@ -198,5 +198,3 @@ The following tables contain some homology groups of all indecomposable quandles
 || 19 || Z ||
 || 20 || Z ||
 || 21 || Z ||
-
-
