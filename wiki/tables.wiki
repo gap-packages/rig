@@ -1,4 +1,4 @@
-#summary The second rack homology groups of indecomposable quandles
+#summary Homology groups of indecomposable quandles
 
 = Homology groups =
 
@@ -198,7 +198,5 @@ The following tables contain some homology groups of all indecomposable quandles
 || 19 || Z ||
 || 20 || Z ||
 || 21 || Z ||
-
-
 
 
