@@ -35,17 +35,17 @@ The following tables contain some homology groups of all indecomposable quandles
 || 3 || Z||!ZxZ2||
 
 || *Q=Q,,9,i,,* || *H,,2,,(Q)* || *H,,3,,(Q)*||
-|| 1 || Z||ZxZ9||
-|| 2 || ZxZ3||ZxZ3xZ3xZ3xZ3xZ3xZ3||
-|| 3 || ZxZ3||ZxZ3xZ3xZ3xZ3||
-|| 4 || Z||ZxZ3||
-|| 5 || Z||ZxZ3||
-|| 6 || ZxZ3||ZxZ3xZ3xZ9||
+|| 1 || Z||!ZxZ9||
+|| 2 || !ZxZ3||!ZxZ3xZ3xZ3xZ3xZ3xZ3||
+|| 3 || !ZxZ3||!ZxZ3xZ3xZ3xZ3||
+|| 4 || Z||!ZxZ3||
+|| 5 || Z||!ZxZ3||
+|| 6 || !ZxZ3||!ZxZ3xZ3xZ9||
 || 7 || Z||Z||
 || 8 || Z||Z||
 
-|| *Q=Q,,10,i,,* || *H,,2,,(Q)* ||
-|| 1 || ZxZ2||ZxZ2xZ2||
+|| *Q=Q,,10,i,,* || *H,,2,,(Q)* || *H,,3,,(Q)*||
+|| 1 || !ZxZ2||!ZxZ2xZ2||
 
 || *Q=Q,,11,i,,* || *H,,2,,(Q)* ||
 || 1 || Z ||
