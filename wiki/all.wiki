@@ -2,6 +2,8 @@
 
 = Number of indecomposable quandles =
 
+The following table was obtained using the function `NrSmallQuandles`.
+
 ||Size|| Number ||
 ||1||1||
 ||2||0||
