@@ -148,6 +148,10 @@ InstallGlobalFunction("DihedralRack", function(n)
   return RackFromAMatrix(m);
 end);
 
+InstallGlobalFunction("DihedralQuandle", function(n)
+  return DihedralRack(n);
+end);
+
 ### This function creates a trivial quandle 
 InstallGlobalFunction("TrivialRack", function(n)
   local i, j, m;

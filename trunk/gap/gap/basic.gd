@@ -11,6 +11,7 @@ DeclareGlobalFunction("CyclicRack");
 DeclareGlobalFunction("AbelianRack");
 DeclareGlobalFunction("ConjugationRack");
 DeclareGlobalFunction("DihedralRack");
+DeclareGlobalFunction("DihedralQuandle");
 DeclareGlobalFunction("AlexanderRack");
 DeclareGlobalFunction("AffineRack");
 DeclareGlobalFunction("AffineSimpleQuandle");
