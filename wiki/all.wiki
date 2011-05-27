@@ -1,4 +1,4 @@
-#summary Tables of all indecomposable quandles
+#summary The number of non-isomorphic indecomposable quandles
 
 = Number of indecomposable quandles =
 
