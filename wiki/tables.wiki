@@ -405,3 +405,16 @@ The following tables contain some homology groups of all indecomposable quandles
 || 15 || Z||
 || 16 || !ZxZ2||
 || 17 || !ZxZ2||
+
+|| *Q=Q,,33,i,,* || *H,,2,,(Q)* ||
+|| 1 || Z||
+|| 2 || Z||
+|| 3 || Z||
+|| 4 || Z||
+|| 5 || Z||
+|| 6 || Z||
+|| 7 || Z||
+|| 8 || Z||
+|| 9 || Z||
+|| 10 || !ZxZ11||
+|| 11 || !ZxZ11||
