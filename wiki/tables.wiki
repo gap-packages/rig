@@ -2,7 +2,7 @@
 
 = Homology groups =
 
-The following tables contain some homology groups of all indecomposable quandles of size < 26.
+The following tables contain some homology groups of all indecomposable quandles of size < 32.
 
 || *Q=Q,,1,i,,* || *H,,2,,(Q)* || *H,,3,,(Q)* ||
 || 1 || Z || Z ||
@@ -386,3 +386,22 @@ The following tables contain some homology groups of all indecomposable quandles
 || 22 || !ZxZ6||
 || 23 || !ZxZ4||
 || 24 || !ZxZ2xZ2||
+
+|| *Q=Q,,32,i,,* || *H,,2,,(Q)* ||
+|| 1 || !ZxZ2||
+|| 2 || !ZxZ2xZ2xZ2||
+|| 3 || !ZxZ2xZ2xZ2||
+|| 4 || !ZxZ2||
+|| 5 || !ZxZ2xZ2||
+|| 6 || !ZxZ2xZ2||
+|| 7 || !ZxZ2||
+|| 8 || !ZxZ2||
+|| 9 || !ZxZ2||
+|| 10 || Z||
+|| 11 || Z||
+|| 12 || Z||
+|| 13 || Z||
+|| 14 || Z||
+|| 15 || Z||
+|| 16 || !ZxZ2||
+|| 17 || !ZxZ2||
