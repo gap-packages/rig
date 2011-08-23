@@ -248,4 +248,18 @@ InstallGlobalFunction("CheckTypeDRandom", function(group, x, n)
   return fail;
 end);
 
+InstallGlobalFunction("YetterDrinfeldGroup", function(rack, q)
+  local gg, i, x, y, tmp;
+  gg := [];
+  for i in [1..Size(rack)] do
+    tmp := ShallowCopy(PermutationMat(PermList(rack!.matrix[i]), Size(rack)));
+    for x in [1..Size(rack)] do
+      for y in [1..Size(rack)] do
+        tmp[RackAction(rack, x, y)][y] := tmp[RackAction(rack, x, y)][y]*q[x][y];
+      od;
+    od;
+    Add(gg, tmp);
+  od;
+  return Group(gg);
+end);
 

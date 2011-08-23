@@ -16,3 +16,5 @@ DeclareGlobalFunction("Relations4GAP");
 DeclareGlobalFunction("CheckTypeD");
 DeclareGlobalFunction("CheckTypeDRandom");
 
+DeclareGlobalFunction("YetterDrinfeldGroup");
+

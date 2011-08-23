@@ -474,22 +474,22 @@ InstallGlobalFunction("DirectProductOfRacks", function(rack1, rack2)
 end);
 
 ### This function returns the Yetter-Drinfeld group of a rack
-InstallGlobalFunction("YetterDrinfeldGroup", function(rack, q)
-  local gg, i, x, y, tmp;
-  gg := [];
-  for i in [1..Size(rack)] do
-    tmp := ShallowCopy(PermutationMat(PermList(rack!.matrix[i]), Size(rack)));
-    for x in [1..Size(rack)] do
-      for y in [1..Size(rack)] do
-        if tmp[x][y] = 1 then
-          tmp[x][y] := q[x][y];
-        fi;
-      od;
-    od;
-    Add(gg, tmp);
-  od;
-  return Group(gg);
-end);
+#InstallGlobalFunction("YetterDrinfeldGroup", function(rack, q)
+#  local gg, i, x, y, tmp;
+#  gg := [];
+#  for i in [1..Size(rack)] do
+#    tmp := ShallowCopy(PermutationMat(PermList(rack!.matrix[i]), Size(rack)));
+#    for x in [1..Size(rack)] do
+#      for y in [1..Size(rack)] do
+#        if tmp[x][y] = 1 then
+#          tmp[x][y] := q[x][y];
+#        fi;
+#      od;
+#    od;
+#    Add(gg, tmp);
+#  od;
+#  return Group(gg);
+#end);
 
 ### This function returns the Enveloping group of a rack
 InstallGlobalFunction(EnvelopingGroup, function(rack)
