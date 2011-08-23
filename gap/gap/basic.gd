@@ -56,7 +56,7 @@ DeclareGlobalFunction("Permutations");
 DeclareGlobalFunction("InnerGroup");
 DeclareGlobalFunction("RackOrbit");
 DeclareGlobalFunction("EnvelopingGroup");
-DeclareGlobalFunction("YetterDrinfeldGroup");
+#DeclareGlobalFunction("YetterDrinfeldGroup");
 DeclareGlobalFunction("IsFaithful");
 DeclareGlobalFunction("IsHomogeneous");
 DeclareGlobalFunction("IsDecomposable");
