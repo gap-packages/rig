@@ -299,6 +299,9 @@ InstallGlobalFunction("IsIsomorphicByPermutation", function(rack1, rack2, p)
   return true;
 end);
 
+### Checks if there exists an epimorphism of racks from <rack1> to <rack2>
+### Maybe it is not working!
+### Example: from 4-cycles in S4=SmallQuandle(6,1) to DihedralQuandle(3)
 InstallGlobalFunction("IsQuotient", function(rack1, rack2)
   local a, f, g, i, gen;
   gen := MinimalGeneratingSubset(rack1);
