@@ -299,24 +299,49 @@ InstallGlobalFunction("IsIsomorphicByPermutation", function(rack1, rack2, p)
   return true;
 end);
 
-### Checks if there exists an epimorphism of racks from <rack1> to <rack2>
-### Maybe it is not working!
-### Example: from 4-cycles in S4=SmallQuandle(6,1) to DihedralQuandle(3)
-InstallGlobalFunction("IsQuotient", function(rack1, rack2)
-  local a, f, g, i, gen;
-  gen := MinimalGeneratingSubset(rack1);
-  for a in Arrangements([1..Size(rack2)], Size(gen)) do
-    f := [1..Size(rack1)]*0;
-    for i in [1..Size(gen)] do
-      f[gen[i]] := a[i];
+### This function checks if a given function is a rack morphism from <r> to <s>
+### Example: 
+### gap> r := DihedralRack(3);
+### gap> s := r;
+### gap> for f in Hom(r, s) do Print("f=", f, " is morphism?", IsMorphism(f, r, s), "\n"); od;
+InstallGlobalFunction("IsMorphism", function(f, r, s)
+  local i, j;
+  for i in [1..Size(r)] do
+    for j in [1..Size(r)] do
+      if not f[RackAction(r, i, j)] = RackAction(s, f[i], f[j]) then
+        return false;
+      fi;
     od;
-    g := ExtendMorphism(rack1, rack2, f);
-    if g <> false then
-      return g;
+  od;
+  return true;
+end);
+
+### This function returns an epimorphism from <r> to <s> (if exists) 
+InstallGlobalFunction("IsQuotient", function(r, s)
+  local f, h; 
+  h := Hom(r, s);
+  for f in h do
+    if Size(Unique(f))=Size(s) then
+      return f;  
     fi;
   od;
-  return fail;
+  return false;
 end);
+
+#  local a, f, g, i, gen;
+#  gen := MinimalGeneratingSubset(rack1);
+#  for a in Arrangements([1..Size(rack2)], Size(gen)) do
+#    f := [1..Size(rack1)]*0;
+#    for i in [1..Size(gen)] do
+#      f[gen[i]] := a[i];
+#    od;
+#    g := ExtendMorphism(rack1, rack2, f);
+#    if g <> false then
+#      return g;
+#    fi;
+#  od;
+#  return fail;
+#end);
 
 InstallGlobalFunction("ExtendMorphism", function(rack1, rack2, f)
   local c, done, i, j;

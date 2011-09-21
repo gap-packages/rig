@@ -208,17 +208,35 @@ gap> IsomosphismRacks(a,c);
 fail
 \endexample
 
-\>IsQuotient ( <r>, <s> )
+\>IsMorphism ( <f>, <r>, <s> )
 
-checks if there exists an epimorphism of racks from <r> to <s>
-The following example shows that the rack associated to the conjugacy
-class of 4-cycles of the symmetric group in four letters is not simple.
+Checks if <f> is a rack morphism from <r> to <s>
 
 \beginexample
-gap> r := Rack(SymmetricGroup(4), (1,2,3,4));;
+gap> r := SmallQuandle(6,1);;
 gap> s := DihedralRack(3);;
-gap> IsQuotient(r, s);
-[ 1, 2, 2, 3, 1, 3 ]
+gap> for f in Hom(r,s) do Print("Is f=", f, ", a rack morphism? ", IsMorphism(f, r, s), "\n"); od;
+Is f=[ 1, 1, 1, 1, 1, 1 ], a rack morphism? true
+Is f=[ 1, 1, 2, 2, 3, 3 ], a rack morphism? true
+Is f=[ 1, 1, 3, 3, 2, 2 ], a rack morphism? true
+Is f=[ 2, 2, 1, 1, 3, 3 ], a rack morphism? true
+Is f=[ 2, 2, 2, 2, 2, 2 ], a rack morphism? true
+Is f=[ 2, 2, 3, 3, 1, 1 ], a rack morphism? true
+Is f=[ 3, 3, 1, 1, 2, 2 ], a rack morphism? true
+Is f=[ 3, 3, 2, 2, 1, 1 ], a rack morphism? true
+Is f=[ 3, 3, 3, 3, 3, 3 ], a rack morphism? true
+\endexample
+
+\>IsQuotient ( <r>, <s> )
+
+checks if there exists an epimorphism of racks from <r> to <s> The following
+example shows that the two indecomposable quandles of size 6 are not simple.
+
+\beginexample
+gap> IsQuotient(SmallQuandle(6,1), DihedralRack(3));
+[ 1, 1, 2, 2, 3, 3 ]
+gap> IsQuotient(SmallQuandle(6,2), DihedralRack(3));
+[ 1, 1, 2, 2, 3, 3 ]
 \endexample
 
 \beginexample

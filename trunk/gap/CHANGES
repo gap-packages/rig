@@ -1,4 +1,6 @@
 0.8
+    Added: IsMorphism
+    Fixed: IsQuotient
     Added: TransvectionsGroup
     Added: IsSimple
     Fixed: YetterDrinfeldGroup

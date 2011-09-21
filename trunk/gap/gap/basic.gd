@@ -44,6 +44,7 @@ DeclareGlobalFunction("NewRack");
 #########################
 DeclareGlobalFunction("MinimalGeneratingSubset");
 DeclareGlobalFunction("IsomorphismRacks");
+DeclareGlobalFunction("IsMorphism");
 DeclareGlobalFunction("IsQuotient");
 DeclareGlobalFunction("IsIsomorphicByPermutation");
 DeclareGlobalFunction("ExtendMorphism");
