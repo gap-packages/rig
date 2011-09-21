@@ -208,6 +208,24 @@ gap> IsomosphismRacks(a,c);
 fail
 \endexample
 
+\>IsQuotient ( <r>, <s> )
+
+checks if there exists an epimorphism of racks from <r> to <s>
+The following example shows that the rack associated to the conjugacy
+class of 4-cycles of the symmetric group in four letters is not simple.
+
+\beginexample
+gap> r := Rack(SymmetricGroup(4), (1,2,3,4));;
+gap> s := DihedralRack(3);;
+gap> IsQuotient(r, s);
+[ 1, 2, 2, 3, 1, 3 ]
+\endexample
+
+\beginexample
+gap> IsQuotient(DihedralRack(4), TrivialRack(2));
+[ 1, 2, 1, 2 ]
+\endexample
+
 \>Rack( <matrix> ) F
 
 creates a rack structure over the set $X=\{1,...,n\}$ with the structure 
