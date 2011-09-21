@@ -1,5 +1,10 @@
+0.8
+    Added: TransvectionsGroup
+    Added: IsSimple
+    Fixed: YetterDrinfeldGroup
+
 0.7 
-	Added: complete classification of indecmposable quandles of order < 32
+	Added: complete classification of indecomposable quandles of order < 32
 	Added: IsGoodInvolution
 	Added: IsCycle, IsCohomologous2Cocycle
 	Added: Betti, Torsion, TorsionGenerators

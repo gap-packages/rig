@@ -54,6 +54,7 @@ DeclareGlobalFunction("ExtendMorphism");
 DeclareGlobalFunction("Components");
 DeclareGlobalFunction("Permutations");
 DeclareGlobalFunction("InnerGroup");
+DeclareGlobalFunction("TransvectionsGroup");
 DeclareGlobalFunction("RackOrbit");
 DeclareGlobalFunction("EnvelopingGroup");
 #DeclareGlobalFunction("YetterDrinfeldGroup");

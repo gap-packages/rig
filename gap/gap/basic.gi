@@ -247,6 +247,19 @@ InstallGlobalFunction("InnerGroup", function(rack)
   fi;
 end);
 
+# This function computes the transvection group of a rack 
+InstallGlobalFunction("TransvectionsGroup", function(rack)
+  local x, y, gens, p;
+  gens := [];
+  p := Permutations(rack);
+  for x in [1..Size(rack)] do
+    for y in [1..Size(rack)] do
+      Add(gens, p[x]*Inverse(p[y]));
+    od;
+  od;
+  return Group(gens);
+end);
+
 ### This function returns a minimal generating subset for the <rack>
 InstallGlobalFunction("MinimalGeneratingSubset", function(rack)
   local i, j, c, tmp;
@@ -622,6 +635,47 @@ InstallOtherMethod(AutomorphismGroup,
     od;
   od;
   return Group(gens);
+end);
+
+InstallOtherMethod(IsSimple, 
+  "Checks if the <rack> is simple", 
+  [IsRecord],
+  function(rack)
+  local inn, der, sizes;
+  inn := InnerGroup(rack);
+
+  if not IsQuandle(rack) then
+    Print("Only for quandles!\n");
+    return fail;
+  fi;
+
+  # If Q is simple then Q has more than two elements
+  if Size(rack) < 3 then
+    return false;
+  fi;
+
+  if not IsFaithful(rack) then
+    return false;
+  fi;
+
+  # A simple quandle Q satisfies that Z(Inn(Q)) is trivial
+  if Size(Center(inn)) <> 1 then
+    return false;
+  fi;
+
+  # If Q is a simple quandle and G=Inn(Q) then G/[G,G] is cyclic
+  der := DerivedSubgroup(inn);
+  if not IsCyclic(inn/der) then
+    return false;
+  fi;
+
+  # If Q is a simple quandle then [G,G] is the smallest non-trivial normal subgroup of Inn(Q)
+  sizes := List(NormalSubgroups(inn), x->Size(x));
+  if Position(SortedList(sizes), Size(der)) <> 2 then
+    return false;
+  fi;
+
+  return true;
 end);
 
 ### This function computes the inverse of the rack 
