@@ -22,6 +22,7 @@ DeclareGlobalFunction("HomogeneousRack");
 DeclareGlobalFunction("TetrahedronRack");
 DeclareGlobalFunction("InverseTetrahedronRack");
 DeclareGlobalFunction("TwistedHomogeneousRack");
+DeclareGlobalFunction("IdQuandle");
 
 DeclareGlobalFunction("LocalExponent");
 DeclareGlobalFunction("LocalExponents");

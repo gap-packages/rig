@@ -972,4 +972,17 @@ InstallGlobalFunction("TableR", function(rack)
 	return;
 end);
 
+### This function returns the quandle Id like [n, i]
+### This means that the <rack> is isomorphic to SmallQuandle(n, i)
+InstallGlobalFunction("IdQuandle", function(rack)
+  local i;
+  for i in [1..NrSmallQuandles(Size(rack))] do
+    if not IsomorphismRacks(rack, SmallQuandle(Size(rack), i)) = fail then
+      return [Size(rack), i];
+    fi;
+  od;
+  return fail;
+end);
+
+
 # vim: ft=gap: ts=2: sw=2
