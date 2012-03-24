@@ -1,7 +1,33 @@
 #summary References about racks and quandles
-
 = References =
 
-== General ==
+== A ==
 
+ * Andruskiewitsch, Nicolás, Graña, Matías. From racks to pointed Hopf algebras. Adv. Math. 178 (2003), no. 2, 177--243. MR1994219 (2004i:16046)
+
+== C ==
+
+ * Carter, J. Scott; Elhamdadi, Mohamed; Graña, Matias; Saito, Masahico. Cocycle knot invariants from quandle modules and generalized quandle homology. Osaka J. Math. 42 (2005), no. 3, 499--541. MR2166720 (2006d:57017)
+ * Carter, J. Scott; Jelsovsky, Daniel; Kamada, Seiichi; Langford, Laurel; Saito, Masahico. Quandle cohomology and state-sum invariants of knotted curves and surfaces. Trans. Amer. Math. Soc. 355 (2003), no. 10, 3947--3989. MR1990571 (2005b:57048)
+
+== E ==
+
+ * Etingof, P.; Graña, M. On rack cohomology. J. Pure Appl. Algebra 177 (2003), no. 1, 49--59. MR1948837 (2004e:55006)
+
+== F ==
+
+ * Fenn, Roger; Rourke, Colin; Sanderson, Brian. The rack space. Trans. Amer. Math. Soc. 359 (2007), no. 2, 701--740 (electronic). MR2255194 (2007g:55013)
+ * Fenn, Roger; Rourke, Colin; Sanderson, Brian. An introduction to species and the rack space. Topics in knot theory (Erzurum, 1992), 33--55, NATO Adv. Sci. Inst. Ser. C Math. Phys. Sci., 399, Kluwer Acad. Publ., Dordrecht, 1993. MR1257904
+ * Fenn, Roger; Rourke, Colin. Racks and links in codimension two. J. Knot Theory Ramifications 1 (1992), no. 4, 343--406. MR1194995 (94e:57006)
+
+== H ==
+
+ * Henderson, Richard; Macedo, Todd; Nelson, Sam. Symbolic computation with finite quandles. J. Symbolic Comput. 41 (2006), no. 7, 811--817. MR2232202 (2007a:68080)
+
+== J ==
+
+ * Joyce, David. Simple quandles. J. Algebra 79 (1982), no. 2, 307--318. MR0682881 (84d:20078)
+ * Joyce, David. A classifying invariant of knots, the knot quandle. J. Pure Appl. Algebra 23 (1982), no. 1, 37--65. MR0638121 (83m:57007)
+
+== M ==
 
