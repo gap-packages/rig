@@ -147,6 +147,7 @@ InstallGlobalFunction("QuantumSymmetrizer", function(data, n)
 end);
 
 ### Relations for gbnp package
+### Improved!
 InstallGlobalFunction("Relations4GAP",
 ### Returns the relations of the Nichols algebra in degree less or equal than <n>
 ### [IsRack, IsMatrix, IsInt],
@@ -162,7 +163,7 @@ function(data, degree)
     a := [];
     b := [];
     for j in [1..Size(ns[1])] do
-      if ns[i][j] <> 0 then
+      if ns[i][j] <> Zero(data.field) then
         Add(a, NumberToBasisVector(j, degree, Size(data.rack)));
         Add(b, ns[i][j]);
       fi;
