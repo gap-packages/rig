@@ -2,6 +2,20 @@
 
 The following is a list of the functions available in the {\RiG} package. 
 
+\>IsAffineIndecomposableQuandle( <quandle> );
+
+checks if the <quandle> is an affine quandle. This function only works 
+with indecomposable quandles. For example:
+
+\beginexample
+gap> r := SmallQuandle(5,1);;
+gap> IsAffineIndecomposableQuandle(r);
+true
+gap> s := SmallQuandle(6,1);;
+gap> IsAffineIndecomposableQuandle(s);
+false
+\endexample
+
 \>AbelianRack( <n> );
 \>TrivialRack( <n> );
 
