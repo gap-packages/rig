@@ -1,5 +1,5 @@
 ######################################
-### functions used to define racks ###
+### Functions used to define racks ###
 ######################################
 DeclareGlobalFunction("Rack");
 DeclareGlobalFunction("Quandle");
@@ -31,7 +31,7 @@ DeclareGlobalFunction("InverseRackAction");
 DeclareGlobalFunction("RackAction");
 
 ####################
-### internal use ###
+### Internal use ###
 ####################
 DeclareGlobalFunction("IsRack");
 DeclareGlobalFunction("IsQuandle");
@@ -41,7 +41,7 @@ DeclareGlobalFunction("ApplyLabels");
 DeclareGlobalFunction("NewRack");
 
 #########################
-### rack isomorphisms ###
+### Rack isomorphisms ###
 #########################
 DeclareGlobalFunction("MinimalGeneratingSubset");
 DeclareGlobalFunction("IsomorphismRacks");
@@ -51,7 +51,7 @@ DeclareGlobalFunction("IsIsomorphicByPermutation");
 DeclareGlobalFunction("ExtendMorphism");
 
 ################################
-### about the rack structure ###
+### About the rack structure ###
 ################################
 DeclareGlobalFunction("Components");
 DeclareGlobalFunction("Permutations");
@@ -71,7 +71,7 @@ DeclareGlobalFunction("Affinise");
 DeclareGlobalFunction("IsLatin");
 
 ##################
-### operations ###
+### Operations ###
 ##################
 DeclareGlobalFunction("DirectProductOfRacks");
 DeclareGlobalFunction("PermuteRack");

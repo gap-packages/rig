@@ -1,8 +1,8 @@
 SetPackageInfo( rec(
 PackageName := "rig",
 Subtitle := "Racks in GAP",
-Version := "0.8.2",
-Date := "01/06/2011",
+Version := "0.9",
+Date := "01/03/2012",
 ArchiveURL := "http://code.google.com/p/rig/",
 ArchiveFormats := ".zoo",
 Persons := [
