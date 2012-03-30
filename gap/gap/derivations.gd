@@ -1,0 +1,11 @@
+DeclareGlobalFunction("ActNP");
+DeclareGlobalFunction("DeriveNP");
+DeclareGlobalFunction("DeriveMultipleNP");
+DeclareGlobalFunction("SignatureNP");
+DeclareGlobalFunction("SynBaseNP");
+DeclareGlobalFunction("NPIsFormallyZero");
+DeclareGlobalFunction("NPHasNonZeroConstant");
+DeclareGlobalFunction("NPCleanUpNilpotents");
+DeclareGlobalFunction("NPIsRecursivelyZero");
+DeclareGlobalFunction("LongestWordWithPrefix");
+DeclareGlobalFunction("LongestWord");
