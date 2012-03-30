@@ -7,7 +7,7 @@
 
 === Contributors ===
 
-  * A. Lochmann: Affinise function
+  * A. Lochmann: affine quandles, derivations
 
 === Special thanks to ===
 
