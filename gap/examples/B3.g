@@ -40,8 +40,8 @@ HurwitzOrbit2DOT := function(rack, v, filename)
   IO_WriteLine(f,"// Rack of size ", Size(rack), " and degre ", Degree(rack));
   IO_WriteLine(f,"digraph test {");
   for i in [1..Size(o)] do
-    IO_WriteLine(f, "\"", v, "\" -> \"", HurwitzAction(rack, 1, v), "\" [color=black];");
-    IO_WriteLine(f, "\"", v, "\" -> \"", HurwitzAction(rack, 2, v), "\" [color=red];");
+    IO_WriteLine(f, "\"", o[i], "\" -> \"", HurwitzAction(rack, 1, o[i]), "\" [color=black];");
+    IO_WriteLine(f, "\"", o[i], "\" -> \"", HurwitzAction(rack, 2, o[i]), "\" [color=red];");
   od;
   IO_WriteLine(f, "}");
   IO_Flush(f);
