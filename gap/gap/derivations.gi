@@ -1,3 +1,59 @@
+################
+### Wrappers ###
+################
+
+### This function applies a (sequence of) derivative(s) to a polynomial in gbnp format
+### EXAMPLE:
+### gap> r := SmallQuandle(3,1);;
+### gap> q := NullMat(3,3)-1;;
+### gap> n := NicholsDatum(r, q, Rationals);;
+### gap> Display(Derive(n, [[[1,2]],[1]], 1));
+### [ [ [ 3 ] ], [ -1 ] ]
+### gap> Display(Derive(n, [[[1,2]],[1]], [1,2]));
+### [ [ [  ] ], [ 1 ] ]
+InstallGlobalFunction("Derive", function(arg)
+  local data, u, result;
+  data := arg[1];
+  u := arg[2];
+  if IsList(arg[3]) then
+    result := DeriveMultipleNP(data, u, arg[3]);
+  else
+    result := DeriveNP(data, u, arg[3]);
+  fi;
+  return result;
+end);
+
+### This function applies a (sequence of) opposite derivative(s) to a polynomial in gbnp format
+InstallGlobalFunction("OppositeDerive", function(arg)
+  local data, u, result;
+  data := arg[1];
+  u := arg[2];
+  if IsList(arg[3]) then
+    result := DeriveOpMultipleNP(data, u, arg[3]);
+  else
+    result := DeriveOpNP(data, u, arg[3]);
+  fi;
+  return result;
+end);
+
+### This function can be used to check if a given element <u> is zero or not
+### If possible, a sequence of derivatives (written as operators) will be returned
+### EXAMPLE:
+### gap> r := SmallQuandle(3,1);;
+### gap> q := NullMat(3,3)-1;;
+### gap> n := NicholsDatum(r, q, Rationals);;
+### gap> IsNonZero(n, [ [ [ 3 ] ], [ -1 ] ]);
+### [ 3 ]
+InstallGlobalFunction("IsNonZero", function(data, u)
+  local m;
+  m := Maximum(List([1..Size(data.q)], x->Order(data.q[x][x])));
+  return NPRecursiveDerivationSequence(data, m, u);
+end);
+
+###################################
+### Derivatives                 ###
+### Written by Andreas Lochmann ###
+###################################
 InstallGlobalFunction("DeriveNP", function(data, u, t)
   local result, i, j, monomial, coefficient, first, last;
   #Print("Try to derive ", u, " with respect to ", t, "\n");
@@ -133,4 +189,21 @@ InstallGlobalFunction("NPRecursiveDerivationSequence", function(data, m, u)
         fi;
     od;
     return false;
+end);
+
+# Act with t on monomial in NicholsDatum data
+InstallGlobalFunction("ActNP", function(data, u, t)
+  local result, j, k, monomial, mres, cres;
+  result := [[],[]];
+  for j in [1..Size(u[2])] do
+    monomial := u[1][j];
+    mres := [];
+    cres := u[2][j];
+    for k in [1..Size(monomial)] do
+      mres[k] := data.rack.matrix[t][monomial[k]];
+      cres := cres * data.q[t][monomial[k]]; ## TODO: Correct sequence?
+    od;  
+    result := AddNP(result, [[mres],[cres]], 1, 1);
+  od;
+  return result;
 end);
