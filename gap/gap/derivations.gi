@@ -88,7 +88,9 @@ InstallGlobalFunction("DeriveMultipleNP", function(data, u, sequence)
 end);
 
 # Skew-op-derive the NP-polynomial u with respect to t in NicholsDatum data
+# fixed: Aug 2, 2012, Andreas Lochmann
 InstallGlobalFunction("DeriveOpNP", function(data, u, t)
+DeriveOpNP := function(data, u, t)
   local result, i, j, monomial, coefficient, first, last, new_t, factor;
   #Print("Try to derive ", u, " with respect to ", t, "\n");
   result := [[],[]]; # zero-polynomial
@@ -102,7 +104,8 @@ InstallGlobalFunction("DeriveOpNP", function(data, u, t)
       last := List([1..(Size(monomial)-1)], i -> monomial[i+1]);
       if Size(last) > 0 then
           factor := 1/(data.q[first][t]);
-          new_t := ListPerm((PermList(data.rack.matrix[first]))^(-1))[t];
+          #new_t := ListPerm((PermList(data.rack.matrix[first]))^(-1))[t];
+          new_t := Permuted( [1..Size(data.rack)], (PermList(data.rack.matrix[first])))[t];
           result := AddNP(result, MulNP([[[first]],[factor]], DeriveOpNP(data, [[last],[coefficient]], new_t)), 1, 1);
       fi;
       if first = t then
