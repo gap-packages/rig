@@ -90,7 +90,6 @@ end);
 # Skew-op-derive the NP-polynomial u with respect to t in NicholsDatum data
 # fixed: Aug 2, 2012, Andreas Lochmann
 InstallGlobalFunction("DeriveOpNP", function(data, u, t)
-DeriveOpNP := function(data, u, t)
   local result, i, j, monomial, coefficient, first, last, new_t, factor;
   #Print("Try to derive ", u, " with respect to ", t, "\n");
   result := [[],[]]; # zero-polynomial
