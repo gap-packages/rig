@@ -141,7 +141,7 @@ InstallGlobalFunction("HurwitzOrbits", function(rack, n)
   local a,x,y,o,l;
   a := [];
   l := [];
-  for x in Tuples([1..Size(rack)], n) do 
+  for x in IteratorOfTuples([1..Size(rack)], n) do 
     if not x in a then
       o := HurwitzOrbit(rack, x);
       Add(l,o);
