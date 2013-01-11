@@ -112,10 +112,28 @@ InstallGlobalFunction("RackFromPermutations", function(list)
   return RackFromAMatrix(m);
 end);
 
+### This function returns the size of the finite <rack>
 InstallOtherMethod(Size, 
 	[IsRecord],
   function(rack)
   	return rack.size;
+end);
+
+### This function returns true if <rack> is injective, i.e. X -> G_X is injective
+InstallOtherMethod(IsInjective,
+  [IsRecord],
+  function(rack)
+    local i,j,env,gens;
+    env := EnvelopingGroup(rack);
+    gens := GeneratorsOfGroup(env);
+    for i in [1..Size(rack)] do
+      for j in [i+1..Size(rack)] do
+        if gens[i] = gens[j] then
+          return false;
+        fi;
+      od;
+    od;
+    return true;
 end);
 
 ### Creates a cyclic rack", 
