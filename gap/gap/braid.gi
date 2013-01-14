@@ -76,13 +76,14 @@ end);
 
 ### This function returns the finite quotient of the enveloping group
 ### IMPORTANTE: only works for indecomposable racks
+### TESTING: the general case can be achieved using the lcm of the permutations as the degree of the rack
 InstallGlobalFunction("FiniteEnvelopingGroup", function(rack)
-  local n, f, x, rels, i, j, p;
+  local n, f, x, rels, i, j, p, deg;
   n := Size(rack);
   
-  if not IsIndecomposable(rack) then
-    return fail;
-  fi;
+ # if not IsIndecomposable(rack) then
+ #   return fail;
+ # fi;
 
   f := FreeGroup(n);
   x := GeneratorsOfGroup(f); 
@@ -94,12 +95,18 @@ InstallGlobalFunction("FiniteEnvelopingGroup", function(rack)
       Add(rels, x[i]*x[j]*Inverse(x[rack!.matrix[i][j]]*x[i]));
     od;
   od;
+
+  deg := Degree(rack);
   for i in [1..n] do
-    p := PermList(rack!.matrix[i]);
-    for j in [1..n] do
-      Add(rels, x[i]^Order(p));
-    od;
+    Add(rels, x[i]^deg);
   od;
+
+#  for i in [1..n] do
+#    p := PermList(rack!.matrix[i]);
+#    for j in [1..n] do
+#      Add(rels, x[i]^Order(p));
+#    od;
+#  od;
   return f/rels;
 end);
 
