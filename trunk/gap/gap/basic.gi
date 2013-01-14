@@ -813,7 +813,9 @@ InstallOtherMethod(Hom,
   #  fi;
     return o;
 end);
-    
+   
+### This function computes the degree of <rack>
+### The degree is defined as the least commom multiple of the orders of the permutations defining <rack>
 InstallOtherMethod(Degree,
   "Computes the set of degrees of the <rack>", 
   [IsRecord],
@@ -826,7 +828,7 @@ InstallOtherMethod(Degree,
         Add(d, m);
       fi;
     od;
-    return d;
+    return Lcm(d);
 end);
 
 ### This function checks if the <rack> is braided
