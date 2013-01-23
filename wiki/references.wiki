@@ -1,6 +1,8 @@
 #summary References about racks and quandles
 = References =
 
+Help me to improve this list!
+
 == A ==
 
  * Andruskiewitsch, Nicolás, Graña, Matías. From racks to pointed Hopf algebras. Adv. Math. 178 (2003), no. 2, 177--243. MR1994219 (2004i:16046)
