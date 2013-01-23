@@ -5,20 +5,39 @@
 
  * Andruskiewitsch, Nicolás, Graña, Matías. From racks to pointed Hopf algebras. Adv. Math. 178 (2003), no. 2, 177--243. MR1994219 (2004i:16046)
 
+== B ==
+
+ * Bartholomew, Andrew; Fenn, Roger. Biquandles of small size and some invariants of virtual and welded knots. J. Knot Theory Ramifications 20 (2011), no. 7, 943--954. MR2819176 (2012e:57004)
+
 == C ==
 
  * Carter, J. Scott; Elhamdadi, Mohamed; Graña, Matias; Saito, Masahico. Cocycle knot invariants from quandle modules and generalized quandle homology. Osaka J. Math. 42 (2005), no. 3, 499--541. MR2166720 (2006d:57017)
+
  * Carter, J. Scott; Jelsovsky, Daniel; Kamada, Seiichi; Langford, Laurel; Saito, Masahico. Quandle cohomology and state-sum invariants of knotted curves and surfaces. Trans. Amer. Math. Soc. 355 (2003), no. 10, 3947--3989. MR1990571 (2005b:57048)
+ 
+ * Clauwens, Frans. The algebra of rack and quandle cohomology. J. Knot Theory Ramifications 20 (2011), no. 11, 1487--1535. MR2854230 (2012k:18022)
+
+ * Ceniceros, Jessica; Nelson, Sam. Twisted virtual biracks and their twisted virtual link invariants. Topology Appl. 160 (2013), no. 2, 421--429. MR3003341
 
 == E ==
 
  * Etingof, P.; Graña, M. On rack cohomology. J. Pure Appl. Algebra 177 (2003), no. 1, 49--59. MR1948837 (2004e:55006)
 
+ * Etingof, Pavel; Schedler, Travis; Soloviev, Alexandre. Set-theoretical solutions to the quantum Yang-Baxter equation. Duke Math. J. 100 (1999), no. 2, 169--209. MR1722951 (2001c:16076)
+
+ * Etingof, Pavel; Soloviev, Alexander; Guralnick, Robert. Indecomposable set-theoretical solutions to the quantum Yang-Baxter equation on a set with a prime number of elements. J. Algebra 242 (2001), no. 2, 709--719. MR1848966 (2002e:20049)
+
 == F ==
 
  * Fenn, Roger; Rourke, Colin; Sanderson, Brian. The rack space. Trans. Amer. Math. Soc. 359 (2007), no. 2, 701--740 (electronic). MR2255194 (2007g:55013)
+
  * Fenn, Roger; Rourke, Colin; Sanderson, Brian. An introduction to species and the rack space. Topics in knot theory (Erzurum, 1992), 33--55, NATO Adv. Sci. Inst. Ser. C Math. Phys. Sci., 399, Kluwer Acad. Publ., Dordrecht, 1993. MR1257904
+ 
  * Fenn, Roger; Rourke, Colin. Racks and links in codimension two. J. Knot Theory Ramifications 1 (1992), no. 4, 343--406. MR1194995 (94e:57006)
+
+== G ==
+
+ * Graña, Matías. Indecomposable racks of order $p\sp 2$. Beiträge Algebra Geom. 45 (2004), no. 2, 665--676. MR2093034 (2005k:57025)
 
 == H ==
 
@@ -27,10 +46,29 @@
 == J ==
 
  * Joyce, David. Simple quandles. J. Algebra 79 (1982), no. 2, 307--318. MR0682881 (84d:20078)
+
  * Joyce, David. A classifying invariant of knots, the knot quandle. J. Pure Appl. Algebra 23 (1982), no. 1, 37--65. MR0638121 (83m:57007)
 
 == M ==
 
+ * Murillo, Gabriel; Nelson, Sam. Erratum: Alexander quandles of order 16 [ MR2402506]. J. Knot Theory Ramifications 18 (2009), no. 5, 727. MR2527683 (2010g:57005) 
+
+ * Lam, Daisy; Nelson, Sam. An isomorphism theorem for Alexander biquandles. Internat. J. Math. 20 (2009), no. 1, 97--107. MR2488716 (2009m:57023) 
+
+ * Murillo, Gabriel; Nelson, Sam. Alexander quandles of order 16. J. Knot Theory Ramifications 17 (2008), no. 3, 273--278. MR2402506 (2009e:57013)
+
 == N ==
 
+ * Navas, Esteban Adam; Nelson, Sam. On symplectic quandles. Osaka J. Math. 45 (2008), no. 4, 973--985. MR2493966 (2009m:20098) 
+
+ * Nelson, Sam. A polynomial invariant of finite quandles. J. Algebra Appl. 7 (2008), no. 2, 263--273. MR2417045 (2009b:57029) 
+
+ * Nelson, Sam. Generalized quandle polynomials. Canad. Math. Bull. 54 (2011), no. 1, 147--158. MR2797975 (Reviewed) 
+
+ * Nelson, Sam. A polynomial invariant of finite quandles. J. Algebra Appl. 7 (2008), no. 2, 263--273. MR2417045 (2009b:57029)
+
 == T ==
+
+== V ==
+
+ * Vendramin, L. On the classification of quandles of low order. J. Knot Theory Ramifications 21 (2012), no. 9, 1250088, 10 pp. MR2926571 
