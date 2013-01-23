@@ -89,7 +89,7 @@ Help me to improve this list!
 
  * Mochizuki, Takuro. The 3-cocycles of the Alexander quandles $\Bbb F\sb q[T]/(T-\omega)$. Algebr. Geom. Topol. 5 (2005), 183--205 (electronic). MR2135551 (2006e:57019) 
 
-* Mochizuki, Takuro. Some calculations of cohomology groups of finite Alexander quandles. J. Pure Appl. Algebra 179 (2003), no. 3, 287--330. MR1960136 (2004b:55013) 
+ * Mochizuki, Takuro. Some calculations of cohomology groups of finite Alexander quandles. J. Pure Appl. Algebra 179 (2003), no. 3, 287--330. MR1960136 (2004b:55013) 
 
  * Murillo, Gabriel; Nelson, Sam. Erratum: Alexander quandles of order 16 [ MR2402506]. J. Knot Theory Ramifications 18 (2009), no. 5, 727. MR2527683 (2010g:57005) 
 
