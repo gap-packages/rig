@@ -59,6 +59,8 @@ Help me to improve this list!
 
  * Henderson, Richard; Macedo, Todd; Nelson, Sam. Symbolic computation with finite quandles. J. Symbolic Comput. 41 (2006), no. 7, 811--817. MR2232202 (2007a:68080)
 
+ * Hou, Xiang-dong. Automorphism groups of Alexander quandles. J. Algebra 344 (2011), 373--385. MR2831947 (2012j:20186)
+
 == J ==
 
  * Joyce, David. Simple quandles. J. Algebra 79 (1982), no. 2, 307--318. MR0682881 (84d:20078)
