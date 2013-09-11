@@ -96,9 +96,10 @@ InstallGlobalFunction("FiniteEnvelopingGroup", function(rack)
     od;
   od;
 
-  deg := Degree(rack);
+  #deg := Degree(rack);
   for i in [1..n] do
-    Add(rels, x[i]^deg);
+#    Add(rels, x[i]^deg);
+    Add(rels, x[i]^Order(PermList(rack!.matrix[i])));
   od;
 
 #  for i in [1..n] do
