@@ -1,8 +1,8 @@
 SetPackageInfo( rec(
 PackageName := "rig",
 Subtitle := "Racks in GAP",
-Version := "0.9",
-Date := "01/03/2012",
+Version := "1",
+Date := "24/05/2014",
 ArchiveURL := "http://code.google.com/p/rig/",
 ArchiveFormats := ".zoo",
 Persons := [
@@ -11,22 +11,8 @@ Persons := [
     FirstNames    := "Leandro",
     IsAuthor      := true,
     IsMaintainer  := true,
-    Email         := "lvendram@dm.uba.ar",
+    Email         := "lvendramin@dm.uba.ar",
     WWWHome       := "http://mate.dm.uba.ar/~lvendram",
-    PostalAddress := Concatenation( [
-                       "Departamento de matemática, FCEyN, UBA",
-                       "Ciudad Universitaria, Pab. 1,\n",
-                       "Buenos Aires, Argentina" ] ),
-    Place         := "Buenos Aires",
-    Institution   := "UBA"
-  ),
-  rec( 
-    LastName      := "Graña",
-    FirstNames    := "Matías",
-    IsAuthor      := true,
-    IsMaintainer  := true,
-    Email         := "matiasg@dm.uba.ar",
-    WWWHome       := "http://mate.dm.uba.ar/~matiasg",
     PostalAddress := Concatenation( [
                        "Departamento de matemática, FCEyN, UBA",
                        "Ciudad Universitaria, Pab. 1,\n",
@@ -60,7 +46,6 @@ PackageDoc := rec(
   SixFile   := "doc/manual.six",
   # a longer title of the book, this together with the book name should
   # fit on a single text line (appears with the '?books' command in GAP)
-  # LongTitle := "Elementary Divisors of Integer Matrices",
   LongTitle := "A GAP package for racks, quandles and crossed sets",
   # Should this help book be autoloaded when GAP starts up? This should
   # usually be 'true', otherwise say 'false'. 
@@ -79,7 +64,7 @@ AvailabilityTest := ReturnTrue,
 BannerString := Concatenation( 
   "--\nRiG, A GAP package for racks, Version ", ~.Version, "\n", ~.ArchiveURL,"\n"),
 Autoload := false,
-Keywords := ["racks", "quandles", "nichols algebras"]
+Keywords := ["racks", "quandles", "nichols algebras", "knots"]
 ));
 
 

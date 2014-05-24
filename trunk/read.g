@@ -8,6 +8,9 @@ ReadPackage("rig", "gap/polynomial.gi" );
 ReadPackage("rig", "small/quandles.gi");
 ReadPackage("rig", "gap/extensions.gi");
 ReadPackage("rig", "gap/affine.gi");
+ReadPackage("rig", "knots/knots.gi");
+ReadPackage("rig", "knots/upto9crossings.g");
+#ReadPackage("rig", "homology/homology.gi");
 
 if LoadPackage("gbnp") <> fail then
   ReadPackage("rig", "gap/derivations.gi");

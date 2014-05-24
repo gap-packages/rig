@@ -9,9 +9,6 @@ ReadPackage("rig", "small/quandles.gd");
 ReadPackage("rig", "gap/extensions.gd");
 ReadPackage("rig", "gap/affine.gd");
 ReadPackage("rig", "gap/derivations.gd");
-
-#if LoadPackage("gbnp") <> fail then
-#  ReadPackage("rig", "gap/derivations.gd");
-#else
-#  Print("### gbnp was not found, derivations.gd was not loaded.\n");
-#fi;
+ReadPackage("rig", "knots/knots.gd");
+ReadPackage("rig", "upto9crossings.gd");
+#ReadPackage("rig", "homology/homology.gd");

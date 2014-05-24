@@ -22,7 +22,6 @@ TO IMPROVE
 CHECK
 =====
 * IsGoodInvolution
-* AbelianExtensioins
 
 MANUAL
 ======
@@ -37,9 +36,5 @@ IDEAS
 =====
 * Rename: basis --> gens
 * To add: IsCohomologous for n>2
-* The inner group is a normal subgroup of the automorphism group!
-* SAGE interface?
-* Derivations for Nichols algebras?
 * Category: IsRack?
-* To add: typeD for racks?
 * Gauss diagrams?
