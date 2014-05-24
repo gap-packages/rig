@@ -1,3 +1,13 @@
+1
+Added: Fox coloring
+Added: Quandle coloring
+Added: Quandle cocycle invariants
+Added: Database of planar diagrams of knots up to 9 crossings
+Added: Database with generators of the 2nd quandle homology (up to size 24)
+Added: AmalgamatedSum, AmalgamatedMaps
+Fixed: 2ndCohomologyGenerators
+Fixed: IsCohomologous2Cocycle
+
 0.9
 Added: derivations
 Added: several functions concerning affine racks
