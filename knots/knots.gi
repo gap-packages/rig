@@ -173,4 +173,41 @@ InstallGlobalFunction("Signs", function(pd)
   return s;
 end);
 
+### This function computes the mirror image of the planar diagram <pd>
+### CHECK!
+InstallGlobalFunction("Mirror", function(pd)
+  local c, k, s, new;
+
+  new := [];
+  s := Signs(pd);
+
+  for k in [1..Size(pd)] do 
+    c := pd[k];
+    if s[k] > 0 then
+      Add(new, [c[2],c[3],c[4],c[1]]);
+    else
+      Add(new, [c[4],c[1],c[2],c[3]]);
+    fi;
+  od;
+  return new;
+end);
+
+### This function returns the Alexander matrix of the <knot> where the coloring
+### is given by element of the <field> and <t> is an invertible element 
+InstallGlobalFunction("AlexanderMatrix", function(fq, field, t)
+  local m, j;
+  m := NullMat(Size(fq), Size(fq), field);
+  for j in [1..Size(fq)] do
+    m[j][fq[j][1]] := One(field)-t;
+    m[j][fq[j][2]] := t;
+    m[j][fq[j][3]] := -One(field);
+  od;
+  return m;
+end);
+
+### This function return the number of Alexander colorings
+InstallGlobalFunction("NrAlexanderColorings", function(fq, field, t)
+  return Size(field)^(Size(fq)-Rank(AlexanderMatrix(fq, field, t)));
+end);
+
 
