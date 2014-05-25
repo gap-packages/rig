@@ -105,8 +105,8 @@ InstallGlobalFunction("2ndQuandleHomologyGenerators", function(size, number)
 
   known := IsBound(TWOCOCYCLES[size]);
   if not known then
-    dir := DirectoriesPackageLibrary("rig", "cohomology")[1];
-    filename := Filename(dir, Concatenation("q", String(size), ".g"));
+    dir := DirectoriesPackageLibrary("rig", "homology")[1];
+    filename := Filename(dir, Concatenation("size", String(size), ".g"));
     if IsReadableFile(filename) then
       Read(filename);
     else
@@ -122,7 +122,7 @@ end);
 
 ### This function returns the generators of the generators of the 2nd quandle homology group of SmallQuandle(n, i)
 ### The database was computed with the function TorsionGenerators
-InstallGlobalFunction("2ndQuandleCohomologyGenerators"; function(size, number)
+InstallGlobalFunction("2ndQuandleCohomologyGenerators", function(size, number)
   local k, l, v, q, hom, gens;
 
   # If n is prime then the 2nd homology is trivial
@@ -130,7 +130,7 @@ InstallGlobalFunction("2ndQuandleCohomologyGenerators"; function(size, number)
     return rec( factors := [ ], generators := [ List([1..size^2], x->0) ]);
   fi;
 
-  hom := 2nd_quandlehomology_generators(size, number);
+  hom := 2ndQuandleHomologyGenerators(size, number);
   gens := [];
 
   for k in [1..Size(hom.generators)] do

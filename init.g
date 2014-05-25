@@ -11,4 +11,4 @@ ReadPackage("rig", "gap/affine.gd");
 ReadPackage("rig", "gap/derivations.gd");
 ReadPackage("rig", "knots/knots.gd");
 ReadPackage("rig", "upto9crossings.gd");
-#ReadPackage("rig", "homology/homology.gd");
+ReadPackage("rig", "homology/homology.gd");

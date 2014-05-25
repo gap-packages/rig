@@ -94,4 +94,83 @@ InstallGlobalFunction("2CocycleInvariant", function(fq, quandle, group, q)
   return sum;
 end);
 
+### This function replaces <old> by <new> in <list>
+InstallGlobalFunction("ReplacedList", function(list, old, new)
+  local j, r;
+  r := [];
+  for j in list do
+    if j = old then
+      Add(r, new);
+    else
+      Add(r, j);
+    fi;
+  od;
+  return r;
+end);
+
+
+### This function computes the fundamental quandle of a knot given by a planar diagram <pd>
+InstallGlobalFunction("FundamentalQuandle", function(pd)
+  local j, c, d, s, diagram, fq, f;
+
+  s := Signs(pd);
+  fq := [];
+
+  diagram := ShallowCopy(pd);
+
+  for c in diagram do
+    for j in [1..Size(diagram)] do
+      diagram[j] := ReplacedList(diagram[j], c[2], c[4]);
+    od;
+  od;
+
+  ### This is to normalize the arcs
+  f := Set(Flat(diagram));
+
+  for j in [1..Size(diagram)] do
+    if s[j] > 0 then
+      Add(fq, [Position(f, diagram[j][4]), Position(f, diagram[j][1]), Position(f, diagram[j][3]), 1]);
+    else
+      Add(fq, [Position(f, diagram[j][4]), Position(f, diagram[j][3]), Position(f, diagram[j][1]), -1]);
+    fi;
+  od;
+
+  return fq;
+end);
+
+### This function returns the signs of the crossings of a planar diagram <pd>
+### CHECK!
+InstallGlobalFunction("Signs", function(pd)
+  local c, s, max;
+
+  s := [];
+  max := Maximum(Flat(pd));
+
+  for c in pd do
+    if c[2] = max and c[4] = 1 then 
+      Add(s, 1);
+      continue;
+    elif c[2] = max and c[4] = max-1 then
+      Add(s, -1);
+      continue;
+    elif c[4] = max and c[2] = 1 then
+      Add(s, -1);
+      continue;
+    elif c[4] = max and c[2] = max-1 then
+      Add(s, 1);
+      continue;
+    elif c[4]>c[2] then
+      Add(s, 1);
+      continue;
+    elif c[4]<c[2] then
+      Add(s,-1);
+      continue;
+    else
+      Print("Nothing?\n");
+      return fail;
+    fi;
+  od;
+  return s;
+end);
+
 
