@@ -991,5 +991,89 @@ InstallGlobalFunction("IdQuandle", function(rack)
   return fail;
 end);
 
+### This function returns the amalgamated sum of the racks <r> and <s>
+### related to the maps <sigma> and <tau>
+### [AG, Lemma 1.18]
+InstallGlobalFunction("AmalgamatedSum", function(rack1, rack2, sigma, tau)
+  local n, m, i, j;
+
+  n := Size(rack1)+Size(rack2);
+  m := NullMat(n, n);
+
+  if CheckAmalgamatedMaps(rack1, rack2, sigma, tau) = false then
+    return fail;
+  fi;
+
+  for i in [1..n] do
+    for j in [1..n] do
+      if i in [1..Size(rack1)] and j in [1..Size(rack1)] then
+        m[i][j] := RackAction(rack1, i, j);
+      elif i in [1..Size(rack1)] and j in [Size(rack1)+1..n] then
+        m[i][j] := Size(rack1)+((j-Size(rack1))^sigma[i]);
+      elif i in [Size(rack1)+1..n] and j in [1..Size(rack1)] then
+        m[i][j] := j^tau[i-Size(rack1)];
+      elif i in [Size(rack1)+1..n] and j in [Size(rack1)+1..n] then
+        m[i][j] := Size(rack1)+RackAction(rack2, i-Size(rack1), j-Size(rack1));
+      fi;
+    od;
+  od;
+  return Rack(m);
+end);
+
+### This function returns true if the maps <sigma> and <tau> satisfy
+### a) phi_z sigma_y = sigma_{tau_z(y)} phi_z, and 
+### b) phi_y tau_z = tau_{sigma_y(z)} phi_y
+InstallGlobalFunction("AmalgamatedMaps", function(rack1, rack2)
+  local arack1, arack2, sigma, tau, maps;
+  
+  maps := [];
+
+  for sigma in IteratorOfTuples(AutomorphismGroup(rack2), Size(rack1)) do
+    for tau in IteratorOfTuples(AutomorphismGroup(rack1), Size(rack2)) do
+      if CheckAmalgamatedMaps(rack1, rack2, sigma, tau) = true then 
+        Add(maps, [sigma, tau]);
+      fi;
+    od;
+  od;
+  return maps;
+end);  
+
+### This function returns true if the maps
+### <sigma> and <tau> are amalgamated with respect to <rack1> and <rack2>
+InstallGlobalFunction("CheckAmalgamatedMaps", function(rack1, rack2, sigma, tau)
+  local i, j, y, z;
+
+  ### Check whether sigma is a rack homomorphism
+  for i in [1..Size(rack1)] do
+    for j in [1..Size(rack1)] do
+      if sigma[RackAction(rack1, i, j)] <> sigma[i]*sigma[j]*Inverse(sigma[i]) then
+        return false;
+      fi;
+    od;
+  od;
+
+  ### Check whether tau is a rack homomorphism
+  for i in [1..Size(rack2)] do
+    for j in [1..Size(rack2)] do
+      if tau[RackAction(rack2, i, j)] <> tau[i]*tau[j]*Inverse(tau[i]) then
+        return false;
+      fi;
+    od;
+  od;
+
+  for y in [1..Size(rack1)] do
+    for z in [1..Size(rack2)] do
+      if Permutations(rack2)[z]*sigma[y] <> sigma[y^tau[z]]*Permutations(rack2)[z] then
+        return false;
+      fi;
+      if Permutations(rack1)[y]*tau[z] <> tau[z^sigma[y]]*Permutations(rack1)[y] then
+        return false;
+      fi;
+    od;
+  od;
+  return true;
+end);
+
+
 
 # vim: ft=gap: ts=2: sw=2
