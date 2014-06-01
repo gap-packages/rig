@@ -30,6 +30,10 @@ DeclareGlobalFunction("LocalExponents");
 DeclareGlobalFunction("InverseRackAction");
 DeclareGlobalFunction("RackAction");
 
+DeclareGlobalFunction("AmalgamatedSum");
+DeclareGlobalFunction("AmalgamatedMaps");
+DeclareGlobalFunction("CheckAmalgamatedMaps");
+
 ####################
 ### Internal use ###
 ####################

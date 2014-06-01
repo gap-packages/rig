@@ -99,7 +99,7 @@ InstallGlobalFunction("2ndQuandleHomologyGenerators", function(size, number)
   fi;
 
   # there are no indecomposable quandles of size 2p (p prime)
-  if size mod 2 = 0 and IsPrime(size/2) then
+  if size mod 2 = 0 and IsPrime(size/2) and size > 10 then
     return fail;
   fi;
 
