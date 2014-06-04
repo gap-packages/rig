@@ -930,21 +930,49 @@ InstallGlobalFunction("Quandle", function(arg)
   fi;
 end);
 
-### This function checks if a permutation p of order 1 or 2 
-### is a good involution: x>p(x)>y=y and p(x>y)=x>p(y)
-InstallGlobalFunction("IsGoodInvolution", function(rack, p)
-  local i, j;
-  if not Order(p) in [1,2] or not MovedPoints(p) = Size(rack) then
+### This function checks whether <f> is a good involution with respect to <rack>
+### This means:
+### 1) f^2 is the identity 
+### 2) f(x>y)=x>f(y) for all x,y
+### 3) x>(f(x)>y)=y for all x,y
+InstallGlobalFunction("IsGoodInvolution", function(rack, f)
+  local x, y;
+
+  if Order(f) > 2 then
     return false;
   fi;
-  for i in [1..Size(rack)] do
-    for j in [1..Size(rack)] do
-      if not RackAction(rack, i, RackAction(rack, i^p, j)) = j or not RackAction(rack, i, j)^p = RackAction(rack, i, j^p) then
+
+  for x in [1..Size(rack)] do
+    for y in [1..Size(rack)] do
+      if RackAction(rack, x, y)^f <> RackAction(rack, x, y^f) then
         return false;
       fi;
+
+      if RackAction(rack, x^f, y) <> InverseRackAction(rack, x, y) then
+        return false;
+      fi;
+
     od;
   od;
   return true;
+end);
+
+### This function computes all the good involutions of <rack>
+InstallGlobalFunction("GoodInvolutions", function(rack)
+  local p, c, f, rho, inv, v;
+  inv := [];
+
+  p := Permutations(rack);
+  
+  for c in Filtered(ConjugacyClasses(SymmetricGroup(Size(rack))), c->Order(Representative(c)) <= 2) do
+    for f in c do
+      if ForAll([1..Size(rack)], x->p[x^f]=Inverse(p[x])) then
+        Add(inv, f);
+      fi;
+    od;
+  od;
+
+  return Filtered(inv, x->IsGoodInvolution(rack, x));
 end);
 
 ### This function checks if the the function f(y)=x>y is bijective
