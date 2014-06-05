@@ -49,6 +49,47 @@ The quantum invariant with respect to `SmallQuandle(16,1)` and the
 
 == Q(16,2) ==
 
+== Q(16,3) == 
+
+The 2nd quandle cohomology group of `SmallQuandle(16,3)` has two abelian
+factors of order two.  With respect to the 2-cocycle generating any of these two factors the 2-cocycle invariants are:
+
+|| 3_1 || `(16)*()` ||
+|| 4_1 || `(16)*()` ||
+|| 5_1 || `(96)*()+(160)*(1,2)` ||
+|| 5_2 || `(16)*()` ||
+|| 6_1 || `(16)*()` ||
+|| 6_2 || `(96)*()+(160)*(1,2)` ||
+|| 6_3 || `(96)*()+(160)*(1,2)` ||
+|| 7_1 || `(16)*()` || 
+|| 7_2 || `(16)*()` ||
+|| 7_3 || `(16)*()` ||
+|| 7_4 || `(16)*()` ||
+|| 7_5 || `(16)*()` ||
+|| 7_6 || `(96)*()+(160)*(1,2)` || 
+|| 7_7 || `(96)*()+(160)*(1,2)` ||
+
+== Q(16,4) == 
+
+The 2nd quandle cohomology group of `SmallQuandle(16,4)` has two abelian
+factors.  With respect to the 2-cocycle generating any of these two factors the
+2-cocycle invariants are:
+
+|| Knot || 2-cocycle invariant ||
+|| 3_1 || `(64)*()` ||  
+|| 4_1 || `(64)*()` ||
+|| 5_1 || `(16)*()` ||
+|| 5_2 || `(16)*()` ||
+|| 6_1 || `(16)*()` ||
+|| 6_2 || `(16)*()` ||
+|| 6_3 || `(16)*()` ||
+|| 7_1 || `(16)*()` ||
+|| 7_2 || `(64)*()` ||
+|| 7_3 || `(64)*()` ||
+|| 7_4 || `(16)*()` ||
+|| 7_5 || `(16)*()` ||
+|| 7_6 || `(16)*()` ||
+|| 7_7 || `(16)*()` ||
 
 == Q(16,5) ==
 
