@@ -1,3 +1,5 @@
+#2-cocycle invariants for quandles of size 12
+
 == Q(12,1) ==
 
 The 2nd cohomology group of `SmallQuandle(12,1)` has abelian type `[ 2 ]`. The generating 2-cocycle is:
