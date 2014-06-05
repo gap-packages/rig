@@ -1,0 +1,2 @@
+#summary 2-cocycle invariants for indecomposable quandles of size 15
+
