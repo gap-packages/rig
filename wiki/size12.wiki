@@ -1,4 +1,4 @@
-#summary 2-cocycle invariants for indecomposable quandles of size 12
+#summary 2-cocycle invariants for indecomposable quandles of size 12 (up to 8 crossings)
 
 == Q(12,1) ==
 
