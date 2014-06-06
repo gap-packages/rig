@@ -1,4 +1,4 @@
-#summary 2-cocycle invariants for indecomposable quandles of size 9
+#summary 2-cocycle invariants for indecomposable quandles of size 9 (up to 7 crossings)
 
 *Remark.* The quandles Q(9,1), Q(9,4), Q(9,5), Q(9,7) and Q(9,8) have trivial 2nd quandle cohomology group.
 
