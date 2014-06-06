@@ -1,5 +1,4 @@
-#summary One-sentence summary of this page.
-
+#summary 2-cocycle invariants for indecomposable quandles of size 6
 == Q(6,1) ==
 
 The 2nd cohomology group of `SmallQuandle(6,1)` has abelian type `[ 2 ]`. 
