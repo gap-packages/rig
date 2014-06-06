@@ -1,8 +1,15 @@
 #summary 2-cocycle invariants for indecomposable quandles of size 4
 
 == Q(4,1) ==
+
 The 2nd cohomology group of `SmallQuandle(4,1)` has abelian type `[ 2 ]`. 
-The 2-cocycle invariants with respect to the 2-cocycle obtained with `2ndQuandleCohomologyGenerators(4,1).generators[1]` are:
+The generating 2-cocycle is:
+
+{{{
+gap> 2ndQuandleCohomologyGenerators(4,1).generators[1]
+}}} 
+
+The 2-cocycle invariants with respect to this 2-cocycle are:
 
 || Knot || 2-cocycle invariant||
 ||3_1||`(4)*()+(12)*(1,2)`||
