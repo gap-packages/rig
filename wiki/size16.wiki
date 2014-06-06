@@ -1,6 +1,12 @@
 = Q(16,1) =
 
-The quandle Q(16,1) is `SmallQuandle(16,1)`. The 2nd quandle cohomology group has abelian type `[ 4 ]`. The 2-cocycle invariants with respect to the generating 2-cocycle are:
+The quandle Q(16,1) is `SmallQuandle(16,1)`. The 2nd quandle cohomology group has abelian type `[ 4 ]`. The generating 2-cocycle is:
+
+{{{
+gap> 2ndQuandleCohomologyGenerators(16,1).generators[1];
+}}}
+
+The 2-cocycle invariants with respect to the generating 2-cocycle are:
 
 || Knot || 2-cocycle invariant ||
 || 3_1 || `(64)*()` ||
@@ -20,7 +26,13 @@ The quandle Q(16,1) is `SmallQuandle(16,1)`. The 2nd quandle cohomology group ha
 
 == Q(16,2) == 
 
-The 2nd quandle cohomology group of `SmallQuandle(16,2)` has abelian type `[ 2, 2, 2, 2 ]`. For one of the generators of the cohomology one has:
+The quandle Q(16,2) is `SmallQuandle(16,2)`. The 2nd quandle cohomology group has abelian type `[ 2, 2, 2, 2 ]`. With respect to the generating 2-cocycle
+
+{{{
+gap> 2ndQuandleCohomologyGenerators(16,2).generators[1];
+}}}
+
+the 2-cocycle invariants are:
 
 || Knot || 2-cocycle invariant ||
 || 3_1 || `(64)*()+(192)*(1,2)` ||
@@ -38,7 +50,7 @@ The 2nd quandle cohomology group of `SmallQuandle(16,2)` has abelian type `[ 2, 
 || 7_6 || `(16)*()` ||
 || 7_7 || `(16)*()` ||
 
-For the others generators one has:
+For the others generating 2-cocycles one has:
 
 || Knot || 2-cocycle invariant ||
 || 3_1 || `(160)*()+(96)*(1,2)` || 
