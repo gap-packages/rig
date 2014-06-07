@@ -1,3 +1,5 @@
+#summary 2-cocycle invariants for indecomposable quandles of size 16 (up to 7 crossings)
+ 
 = Q(16,1) =
 
 The quandle Q(16,1) is `SmallQuandle(16,1)`. The 2nd quandle cohomology group has abelian type `[ 4 ]`. The generating 2-cocycle is:
