@@ -14,6 +14,7 @@ DeclareGlobalFunction("DegeneratedBoundaryMap");
 #####################################
 DeclareGlobalFunction("SecondCohomologyTorsionGenerators");
 DeclareGlobalFunction("Mult2Cocycles");
+DeclareGlobalFunction("Product2Cocycles");
 DeclareGlobalFunction("IsCohomologous2Cocycle");
 
 ###############################################
