@@ -374,7 +374,15 @@ gap> s := AbelianExtension(r, Group(Flat(f)), f);;
 
 == Q(20,1) ==
 
-We construct an abelian extension of size 120:
+For Q(20,1) we construct several extensions. The 2nd quandle cohomology is isomorphic to the cyclic group of order six:
+
+{{{
+gap> r := SmallQuandle(20,1);;
+gap> f := 2ndQuandleCohomology(20,1).factors[1];;
+[6]
+}}}
+
+First we construct an abelian extension of size 120:
 
 {{{
 gap> r := SmallQuandle(20,1);;
