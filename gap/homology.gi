@@ -430,6 +430,24 @@ InstallGlobalFunction("IsCycle", function(rack, c)
   return IsZero(BoundaryMap(rack, n-1)*c);
 end);
 
+InstallGlobalFunction("Product2Cocycles", function(q1, q2)
+  local m, i, j;
+  
+  if Size(q1) <> Size(q2) then
+    return fail;
+  fi;
+
+  m := NullMat(Size(q1), Size(q1));
+  for i in [1..Size(q1)] do
+    for j in [1..Size(q1)] do
+      m[i][j] := q1[i][j]*q2[i][j];
+    od;
+  od;
+  return m;
+end);
+
+
+
 ### This function checks if two 2-cocycles are cohomologous
 ### IMPORTANT: These are additive 2-cocycles! 
 ### EXAMPLES:
