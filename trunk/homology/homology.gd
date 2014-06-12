@@ -1,2 +1,2 @@
-DeclareGlobalFunction("2ndQuandleHomologyGenerators");
-DeclareGlobalFunction("2ndQuandleCohomologyGenerators");
+DeclareGlobalFunction("2ndQuandleHomology");
+DeclareGlobalFunction("2ndQuandleCohomology");
