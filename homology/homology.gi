@@ -137,7 +137,7 @@ InstallGlobalFunction("2ndQuandleCohomology", function(size, number)
     q := NullMat(size, size);
     for l in [1..Size(hom.generators[k])] do
       v := NumberToBasisVector(l, 2, size);
-      q[v[1]][v[2]] := AbelianGroup(IsPermGroup, [hom.factors[k]]).1^hom.generators[k][l];
+      q[v[1]][v[2]] := (AbelianGroup(IsPermGroup, [hom.factors[k]]).1)^hom.generators[k][l];
       #q[v[1]][v[2]] := GeneratorsOfGroup(AbelianGroup(IsPermGroup, hom.factors))[k]^hom.generators[k][l];
     od;
     Add(gens, q);

@@ -11,6 +11,9 @@ fiber := function(rack, quotient, p)
   local k, map, list;
   
   map := IsQuotient(rack, quotient);
+  if map = false then
+    return fail;
+  fi;
   list := [];
 
   for k in [1..Size(map)] do
@@ -26,15 +29,19 @@ end;
 dynamical := function(rack, quotient)
   local g, q, tmp, x, y, s, t; 
   g := List([1..Size(quotient)], x->fiber(rack, quotient, x));
-  q := [];
+
+  if fail in g then
+    return fail;
+  fi;
   
+  q := [];
   tmp := [];
   
   for x in [1..Size(quotient)] do
     for y in [1..Size(quotient)] do
       for s in [1..Size(g[1])] do
         for t in [1..Size(g[1])] do
-          tmp := Position(g[InverseRackAction(quotient, x, y)], RackAction(rack, g[x][s], g[y][t]));
+          tmp := Position(g[RackAction(quotient, x, y)], RackAction(rack, g[x][s], g[y][t]));
           Add(q, [[x, y, s, t], tmp]);
         od;
       od;
