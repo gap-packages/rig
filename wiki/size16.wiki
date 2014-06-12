@@ -5,7 +5,7 @@
 The quandle Q(16,1) is `SmallQuandle(16,1)`. The 2nd quandle cohomology group has abelian type `[ 4 ]`. The generating 2-cocycle is:
 
 {{{
-gap> 2ndQuandleCohomologyGenerators(16,1).generators[1];
+gap> 2ndQuandleCohomology(16,1).generators[1];
 }}}
 
 The 2-cocycle invariants with respect to the generating 2-cocycle are:
@@ -31,7 +31,7 @@ The 2-cocycle invariants with respect to the generating 2-cocycle are:
 The quandle Q(16,2) is `SmallQuandle(16,2)`. The 2nd quandle cohomology group has abelian type `[ 2, 2, 2, 2 ]`. With respect to the generating 2-cocycle
 
 {{{
-gap> 2ndQuandleCohomologyGenerators(16,2).generators[1];
+gap> 2ndQuandleCohomology(16,2).generators[1];
 }}}
 
 the 2-cocycle invariants are:
