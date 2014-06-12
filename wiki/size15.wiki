@@ -6,8 +6,8 @@ The 2nd cohomology group of `SmallQuandle(15,2)` has abelian type `[ 2, 2 ]`.
 The generating 2-cocycles are:
 
 {{{
-gap> 2ndQuandleCohomologyGenerators(15,5).generators[1];;
-gap> 2ndQuandleCohomologyGenerators(15,5).generators[2];;
+gap> 2ndQuandleCohomology(15,5).generators[1];;
+gap> 2ndQuandleCohomology(15,5).generators[2];;
 }}}
 
 The 2-cocycle invariants with respect to thse 2-cocycle are: 
@@ -56,7 +56,7 @@ The 2nd cohomology group of `SmallQuandle(15,5)` has abelian type `[ 5 ]`.
 The generating 2-cocycle is:
 
 {{{
-gap> 2ndQuandleCohomologyGenerators(15,5).generators[1];;
+gap> 2ndQuandleCohomology(15,5).generators[1];;
 }}}
 
 The 2-cocycle invariants with respect to this 2-cocycle are: 
@@ -104,7 +104,7 @@ The 2nd cohomology group of `SmallQuandle(15,6)` has abelian type `[ 5 ]`.
 The generating 2-cocycle is:
 
 {{{
-gap> 2ndQuandleCohomologyGenerators(15,6).generators[1];;
+gap> 2ndQuandleCohomology(15,6).generators[1];;
 }}}
 
 The 2-cocycle invariants with respect to this 2-cocycle are: 
