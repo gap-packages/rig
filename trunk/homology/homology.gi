@@ -130,7 +130,7 @@ InstallGlobalFunction("2ndQuandleCohomology", function(size, number)
     return rec( factors := [ ], generators := [ List([1..size^2], x->0) ]);
   fi;
 
-  hom := 2ndQuandleHomologyGenerators(size, number);
+  hom := 2ndQuandleHomology(size, number);
   gens := [];
 
   for k in [1..Size(hom.generators)] do
