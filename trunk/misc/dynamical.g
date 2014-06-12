@@ -1,5 +1,12 @@
 LoadPackage("rig");
 
+### This function returns the value of the dynamical cocycle <cocycle> at <v>
+### Every dynamical cocycle is a list [ v, value ], where v = [x, y, s, t] and value is a number in [1..N]
+value := function(cocycle, v)
+  return First(cocycle, x->x[1]=v)[2];
+end;
+
+### This function returns the fiber of p with respect to the epimorphism from <rack> onto <quotient>
 fiber := function(rack, quotient, p)
   local k, map, list;
   
@@ -13,7 +20,6 @@ fiber := function(rack, quotient, p)
   od;
   return list;
 end;
-
 
 ### This function returns the dynamical 2-cocycle that allows us to construct
 ### the extension <rack> of <quotient>
@@ -37,26 +43,25 @@ dynamical := function(rack, quotient)
   return q;
 end;
 
+### This function returns the extension of <rack> constructed with the dynamical cocycle <q>
+### (x,s)>(y,t)=(x>y,q_{x,y}(s,t)) for x,y in <rack> and s,t in the image of <q>
 extension := function(rack, q)
-  local x, y, s, t, m, set;
+  local m, a, b, c, u, v, x, y, set;
 
-  set := Set(List(q, x->
+  set := [1..Maximum(List(q, x->x[2]))];
 
-  local m, a, b, c, u, v, x, y;
-  m := NullMat(Size(set)*Size(rack), Size(group)*Size(set));
-  c := Cartesian(group, [1..Size(rack)]);
+  m := NullMat(Size(set)*Size(rack), Size(set)*Size(set));
+  c := Cartesian([1..Size(rack)], set);
   for u in c do
     for v in c do
-      a := u[1];
-      b := v[1];
-      x := u[2];
-      y := v[2];
-      m[Position(c, u)][Position(c, v)] := Position(c, [RackAction(rack, x, y)], ...)
+      a := u[2];
+      b := v[2];
+      x := u[1];
+      y := v[1];
+      m[Position(c, u)][Position(c, v)] := Position(c, [RackAction(rack, x, y), value(q, [x, y, a, b])]);
     od;
   od;
   return Rack(m);
-end);
-
 end;
   
 
