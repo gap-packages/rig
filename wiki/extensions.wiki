@@ -382,6 +382,21 @@ gap> f := 2ndQuandleCohomology(20,1).generators[1];;
 gap> s := AbelianExtension(r, Group(Flat(f)), f);;
 }}}
 
+Now we construct abelian extensions of size 60 and 40:
+
+{{{
+  gap> r := SmallQuandle(20,1);;
+  gap> f := 2ndQuandleCohomology(20,1).generators[1];;
+  gap> g := Product2Cocycles(f, f);;
+  gap> s := AbelianExtension(r, Group(Flat(g)), g);;
+  gap> Size(s);
+  60
+  gap> h := Product2Cocycles(f, g);;
+  gap> t := AbelianExtension(r, Group(Flat(h)), h);;
+  gap> Size(t);
+  40
+}}}
+
 == Q(20,2) ==
 
 We construct an abelian extension of size 120:
