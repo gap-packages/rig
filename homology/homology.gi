@@ -90,7 +90,7 @@ TWOCOCYCLES[9].quandle[8] := rec(
 
 ### This function returns the generators of the 2nd quandle homology
 ### group of SmallQuandle(size, number)
-InstallGlobalFunction("2ndQuandleHomologyGenerators", function(size, number)
+InstallGlobalFunction("2ndQuandleHomology", function(size, number)
   local known, implemented, dir, filename;
 
   # If n is prime then the 2nd homology is trivial
@@ -122,7 +122,7 @@ end);
 
 ### This function returns the generators of the generators of the 2nd quandle homology group of SmallQuandle(n, i)
 ### The database was computed with the function TorsionGenerators
-InstallGlobalFunction("2ndQuandleCohomologyGenerators", function(size, number)
+InstallGlobalFunction("2ndQuandleCohomology", function(size, number)
   local k, l, v, q, hom, gens;
 
   # If n is prime then the 2nd homology is trivial
