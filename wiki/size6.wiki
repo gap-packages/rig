@@ -1,4 +1,4 @@
-#summary 2-cocycle invariants for indecomposable quandles of size 6 (up to 9 crossings)
+#summary 2-cocycle invariants for indecomposable quandles of size 6 (up to 10  crossings)
 
 == Q(6,1) ==
 
@@ -490,3 +490,4 @@ The 2-cocycle invariants with respect to this 2-cocycle are:
 ||10_130||`(6)*()`||
 ||10_131||`(6)*()`||
 ||10_132||`(6)*()`||
+||10_133||`(6)*()`||
