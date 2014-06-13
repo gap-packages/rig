@@ -70,6 +70,30 @@ extension := function(rack, q)
   od;
   return Rack(m);
 end;
+
+### This function returns true if the dynamical <cocycle> is constant, i.e. f_{x,y}(s,u)=f_{x,y}(t,u)
+### for all x,y in X and s,t,u in S
+is_constant := function(cocycle)
+  local x, y, s, t, u, rack, set;
+
+  rack := Set(List(cocycle, x->x[1][1]));
+  set := Set(List(cocycle, x->x[1][3]));
+
+  for x in [1..Size(rack)] do
+    for y in [1..Size(rack)] do
+      for s in [1..Size(set)] do
+        for t in [1..Size(set)] do
+          for u in [1..Size(set)] do
+            if value(cocycle, [x, y, s, u]) <> value(cocycle, [x, y, t, u]) then
+              return false;
+            fi;
+          od;
+        od;
+      od;
+    od;
+  od;
+  return true;
+end;
   
 
 
