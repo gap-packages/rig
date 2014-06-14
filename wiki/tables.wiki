@@ -1,4 +1,4 @@
-#summary Homology groups of indecomposable quandles
+#summary Rack homology groups of indecomposable quandles
 
 = Rack homology groups =
 
