@@ -1,8 +1,8 @@
 #summary Homology groups of indecomposable quandles
 
-= Rack Homology groups =
+= Rack homology groups =
 
-The following tables contain some rack homology groups of all indecomposable quandles of size < 36.
+The following tables contain some rack homology groups of all indecomposable quandles of size < 36. 
 
 || *Q=Q,,1,i,,* || *H,,2,,(Q)* || *H,,3,,(Q)* ||
 || 1 || Z || Z ||
