@@ -94,3 +94,4 @@ The 2-cocycle invariants with respect to this 2-cocycle are:
 ||9_46||`(370)*()`||
 ||9_47||`(250)*()`||
 ||9_48||`(370)*()`||
+||9_49||`(10)*()`||
