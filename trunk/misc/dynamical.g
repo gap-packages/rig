@@ -2,8 +2,8 @@ LoadPackage("rig");
 
 ### This function returns the value of the dynamical cocycle <cocycle> at <v>
 ### Every dynamical cocycle is a list [ v, value ], where v = [x, y, s, t] and value is a number in [1..N]
-value := function(cocycle, v)
-  return First(cocycle, x->x[1]=v)[2];
+value := function(d, v)
+  return First(d, x->x[1]=v)[2];
 end;
 
 ### This function returns the fiber of p with respect to the epimorphism from <rack> onto <quotient>
@@ -73,18 +73,18 @@ end;
 
 ### This function returns true if the dynamical <cocycle> is constant, i.e. f_{x,y}(s,u)=f_{x,y}(t,u)
 ### for all x,y in X and s,t,u in S
-is_constant := function(cocycle)
+is_constant := function(d)
   local x, y, s, t, u, rack, set;
 
-  rack := Set(List(cocycle, x->x[1][1]));
-  set := Set(List(cocycle, x->x[1][3]));
+  rack := Set(List(d, x->x[1][1]));
+  set := Set(List(d, x->x[1][3]));
 
   for x in [1..Size(rack)] do
     for y in [1..Size(rack)] do
       for s in [1..Size(set)] do
         for t in [1..Size(set)] do
           for u in [1..Size(set)] do
-            if value(cocycle, [x, y, s, u]) <> value(cocycle, [x, y, t, u]) then
+            if value(d, [x, y, s, u]) <> value(d, [x, y, t, u]) then
               return false;
             fi;
           od;
@@ -94,7 +94,78 @@ is_constant := function(cocycle)
   od;
   return true;
 end;
-  
 
+### This function returns (if possible) the constant 2-cocycle <d> as a matrix 
+### It returns fail if <d> is not a constant 2-cocycle
+dynamical2constant := function(d)
+  local rack, set, m, x, y, s;
 
+  if not is_constant(d) then
+    return fail;
+  fi;
 
+  rack := Set(List(d, x->x[1][1]));
+  set := Set(List(d, x->x[1][3]));
+  m := NullMat(Size(rack), Size(rack));
+
+  for x in [1..Size(rack)] do
+    for y in [1..Size(rack)] do
+      for s in [1..Size(set)] do
+        m[x][y] := PermList(List([1..Size(set)], t->value(d, [x,y,s,t])));
+      od;
+    od;
+  od;
+  return m;
+end;
+
+### This function returns true if the constant 2-cocycle <q> is abelian 
+is_abelian2cocycle := function(q)
+  return IsAbelian(Group(Flat(q)));
+end;
+
+Read("NonFaithful2.txt");
+LogTo("clark.log");
+
+cocycles := [];
+
+for m in NonFaithful do
+  r := Rack(TransposedMat(m));
+  for k in Reversed(DivisorsInt(Size(r))) do
+
+    stop := false;
+
+    if k = 1 or k = Size(r) or k>35 then 
+      continue;
+    fi;
+
+    for l in [1..NrSmallQuandles(k)] do
+      s := SmallQuandle(k,l);
+      d := dynamical(r, s);
+      if d <> fail then
+        Print("The quandle number ", Position(NonFaithful, m), " of size ", Size(r));
+        q := dynamical2constant(d);
+        if q <> fail then
+          Add(cocycles, [Position(NonFaithful, m), k, l, q]);
+          if is_abelian2cocycle(q) then
+            Print(" is an abelian extension Q(", k, ",",l,")\n");
+            stop := true;
+            break;
+          else
+            Print(" is an non-abelian extension Q(", k, ",",l,")\n");
+            stop := true;
+            break;
+          fi;
+        else
+            Print(" is a dynamical extension Q(", k, ",",l,")\n");
+            break;
+        fi;
+      fi;
+    od;
+
+    if stop = true then
+      break;
+    fi;
+
+  od;
+od;
+ 
