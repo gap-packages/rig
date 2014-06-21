@@ -27,8 +27,26 @@ end;
 ### This function returns the dynamical 2-cocycle that allows us to construct
 ### the extension <rack> of <quotient>
 dynamical := function(rack, quotient)
-  local g, q, tmp, x, y, s, t; 
-  g := List([1..Size(quotient)], x->fiber(rack, quotient, x));
+  local f, g, q, tmp, x, y, s, t, k, p; 
+
+  ### The map g_i is the bijection between the fiber of i and a set S
+  ### If g = [[a,b,c...],[d,e,f,...],...] 
+  ### it means that a,b,c... go to 1, and d,e,f... go to 2, and...
+  ### The map f is the inverse of g
+  f := IsQuotient(rack, quotient);
+  g := [];
+
+  for p in [1..Size(quotient)] do
+    tmp := [];
+    for k in [1..Size(f)] do
+      if f[k] = p then
+        Add(tmp, k);
+      fi;
+    od;
+    Add(g, tmp);
+  od;
+  Display(g);
+  Display(f);
 
   if fail in g then
     return fail;
@@ -36,7 +54,9 @@ dynamical := function(rack, quotient)
   
   q := [];
   tmp := [];
-  
+ 
+  ### Suppose that f_i is the inverse of g_i for all i. Then 
+  ### the dynamical cocycle is given by g_{i>j}(f_i(s)>f_j(t))
   for x in [1..Size(quotient)] do
     for y in [1..Size(quotient)] do
       for s in [1..Size(g[1])] do
@@ -97,6 +117,7 @@ end;
 
 ### This function returns (if possible) the constant 2-cocycle <d> as a matrix 
 ### It returns fail if <d> is not a constant 2-cocycle
+### WRONG!
 dynamical2constant := function(d)
   local rack, set, m, x, y, s;
 
@@ -111,7 +132,7 @@ dynamical2constant := function(d)
   for x in [1..Size(rack)] do
     for y in [1..Size(rack)] do
       for s in [1..Size(set)] do
-        m[x][y] := PermList(List([1..Size(set)], t->value(d, [x,y,s,t])));
+        m[x][y] := Inverse(PermList(List([1..Size(set)], t->value(d, [x,y,s,t]))));
       od;
     od;
   od;
@@ -123,49 +144,52 @@ is_abelian2cocycle := function(q)
   return IsAbelian(Group(Flat(q)));
 end;
 
+
 Read("NonFaithful2.txt");
+
+quit;
 LogTo("clark.log");
 
 cocycles := [];
 
-for m in NonFaithful do
+for m in NonFaithful{[16..Size(NonFaithful)]} do
   r := Rack(TransposedMat(m));
-  for k in Reversed(DivisorsInt(Size(r))) do
 
-    stop := false;
+  stop := false;
 
-    if k = 1 or k = Size(r) or k>35 then 
-      continue;
-    fi;
+  k := Size(Set(Permutations(r)));
+  if k>35 then
+    Print("The quotient is too big!\n");
+    continue;
+  fi;
 
-    for l in [1..NrSmallQuandles(k)] do
-      s := SmallQuandle(k,l);
-      d := dynamical(r, s);
-      if d <> fail then
-        Print("The quandle number ", Position(NonFaithful, m), " of size ", Size(r));
-        q := dynamical2constant(d);
-        if q <> fail then
-          Add(cocycles, [Position(NonFaithful, m), k, l, q]);
-          if is_abelian2cocycle(q) then
-            Print(" is an abelian extension Q(", k, ",",l,")\n");
-            stop := true;
-            break;
-          else
-            Print(" is an non-abelian extension Q(", k, ",",l,")\n");
-            stop := true;
-            break;
-          fi;
+  for l in [1..NrSmallQuandles(k)] do
+    s := SmallQuandle(k,l);
+    d := dynamical(r, s);
+    if d <> fail then
+      Print("The quandle number ", Position(NonFaithful, m), " of size ", Size(r));
+      q := dynamical2constant(d);
+      if q <> fail then
+        Add(cocycles, [Position(NonFaithful, m), s, q]);
+        if is_abelian2cocycle(q) then
+          Print(" is an abelian extension of Q(", k, ",", l, ")\n");
+          stop := true;
+          break;
         else
-            Print(" is a dynamical extension Q(", k, ",",l,")\n");
-            break;
+          Print(" is an non-abelian extension of Q(", k, ",", l, ")\n");
+          stop := true;
+          break;
         fi;
+      else
+          Print(" is a dynamical extension of Q(", k, ",", l, ")\n");
+          break;
       fi;
-    od;
-
-    if stop = true then
-      break;
     fi;
-
   od;
+
+#  if stop = true then
+#    break;
+#  fi;
+
 od;
  
