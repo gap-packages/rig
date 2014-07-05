@@ -422,11 +422,11 @@ gap> 2ndQuandleCohomology(12,6).generators[1];;
 
 == Q(12, 7) == 
 
-The 2nd cohomology group of `SmallQuandle(12,2)` has abelian type `[ 2, 4 ]`. 
+The 2nd cohomology group of `SmallQuandle(12,7)` has abelian type `[ 2, 4 ]`. 
 One generating 2-cocycle is:
 
 {{{
-gap> 2ndQuandleCohomology(12,2).generators[1];;
+gap> 2ndQuandleCohomology(12,7).generators[1];;
 }}}
 
 The 2-cocycle invariants with respect to this 2-cocycle are: 
