@@ -12,6 +12,7 @@
 === Special thanks to ===
 
   * E. Clark
-  * A. Hulpke (for his library of transitive groups)
-  * D. Holt (for his classification of transitive groups of degree 32)
+  * A. Hulpke 
+  * D. Holt
+  * G. Royle
   * M. Saito
