@@ -1,5 +1,5 @@
 QUANDLES[45] := rec( total := -1, implemented := 45, size := 45, rack := [ ] );
-QUANDLES[45].implemented := 1
+QUANDLES[45].implemented := 1;
 QUANDLES[45].rack[1] := rec( size := 45, matrix :=
 [ [   1,   3,   5,   2,   4,  11,  13,  15,  12,  14,   7,   9,   6,   8,  10,  31,  33,  35,  32,  34,  41,  43,  45,  42,  44,  37,  39,  36,  38,  40,  21,  23, \
  25,  22,  24,  17,  19,  16,  18,  20,  27,  29,  26,  28,  30 ],
