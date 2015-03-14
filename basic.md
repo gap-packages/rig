@@ -1,0 +1,164 @@
+# Constructing racks #
+
+Rig provides several functions for creating racks and quandles. For example
+
+  * `CyclicRack( n )` returns the rack structure over 1,2,...,n with the action given by x>y=y+1 (mod n).
+```
+gap> r := CyclicRack(5);
+gap> Table(r);
+[ [  2,  3,  4,  5,  1 ],
+  [  2,  3,  4,  5,  1 ],
+  [  2,  3,  4,  5,  1 ],
+  [  2,  3,  4,  5,  1 ],
+  [  2,  3,  4,  5,  1 ] ]
+```
+
+  * `ConjutationRack( group, n )` returns the conjugation rack associated to the group `group` with the rack action given by x>y = x<sup>n</sup>yx<sup>-n</sup>.
+```
+gap> s := ConjugationRack(SymmetricGroup(3), 1);
+gap> Table(s);
+[ [  1,  2,  3,  4,  5,  6 ],
+  [  1,  2,  6,  5,  4,  3 ],
+  [  1,  6,  3,  5,  4,  2 ],
+  [  1,  3,  6,  4,  5,  2 ],
+  [  1,  6,  2,  4,  5,  3 ],
+  [  1,  3,  2,  5,  4,  6 ] ]
+```
+  * `DihedralRack( n )` returns the dihedral quandle of n elements.
+```
+gap> r := DihedralRack(5);;
+gap> Table(r);
+[ [  1,  5,  4,  3,  2 ],
+  [  3,  2,  1,  5,  4 ],
+  [  5,  4,  3,  2,  1 ],
+  [  2,  1,  5,  4,  3 ],
+  [  4,  3,  2,  1,  5 ] ]
+```
+
+  * `TetrahedronRack( n )` and `InverseTetrahedronRack( n )` return the rack associated to the vertices of the tetrahedron.
+```
+gap> r := TetrahedronRack();;
+gap> Table(r);
+[ [  1,  3,  4,  2 ],
+  [  4,  2,  1,  3 ],
+  [  2,  4,  3,  1 ],
+  [  3,  1,  2,  4 ] ]
+gap> s := InverseTetrahedronRack();;
+gap> Table(s);
+[ [  1,  4,  2,  3 ],
+  [  3,  2,  4,  1 ],
+  [  4,  1,  3,  2 ],
+  [  2,  3,  1,  4 ] ]
+gap> IsomorphismRacks(r, s);
+(3,4)
+```
+
+  * `TrivialRack( n )` returns the trivial quandle of n elements.
+```
+gap> r := TrivialRack(3);;
+gap> Table(r);
+[ [  1,  2,  3 ],
+  [  1,  2,  3 ],
+  [  1,  2,  3 ] ]
+```
+
+
+### Generic construction of racks and quandles ###
+
+`Rack( data )` is the generic function to construct racks. Here you have some examples.
+
+  * Racks associated to a conjugacy class of a group:
+    1. Use `Rack( group, representative )`
+```
+gap> r := Rack(AlternatingGroup(4), (1,2,3));;
+gap> Table(r);
+[ [  1,  3,  4,  2 ],
+  [  4,  2,  1,  3 ],
+  [  2,  4,  3,  1 ],
+  [  3,  1,  2,  4 ] ]
+```
+    1. Use `Rack ( conjugacy_class )`
+```
+gap> r := Rack(ConjugacyClass(AlternatingGroup(4), (1,2,3));;`
+```
+
+  * Racks associated to a union of conjugacy classes:
+    1. Use `Rack( group, g1, g2... )`
+```
+gap> Rack(SymmetricGroup(3), (), (1,2));
+```
+    1. Use `Rack( group, list_of_representatives )`
+```
+gap> Rack(SymmetricGroup(3), [(), (1,2)]);
+```
+    1. Further, for constructing the conjugation rack associated to a group:
+```
+gap> r := Rack(ConjugacyClasses(SymmetricGroup(3)));;
+gap> Table(r);
+[ [  1,  2,  3,  4,  5,  6 ],
+  [  1,  2,  4,  3,  6,  5 ],
+  [  1,  4,  3,  2,  6,  5 ],
+  [  1,  3,  2,  4,  6,  5 ],
+  [  1,  3,  4,  2,  5,  6 ],
+  [  1,  4,  2,  3,  5,  6 ] ]
+```
+
+  * A rack given by a given matrix (or table):
+```
+gap> r := Rack( [[ 1, 2 ], [ 1, 2 ]] );;
+gap> Table(r);
+[ [  1,  2 ],
+  [  1,  2 ] ]
+```
+
+  * A rack given by permutations:
+    1. Use `Rack( p1, p2... )`
+```
+gap> r := Rack((2,3), (1,3), (1,2));;
+gap> Table(r);
+[ [  1,  3,  2 ],
+  [  3,  2,  1 ],
+  [  2,  1,  3 ] ]
+```
+    1. Use `Rack( list_of_permutations )`
+```
+gap> r := Rack([(2,3), (1,3), (1,2)]);;
+```
+
+### The small indecomposable quandles library ###
+
+`SmallQuandle( n, i )` returns the quandle `i` of size `n` stored in the small quandles library.  This library includes all non-isomorphic quandles of size <36. Examples.
+
+  * There are only one indecomposable quandle of size 4.
+```
+gap> NrSmallQuandles(4);                        
+1
+gap> r := SmallQuandle(4, 1);;
+gap> Table(r);
+[ [  1,  3,  4,  2 ],
+  [  4,  2,  1,  3 ],
+  [  2,  4,  3,  1 ],
+  [  3,  1,  2,  4 ] ]
+gap> IsomorphismRacks(r, TetrahedronRack());
+()
+```
+  * There are only one indecomposable quandle of size 10.
+```
+gap> NrSmallQuandes(10);
+1
+gap> r := SmallQuandle(10, 1);;
+gap> Table(r);
+[ [   1,   7,   5,   6,   3,   4,   2,   8,   9,  10 ],
+  [   7,   2,   8,  10,   5,   6,   1,   3,   9,   4 ],
+  [   5,   8,   3,   9,   1,   6,   7,   2,   4,  10 ],
+  [   6,  10,   9,   4,   5,   1,   7,   8,   3,   2 ],
+  [   3,   2,   1,   4,   5,   9,   8,   7,   6,  10 ],
+  [   4,   2,   3,   1,   9,   6,  10,   8,   5,   7 ],
+  [   2,   1,   3,   4,   8,  10,   7,   5,   9,   6 ],
+  [   1,   3,   2,   4,   7,   6,   5,   8,  10,   9 ],
+  [   1,   2,   4,   3,   6,   5,   7,  10,   9,   8 ],
+  [   1,   4,   3,   2,   5,   7,   6,   9,   8,  10 ] ]
+gap> s := Rack(SymmetricGroup(5), (1,2));;
+gap> IsomorphismRacks(r, s);
+(3,5,6,10,8,4,9,7)
+```

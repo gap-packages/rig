@@ -1,0 +1,59 @@
+# Rack and quandle (co)homology #
+
+### Computing rack homology groups ###
+
+  * `RackHomology( rack, n )` returns the n<sup>th</sup> homology group of the `rack`.
+```
+gap> T := TetrahedronRack();;
+gap> RackHomology(T, 2);
+[ 1, [ 2 ] ]
+gap> RackHomology(T, 3);
+[ 1, [ 2, 2, 4 ] ]
+gap> RackHomology(T, 4);
+[ 1, [ 2, 2, 2, 2, 2, 4, 4 ] ]
+```
+
+  * `TorsionGenerators( rack, n )` returns the set of generators of the torsion part of the n<sup>th</sup> homology group of the `rack`.
+```
+gap> T := TetrahedronRack();;
+gap> TorsionGenerators(T, 2);
+[ [ 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0 ] ]
+```
+
+  * `SecondCohomologyTorsionGenerators( rack )` returns the set of generators of the torsion part of the 2<sup>nd</sup> cohomology group of the `rack` (multiplicative notation).
+    1. Example: The rack associated to the vertices of the tetrahedron.
+```
+gap> T := TetrahedronRack();;
+gap> Display(SecondCohomologyTorsionGenerators(T)[1]);
+[ [   1,  -1,  -1,   1 ],
+  [  -1,   1,  -1,   1 ],
+  [  -1,  -1,   1,   1 ],
+  [   1,   1,   1,   1 ] ]
+```
+    1. Example. The rack associated to the conjugacy class of (1,2)(3,4,5) in S5.
+```
+gap> r := Rack(SymmetricGroup(5), (1,2)(3,4,5));;
+gap> RackHomology(r, 2);
+[ 1, [ 6 ] ]
+gap> gap> Display(SecondCohomologyTorsionGenerators(r)[1]);
+[ [        1,    -E(3),     E(3),     E(3),   E(3)^2,   E(3)^2,       -1,   -E(3),   E(3)^2,     E(3),  -E(3)^2,     E(3),       -1,    -E(3),     E(3),    -E(3),  -E(3)^2,        1,       -1,        1 ],
+  [    -E(3),        1,   E(3)^2,        1,  -E(3)^2,       -1,     E(3),   -E(3),        1,     E(3),  -E(3)^2,       -1,        1,  -E(3)^2,       -1,       -1,     E(3),       -1,    -E(3),   E(3)^2 ],
+  [  -E(3)^2,     E(3),        1,     E(3),       -1,    -E(3),   E(3)^2, -E(3)^2,     E(3),   E(3)^2,       -1,    -E(3),     E(3),       -1,    -E(3),    -E(3),   E(3)^2,    -E(3),       -1,        1 ],
+  [   E(3)^2,       -1,        1,        1,     E(3),     E(3),  -E(3)^2,     -1,     E(3),        1,    -E(3),   E(3)^2,  -E(3)^2,       -1,        1,      -1,    -E(3),     E(3)^2,  -E(3)^2,   E(3)^2 ],
+  [     E(3),       -1,  -E(3)^2,        1,        1,   E(3)^2,     E(3),     -1,  E(3)^2,    -E(3),     E(3),  -E(3)^2,  -E(3)^2,        1,       -1,    -E(3),   E(3)^2,      -E(3),    -E(3),       -1 ],
+  [  -E(3)^2,        1,    -E(3),       -1,        1,        1,       -1,    E(3),   E(3)^2,        1,        1,       -1,     E(3),     E(3),  -E(3)^2,    -E(3),  -E(3)^2,     E(3),       -1,   E(3)^2 ],
+  [        1,       -1,  -E(3)^2,  -E(3)^2,       -1,        1,        1, -E(3)^2,    -E(3),   E(3)^2,     E(3),    -E(3),        1,       -1,     E(3),     E(3),  -E(3)^2,  -E(3)^2,       -1,   E(3)^2 ],
+  [  -E(3)^2,       -1,     E(3),        1,  -E(3)^2,        1,    -E(3),       1,     E(3),  -E(3)^2,    -E(3),       -1,   E(3)^2,   E(3)^2,     E(3),  E(3)^2,    -E(3),        -1,    -E(3),       -1 ],
+  [       -1,     E(3),  -E(3)^2,    -E(3),   E(3)^2,     E(3),    -E(3),  E(3)^2,        1,     E(3),     E(3),    -E(3),   E(3)^2,   E(3)^2,       -1,  -E(3)^2,       -1,   E(3)^2,    -E(3),        1 ],
+  [     E(3),    -E(3),       -1,       -1,    -E(3),     E(3),     E(3),      -1,  -E(3)^2,        1,   E(3)^2,  -E(3)^2,     E(3),    -E(3),   E(3)^2,   E(3)^2,    -E(3),       -1,    -E(3),        1 ],
+  [     E(3),   E(3)^2,   E(3)^2,    -E(3),  -E(3)^2,       -1,    -E(3),   -E(3),     E(3),       -1,        1,       -1,  -E(3)^2,     E(3),     E(3),  -E(3)^2,    -E(3),  -E(3)^2,   E(3)^2,        1 ],
+  [   E(3)^2,     E(3),    -E(3),   E(3)^2,       -1,        1,       -1, -E(3)^2,  -E(3)^2,     E(3),  -E(3)^2,        1,     E(3),        1,  -E(3)^2,    -E(3),    -E(3),  -E(3)^2,   E(3)^2,       -1 ],
+  [   E(3)^2,       -1,     E(3),   E(3)^2,    -E(3),    -E(3),     E(3),       1,       -1,  -E(3)^2,     E(3),   E(3)^2,        1,     E(3),    -E(3),       -1,    -E(3),     E(3),  -E(3)^2,        1 ],
+  [     E(3),  -E(3)^2,        1,     E(3),       -1,       -1,        1,    E(3),  -E(3)^2,    -E(3),        1,     E(3),   E(3)^2,        1,       -1,  -E(3)^2,       -1,        1,    -E(3),   E(3)^2 ],
+  [        1,     E(3),     E(3),       -1,    -E(3),  -E(3)^2,       -1,      -1,        1,  -E(3)^2,   E(3)^2,  -E(3)^2,    -E(3),        1,        1,       -1,       -1,    -E(3),     E(3),   E(3)^2 ],
+  [    -E(3),        1,  -E(3)^2,     E(3),    -E(3),       -1,        1,   -E(3),     E(3),     E(3),   E(3)^2,   E(3)^2,  -E(3)^2,        1,   E(3)^2,        1,  -E(3)^2,     E(3),       -1,       -1 ],
+  [     E(3),        1,     E(3),       -1,    -E(3),   E(3)^2,   E(3)^2,  E(3)^2,  -E(3)^2,   E(3)^2,  -E(3)^2,    -E(3),    -E(3),     E(3),        1,       -1,        1,   E(3)^2,  -E(3)^2,       -1 ],
+  [    -E(3),    -E(3),    -E(3),    -E(3),    -E(3),    -E(3),    -E(3),   -E(3),    -E(3),    -E(3),    -E(3),    -E(3),    -E(3),    -E(3),    -E(3),    -E(3),    -E(3),        1,    -E(3),    -E(3) ],
+  [  -E(3)^2,   E(3)^2,   E(3)^2,     E(3),   E(3)^2,     E(3),        1,   -E(3),    -E(3),  -E(3)^2,     E(3),    -E(3),     E(3),       -1,        1,  -E(3)^2,       -1,        1,        1,       -1 ],
+  [        1,        1,        1,        1,        1,        1,        1,       1,        1,        1,        1,        1,        1,        1,        1,        1,        1,    -E(3),        1,        1 ] ]
+```

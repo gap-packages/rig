@@ -1,0 +1,335 @@
+## Q(18,1) ##
+
+The 2nd cohomology group of `SmallQuandle(18,1)` has abelian type `[ 6 ]`.
+The generating 2-cocycle is:
+
+```
+gap> 2ndQuandleCohomology(18,1).generators[1];;
+```
+
+The 2-cocycle invariants with respect to this 2-cocycle are:
+
+|Knot|2-cocycle invariant|
+|:---|:------------------|
+|3\_1|`(270)*()`|
+|4\_1|`(18)*()`|
+|5\_1|`(18)*()`|
+|5\_2|`(18)*()`|
+|6\_1|`(270)*()`|
+|6\_2|`(18)*()`|
+|6\_3|`(18)*()`|
+|7\_1|`(18)*()`|
+|7\_2|`(18)*()`|
+|7\_3|`(18)*()`|
+|7\_4|`(270)*()`|
+|7\_5|`(18)*()`|
+|7\_6|`(18)*()`|
+|7\_7|`(270)*()`|
+
+## Q(18,2) ##
+
+The 2nd cohomology group of `SmallQuandle(18,2)` has abelian type `[ 2 ]`.
+The generating 2-cocycle is:
+
+```
+gap> 2ndQuandleCohomology(18,2).generators[1];;
+```
+
+The 2-cocycle invariants with respect to this 2-cocycle are:
+
+|Knot|2-cocycle invariant|
+|:---|:------------------|
+|3\_1|`(54)*()`|
+|4\_1|`(18)*()`|
+|5\_1|`(18)*()`|
+|5\_2|`(18)*()`|
+|6\_1|`(270)*()`|
+|6\_2|`(18)*()`|
+|6\_3|`(18)*()`|
+|7\_1|`(18)*()`|
+|7\_2|`(18)*()`|
+|7\_3|`(18)*()`|
+|7\_4|`(54)*()`|
+|7\_5|`(18)*()`|
+|7\_6|`(18)*()`|
+|7\_7|`(54)*()`|
+
+## Q(18,3) ##
+
+The 2nd cohomology group of `SmallQuandle(18,3)` has abelian type `[ 4 ]`.
+The generating 2-cocycle is:
+
+```
+gap> 2ndQuandleCohomology(18,3).generators[1];;
+```
+
+The 2-cocycle invariants with respect to this 2-cocycle are:
+
+|Knot|2-cocycle invariant|
+|:---|:------------------|
+|3\_1|`(54)*()`|
+|4\_1|`(18)*()`|
+|5\_1|`(18)*()`|
+|5\_2|`(18)*()`|
+|6\_1|`(54)*()+(216)*(1,2,3,4)`|
+|6\_2|`(18)*()`|
+|6\_3|`(18)*()`|
+|7\_1|`(18)*()`|
+|7\_2|`(18)*()`|
+|7\_3|`(18)*()`|
+|7\_4|`(54)*()`|
+|7\_5|`(18)*()`|
+|7\_6|`(18)*()`|
+|7\_7|`(54)*()`|
+
+## Q(18,4) ##
+
+The 2nd cohomology group of `SmallQuandle(18,4)` has abelian type `[ 12 ]`.
+The generating 2-cocycle is:
+
+```
+gap> 2ndQuandleCohomology(18,4).generators[1];;
+```
+
+The 2-cocycle invariants with respect to this 2-cocycle are:
+
+|Knot|2-cocycle invariant|
+|:---|:------------------|
+|3\_1|`(54)*()+(216)*( 1, 4, 7,10)( 2, 5, 8,11)( 3, 6, 9,12)`|
+|4\_1|`(18)*()`|
+|5\_1|`(18)*()`|
+|5\_2|`(18)*()`|
+|6\_1|`(54)*()+(216)*( 1,10, 7, 4)( 2,11, 8, 5)( 3,12, 9, 6)`|
+|6\_2|`(18)*()`|
+|6\_3|`(18)*()`|
+|7\_1|`(18)*()`|
+|7\_2|`(18)*()`|
+|7\_3|`(18)*()`|
+|7\_4|`(54)*()+(216)*( 1,10, 7, 4)( 2,11, 8, 5)( 3,12, 9, 6)`|
+|7\_5|`(18)*()`|
+|7\_6|`(18)*()`|
+|7\_7|`(54)*()+(216)*( 1, 4, 7,10)( 2, 5, 8,11)( 3, 6, 9,12)`|
+
+## Q(18,5) ##
+
+The 2nd cohomology group of `SmallQuandle(18,5)` has abelian type `[ 12 ]`.
+The generating 2-cocycle is:
+
+```
+gap> 2ndQuandleCohomology(18,5).generators[1];;
+```
+
+The 2-cocycle invariants with respect to this 2-cocycle are:
+
+|Knot|2-cocycle invariant|
+|:---|:------------------|
+|3\_1|`(54)*()+(216)*( 1, 8, 3,10, 5,12, 7, 2, 9, 4,11, 6)`|
+|4\_1|`(18)*()`|
+|5\_1|`(18)*()`|
+|5\_2|`(18)*()`|
+|6\_1|`(54)*()+(216)*( 1, 6,11, 4, 9, 2, 7,12, 5,10, 3, 8)`|
+|6\_2|`(18)*()`|
+|6\_3|`(18)*()`|
+|7\_1|`(18)*()`|
+|7\_2|`(18)*()`|
+|7\_3|`(18)*()`|
+|7\_4|`(54)*()+(216)*( 1, 6,11, 4, 9, 2, 7,12, 5,10, 3, 8)`|
+|7\_5|`(18)*()`|
+|7\_6|`(18)*()`|
+|7\_7|`(54)*()+(216)*( 1, 4, 7,10)( 2, 5, 8,11)( 3, 6, 9,12)`|
+
+## Q(18,6) ##
+
+The 2nd cohomology group of `SmallQuandle(18,6)` has abelian type `[ 4 ]`.
+The generating 2-cocycle is:
+
+```
+gap> 2ndQuandleCohomology(18,6).generators[1];;
+```
+
+The 2-cocycle invariants with respect to this 2-cocycle are:
+
+| Knot | 2-cocycle invariant|
+|:-----|:-------------------|
+|3\_1|`(54)*()`|
+|4\_1|`(18)*()`|
+|5\_1|`(18)*()`|
+|5\_2|`(18)*()`|
+|6\_1|`(54)*()+(216)*(1,2,3,4)`|
+|6\_2|`(18)*()`|
+|6\_3|`(18)*()`|
+|7\_1|`(18)*()`|
+|7\_2|`(18)*()`|
+|7\_3|`(18)*()`|
+|7\_4|`(54)*()`|
+|7\_5|`(18)*()`|
+|7\_6|`(18)*()`|
+|7\_7|`(54)*()`|
+
+## Q(18,7) ##
+
+The 2nd cohomology group of `SmallQuandle(18,7)` has abelian type `[ 4 ]`.
+The generating 2-cocycle is:
+
+```
+gap> 2ndQuandleCohomology(18,7).generators[1];;
+```
+
+The 2-cocycle invariants with respect to this 2-cocycle are:
+
+| Knot | 2-cocycle invariant|
+|:-----|:-------------------|
+|3\_1|`(54)*()`|
+|4\_1|`(18)*()`|
+|5\_1|`(18)*()`|
+|5\_2|`(18)*()`|
+|6\_1|`(54)*()+(216)*(1,4,3,2)`|
+|6\_2|`(18)*()`|
+|6\_3|`(18)*()`|
+|7\_1|`(18)*()`|
+|7\_2|`(18)*()`|
+|7\_3|`(18)*()`|
+|7\_4|`(54)*()`|
+|7\_5|`(18)*()`|
+|7\_6|`(18)*()`|
+|7\_7|`(54)*()`|
+
+## Q(18,8) ##
+
+The 2nd cohomology group of `SmallQuandle(18,8)` has abelian type `[ 6 ]`.
+The generating 2-cocycle is:
+
+```
+gap> 2ndQuandleCohomology(18,8).generators[1];;
+```
+
+The 2-cocycle invariants with respect to this 2-cocycle are:
+
+| Knot | 2-cocycle invariant|
+|:-----|:-------------------|
+|3\_1|`(54)*()+(216)*(1,5,3)(2,6,4)`|
+|4\_1|`(18)*()`|
+|5\_1|`(18)*()`|
+|5\_2|`(18)*()`|
+|6\_1|`(54)*()+(216)*(1,3,5)(2,4,6)`|
+|6\_2|`(18)*()`|
+|6\_3|`(18)*()`|
+|7\_1|`(18)*()`|
+|7\_2|`(18)*()`|
+|7\_3|`(18)*()`|
+|7\_4|`(54)*()+(216)*(1,3,5)(2,4,6)`|
+|7\_5|`(18)*()`|
+|7\_6|`(18)*()`|
+|7\_7|`(270)*()`|
+
+## Q(18,9) ##
+
+The 2nd cohomology group of `SmallQuandle(18,9)` has abelian type `[ 2 ]`.
+The generating 2-cocycle is:
+
+```
+gap> 2ndQuandleCohomology(18,9).generators[1];;
+```
+
+The 2-cocycle invariants with respect to this 2-cocycle are:
+
+| Knot | 2-cocycle invariant|
+|:-----|:-------------------|
+|3\_1|`(54)*()`|
+|4\_1|`(18)*()`|
+|5\_1|`(18)*()`|
+|5\_2|`(18)*()`|
+|6\_1|`(270)*()`|
+|6\_2|`(18)*()`|
+|6\_3|`(18)*()`|
+|7\_1|`(18)*()`|
+|7\_2|`(18)*()`|
+|7\_3|`(18)*()`|
+|7\_4|`(54)*()`|
+|7\_5|`(18)*()`|
+|7\_6|`(18)*()`|
+|7\_7|`(54)*()`|
+
+## Q(18,10) ##
+
+The 2nd cohomology group of `SmallQuandle(18,10)` has abelian type `[ 2 ]`.
+The generating 2-cocycle is:
+
+```
+gap> 2ndQuandleCohomology(18,10).generators[1];;
+```
+
+The 2-cocycle invariants with respect to this 2-cocycle are:
+
+| Knot | 2-cocycle invariant|
+|:-----|:-------------------|
+|3\_1|`(54)*()`|
+|4\_1|`(18)*()`|
+|5\_1|`(18)*()`|
+|5\_2|`(18)*()`|
+|6\_1|`(270)*()`|
+|6\_2|`(18)*()`|
+|6\_3|`(18)*()`|
+|7\_1|`(18)*()`|
+|7\_2|`(18)*()`|
+|7\_3|`(18)*()`|
+|7\_4|`(54)*()`|
+|7\_5|`(18)*()`|
+|7\_6|`(18)*()`|
+|7\_7|`(54)*()`|
+
+## Q(18,11) ##
+
+The 2nd cohomology group of `SmallQuandle(18,11)` has abelian type `[ 6 ]`.
+The generating 2-cocycle is:
+
+```
+gap> 2ndQuandleCohomology(18,11).generators[1];;
+```
+
+The 2-cocycle invariants with respect to this 2-cocycle are:
+
+| Knot | 2-cocycle invariant|
+|:-----|:-------------------|
+|3\_1|`(54)*()+(216)*(1,5,3)(2,6,4)`|
+|4\_1|`(18)*()`|
+|5\_1|`(18)*()`|
+|5\_2|`(18)*()`|
+|6\_1|`(54)*()+(216)*(1,3,5)(2,4,6)`|
+|6\_2|`(18)*()`|
+|6\_3|`(18)*()`|
+|7\_1|`(18)*()`|
+|7\_2|`(18)*()`|
+|7\_3|`(18)*()`|
+|7\_4|`(54)*()+(216)*(1,3,5)(2,4,6)`|
+|7\_5|`(18)*()`|
+|7\_6|`(18)*()`|
+|7\_7|`(270)*()`|
+
+## Q(18,12) ##
+
+The 2nd cohomology group of `SmallQuandle(18,12)` has abelian type `[ 6 ]`.
+The generating 2-cocycle is:
+
+```
+gap> 2ndQuandleCohomology(18,12).generators[1];;
+```
+
+The 2-cocycle invariants with respect to this 2-cocycle are:
+
+| Knot | 2-cocycle invariant|
+|:-----|:-------------------|
+|3\_1|`(270)*()`|
+|4\_1|`(18)*()`|
+|5\_1|`(18)*()`|
+|5\_2|`(18)*()`|
+|6\_1|`(270)*()`|
+|6\_2|`(18)*()`|
+|6\_3|`(18)*()`|
+|7\_1|`(18)*()`|
+|7\_2|`(18)*()`|
+|7\_3|`(18)*()`|
+|7\_4|`(270)*()`|
+|7\_5|`(18)*()`|
+|7\_6|`(18)*()`|
+|7\_7|`(270)*()`|

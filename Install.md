@@ -1,0 +1,17 @@
+# Requirements #
+
+The package requires GAP 4.4.10 (or a newer version of GAP).
+
+# Installing #
+
+To install the package unpack the archive file in a directory in the `pkg' hierarchy of your version of GAP4. See section "Installing GAP Packages" of the GAP4 reference manual for more information about installing packages.
+
+# Loading #
+
+To load the package:
+
+```
+gap> LoadPackage("rig");
+```
+
+You can automate this process by adding `LoadPackage("rig")` to your .gaprc file.

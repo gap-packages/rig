@@ -1,0 +1,102 @@
+We show some examples related to computations of well-known Nichols algebras.
+Most of these computations use the GAP Gröbner basis package [gbnp](http://mathdox.org/products/gbnp/) (written by A. M. Cohen and J. W. Knopper).
+
+# Functions #
+
+  * `NicholsDatum( rack, q, field )` returns the Nichols algebra over `field` associated to the `rack` and the 2-cocycle `q`.
+
+  * `Dimension( datum, d )` returns the dimension of the homogeneous component of degree `d`.
+
+  * `Relations4GAP( datum, d )` returns the relations of the homogeneous component of degree `d`.
+
+### Example. A non-diagonal Nichols algebra of dimension 12 ###
+
+This example appeared in
+**A. Milinski** and **H.-J. Schneider**, Pointed Indecomposable Hopf Algebras over Coxeter Groups, in "New Trends in Hopf Algebra Theory"; _Contemp. Math. 267 (2000)_, 215-236.
+
+```
+gap> r := DihedralRack(3);;
+gap> q := NullMat(3,3)-1;;
+gap> n := NicholsDatum(r, q, Rationals);;
+gap> for i in [1..4] do
+> Display(Dimension(n, i));
+> od;
+1
+3
+4
+3
+1
+```
+
+Now we compute the Gröbner basis and the set of relations. For that purpose we
+use the GAP Gröbner basis package [gbnp](http://mathdox.org/products/gbnp/) (written by A. M. Cohen and J. W. Knopper).
+```
+gap> r := DihedralRack(3);;
+gap> q := NullMat(3,3)-1;;
+gap> n := NicholsDatum(r, q, Rationals);;
+gap> K := Relations4GAP(n, 2);;
+gap> PrintNPList(K);
+ a^2 
+ b^2 
+ ab + bc + ca 
+ ac + ba + cb 
+ c^2
+gap> G := Grobner(K);;
+gap> DimQA(G, 3); 
+12
+gap> PrintNPList(BaseQA(G, 3, 0));  
+ 1 
+ a 
+ b 
+ c 
+ ab 
+ ac 
+ ba 
+ bc 
+ aba 
+ abc 
+ bac 
+ abac 
+```
+
+### Example. A non-diagonal Nichols algebra of dimension 5184 ###
+
+For more information see [arXiv:1103.4526](http://arxiv.org/abs/1103.4526). This Nichols algebra can be constructed from the rack associated to the vertices of the tetrahedron and the 2-cocycle E(3)q, where q is the generator of the 2<sup>nd</sup> cohomology group and E(3) is a cubic root of 1.
+
+```
+gap> T := TetrahedronRack();;
+gap> gens := SecondCohologyGenerators(T);;
+gap> q := E(3)*gens[1];;
+gap> Display(q);
+[ [   E(3),  -E(3),  -E(3),   E(3) ],
+  [  -E(3),   E(3),  -E(3),   E(3) ],
+  [  -E(3),  -E(3),   E(3),   E(3) ],
+  [   E(3),   E(3),   E(3),   E(3) ] ]
+gap> n := NicholsDatum(T, q, Rationals);;
+```
+
+Using the function `Relations4GAP` it is possible to obtain four relations in degree two, four relations in degree three and one relation in degree six.
+
+```
+gap> LoadPackage("gbnp");
+gap> A := FreeAssociativeAlgebraWithOne(Rationals, "a", "b", "c", "d");;
+gap> GBNP.ConfigPrint(A);;
+gap> a := A.a;;
+gap> b := A.b;;
+gap> c := A.c;;
+gap> d := A.d;;
+gap> e := One(A);;
+gap> rels := [ -E(3)^2*a*b - E(3)*b*c + c*a, -E(3)^2*a*c - E(3)*c*d + d*a, 
+  E(3)*a*d - E(3)^2*b*a + d*b, E(3)*b*d + E(3)^2*c*b + d*c,
+  a^3, b^3, c^3, d^3,
+  a^2*b*c*b^2 + a*b*c*b^2*a + b*a^2*b*c*b + b^2*a^2*b*c + b*c*b^2*a^2 + b*c*b*a^2*c + c*b*a*b*a*c + c*b^2*a*c*a + c*b^2*a^2*b ];;
+gap> K := GP2NPList(rels);;
+gap> G := SGrobner(K);;
+gap> L := LMonsNP(G);;
+gap> HilbertSeriesQA(L, 4, 24));
+[ 1, 4, 12, 28, 56, 100, 160, 236, 320, 404, 476, 524, 542, 524, 476, 404, 320, 236, 160, 100, 56, 28, 12, 4, 1 ]
+gap> DimQA(G,4));
+5184
+```
+
+Please notice that the functions `PrintNPList`, `Grobner`, `DimQA` and `BasisQA` belong to the gbnp package. They are not included in Rig.

@@ -1,0 +1,16 @@
+### Main developers ###
+
+  * L. Vendramin
+
+### Contributors ###
+
+  * M. Graña
+  * A. Lochmann: affine quandles, derivations
+
+### Special thanks to ###
+
+  * E. Clark
+  * A. Hulpke
+  * D. Holt
+  * G. Royle
+  * M. Saito
