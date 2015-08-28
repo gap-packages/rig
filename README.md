@@ -1,7 +1,7 @@
 # rig
 A GAP package for racks, quandles, Nichols algebras
 
-Rig is a GAP package for computations related to racks, quandles, knots, virtual knots, Nichols algebras...
+Rig is a GAP package for computations related to racks, quandles, knots, virtual knots, Nichols algebras.
 
 Download
 --------
@@ -14,8 +14,8 @@ Now Rig contains all indecomposable quandles of size <48! Check out the sequence
 Features
 --------
 Racks and quandles
-* groups associated to finite racks and quandles
-* complete list of non-isomorphic indecomposable quandles of order < 48
+* groups associated to finite racks and quandles 
+* complete list of non-isomorphic indecomposable quandles of order < 48 
 * rack and quandle homology
 * quandle colorings of knots
 * quandle 2-cocycle invariants of knots
@@ -65,9 +65,9 @@ Here you can find a comprehensive list of references relevant to quandles and re
 
 Links
 -----
-GAP - Groups, Algorithms, Programming - a System for Computational Discrete Algebra
-GBNP, GAP Package for Gröbner Bases for Non-commutative Polynomials
-Sage: Open Source Mathematics Software
-Small Connected Quandles and Their Knot Colorings
-KnotInfo: Table of knot invariants, by Chuck Livingston with the assistance of Jae Choon Cha
-A table of virtual knots, by Jeremy Green
+* GAP - Groups, Algorithms, Programming - a System for Computational Discrete Algebra   [http://www.gap-system.org/]
+* GBNP, GAP Package for Gröbner Bases for Non-commutative Polynomials [http://mathdox.org/products/gbnp/]
+* Sage: Open Source Mathematics Software [http://www.sagemath.org/]
+* Small Connected Quandles and Their Knot Colorings [http://shell.cas.usf.edu/~saito/QuandleColor/]
+* KnotInfo: Table of knot invariants, by Chuck Livingston with the assistance of Jae Choon Cha [http://www.indiana.edu/~knotinfo/]
+* A table of virtual knots, by Jeremy Green [http://www.math.toronto.edu/drorbn/Students/GreenJ/index.html]
