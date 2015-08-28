@@ -43,12 +43,11 @@ L. Vendramin. Rig, a GAP package for racks, quandles and Nichols algebras. Avail
 
 Contributions
 -------------
-You are welcome to contribute with code, patches, ideas, testing, wiki, comments, documentation. Click here to see the list of contributors.
-Special thanks go to: W. E. Clark, D. Holt, A. Hulpke, A. Lochmann, G. Royle, M. Saito, D. Stanovsky.
+You are welcome to contribute with code, patches, ideas, testing, wiki, comments, documentation. See the wiki for the list of contributors. Special thanks go to: W. E. Clark, D. Holt, A. Hulpke, A. Lochmann, G. Royle, M. Saito, D. Stanovsky.
 
 Usage
 -----
-Follow this link if you don't know how to install the package.
+See the wiki to learn how to install the package.
 
 To load the package:
 
@@ -69,5 +68,5 @@ Links
 * GBNP, GAP Package for Gröbner Bases for Non-commutative Polynomials [http://mathdox.org/products/gbnp/]
 * Sage: Open Source Mathematics Software [http://www.sagemath.org/]
 * Small Connected Quandles and Their Knot Colorings [http://shell.cas.usf.edu/~saito/QuandleColor/]
-* KnotInfo: Table of knot invariants, by Chuck Livingston with the assistance of Jae Choon Cha [http://www.indiana.edu/~knotinfo/]
+* KnotInfo: Table of knot invariants, by C. Livingston and J. Cha [http://www.indiana.edu/~knotinfo/]
 * A table of virtual knots, by Jeremy Green [http://www.math.toronto.edu/drorbn/Students/GreenJ/index.html]
