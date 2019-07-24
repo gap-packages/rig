@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/gap-packages/rig.svg?branch=master)](https://travis-ci.org/gap-packages/rig)
+[![Code Coverage](https://codecov.io/github/gap-packages/rig/coverage.svg?branch=master&token=)](https://codecov.io/gh/gap-packages/rig)
+
 # rig
 A GAP package for racks, quandles, Nichols algebras
 
