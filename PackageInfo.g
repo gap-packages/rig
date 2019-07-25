@@ -64,6 +64,7 @@ AvailabilityTest := ReturnTrue,
 BannerString := Concatenation( 
   "--\nRiG, A GAP package for racks, Version ", ~.Version, "\n", ~.ArchiveURL,"\n"),
 Autoload := false,
+TestFile := "tst/testall.g",
 Keywords := ["racks", "quandles", "nichols algebras", "knots"]
 ));
 
