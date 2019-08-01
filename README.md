@@ -42,7 +42,7 @@ Cite as
 -------
 If you have used Rig in the preparation of a paper please cite it as:
 
-L. Vendramin. Rig, a GAP package for racks, quandles and Nichols algebras. Available at http://github.com/vendramin/rig/
+L. Vendramin. Rig, a GAP package for racks, quandles and Nichols algebras. Available at https://github.com/gap-packages/rig/
 
 Contributions
 -------------

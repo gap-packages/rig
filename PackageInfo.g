@@ -2,9 +2,8 @@ SetPackageInfo( rec(
 PackageName := "rig",
 Subtitle := "Racks in GAP",
 Version := "1",
-Date := "24/05/2014",
-ArchiveURL := "http://code.google.com/p/rig/",
-ArchiveFormats := ".zoo",
+Date := "24/05/2014", # dd/mm/yyyy format
+
 Persons := [
   rec( 
     LastName      := "Vendramin",
@@ -23,22 +22,27 @@ Persons := [
 ],
 
 Status := "deposited",
-README_URL := 
-  "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/README.example",
-PackageInfoURL := 
-  "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/PackageInfo.g",
+
+PackageWWWHome  := "https://gap-packages.github.io/rig/",
+README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
+PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/gap-packages/rig",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+ArchiveURL      := Concatenation( ~.SourceRepository.URL,
+                                 "/releases/download/v", ~.Version,
+                                 "/rig-", ~.Version ),
+ArchiveFormats := ".tar.gz",
 
 AbstractHTML := 
   "The <span class=\"pkgname\">Example</span> package, as its name suggests, \
    is an example of how to create a <span class=\"pkgname\">GAP</span> \
    package. It has little functionality except for being a package",
 
-PackageWWWHome := "http://www.math.rwth-aachen.de/~Greg.Gamble/Example",
-               
 PackageDoc := rec(
   BookName  := "rig",
-  # format/extension can be one of .zoo, .tar.gz, .tar.bz2, -win.zip
-#  Archive := "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/exampledoc-2.0.zoo",
   ArchiveURLSubset := ["doc", "htm"],
   HTMLStart := "htm/chapters.htm",
   PDFFile   := "doc/manual.pdf",
@@ -52,18 +56,14 @@ PackageDoc := rec(
   Autoload  := true
 ),
 
-
 Dependencies := rec(
-   GAP := ">=4.4",
+  GAP := ">=4.8",
   NeededOtherPackages := [],
   SuggestedOtherPackages := [],
   ExternalConditions := []
 ),
 
 AvailabilityTest := ReturnTrue,
-BannerString := Concatenation( 
-  "--\nRiG, A GAP package for racks, Version ", ~.Version, "\n", ~.ArchiveURL,"\n"),
-Autoload := false,
 TestFile := "tst/testall.g",
 Keywords := ["racks", "quandles", "nichols algebras", "knots"]
 ));
