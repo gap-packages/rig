@@ -990,21 +990,18 @@ end);
 ### This function returns the table (or matrix) of the rack
 InstallGlobalFunction("Table", function(rack)
   Display(rack.matrix);
-  return;
 end);
 
 ### This function returns the table (or matrix) of the rack
 ### The table is defined as M(i,j)=i>j
 InstallGlobalFunction("TableL", function(rack)
   Display(rack.matrix);
-  return;
 end);
 
 ### This function returns the transposed table (or matrix) of the rack 
 ### The transposed table is defined as M(j,i)=i>j
 InstallGlobalFunction("TableR", function(rack)
   Display(TransposedMat(rack.matrix));
-	return;
 end);
 
 ### This function returns the quandle Id like [n, i]

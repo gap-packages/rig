@@ -96,7 +96,7 @@ end);
 # n=rank
 # The braiding c_(i,j)
 InstallGlobalFunction("MatrixOfRestrictedBraiding", function(data, t, n)
-  local m, i, v, x, y, r, rank, rack, q;
+  local m, i, v, x, y, r, rank, rack, q, row, col;
 
   rack := data.rack;
   rank := Size(data.rack);
@@ -114,7 +114,9 @@ InstallGlobalFunction("MatrixOfRestrictedBraiding", function(data, t, n)
     r := ShallowCopy(v);
     r[x] := rack.matrix[v[x]][v[y]];
     r[y] := v[x];
-    m[BasisVectorToNumber(r, rank)][BasisVectorToNumber(v, rank)] := m[BasisVectorToNumber(r, rank)][BasisVectorToNumber(v, rank)] + q[v[x]][v[y]]; 
+    row := BasisVectorToNumber(r, rank);
+    col := BasisVectorToNumber(v, rank);
+    m[row][col] := m[row][col] + q[v[x]][v[y]];
   od;
   return m;
 end);
