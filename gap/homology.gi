@@ -71,7 +71,7 @@ end);
 #  function(rack, n)
 #    local a, b, c, t, z, w, betti;
 #
-#    if not n in [1,2,3] then 
+#    if not n in [1,2,3] then
 #      return fail;
 #    fi;
 #
@@ -82,8 +82,8 @@ end);
 #      t := Filtered(DiagonalOfMat(a), x->x>1);
 #      return [t, Size(rack)-Rank(a)];
 #    elif n = 2 then
-#      t := Filtered(DiagonalOfMat(b), x->x>1); 
-#      return [t, Size(rack)^2 - Rank(a) - Rank(b)]; 
+#      t := Filtered(DiagonalOfMat(b), x->x>1);
+#      return [t, Size(rack)^2 - Rank(a) - Rank(b)];
 #    elif n = 3 then
 #      c := SmithNormalFormIntegerMat(BoundaryMap4(rack));
 #      t := Filtered(DiagonalOfMat(c), x->x>1);
@@ -97,7 +97,7 @@ InstallGlobalFunction("RackCohomology",
   function(rack, n)
     local a, b, t, m, M;
 
-    if not n > 0 then 
+    if not n > 0 then
       return fail;
     fi;
 
@@ -121,7 +121,7 @@ InstallGlobalFunction("RackHomology",
   function(rack, n)
     local a, b, t, m, M;
 
-    if not n > 0 then 
+    if not n > 0 then
       return fail;
     fi;
 
@@ -140,7 +140,7 @@ end);
 
 
 ### This function returns de n-th boundary map matrix:
-### d : X^(n+1) --> X^n 
+### d : X^(n+1) --> X^n
 InstallGlobalFunction("BoundaryMap",
 function(rack, n)
   local m, u, v, w, i, j;
@@ -152,8 +152,8 @@ function(rack, n)
       v := ShallowCopy(u);
       Remove(v, j);
       w := Concatenation(u{[1..(j-1)]}, List([j+1..n+1], x->rack!.matrix[u[j]][u[x]]));
-      m[BasisVectorToNumber(v, Size(rack))][i] := m[BasisVectorToNumber(v, Size(rack))][i] + (-1)^(j+1); 
-      m[BasisVectorToNumber(w, Size(rack))][i] := m[BasisVectorToNumber(w, Size(rack))][i] + (-1)^j; 
+      m[BasisVectorToNumber(v, Size(rack))][i] := m[BasisVectorToNumber(v, Size(rack))][i] + (-1)^(j+1);
+      m[BasisVectorToNumber(w, Size(rack))][i] := m[BasisVectorToNumber(w, Size(rack))][i] + (-1)^j;
     od;
   od;
   return m;
@@ -172,10 +172,10 @@ function(rack, n)
         Remove(v, j);
         w := Concatenation(u{[1..(j-1)]}, List([j+1..n+1], x->rack!.matrix[u[j]][u[x]]));
         if not CheckDegeneracy(v) = true then
-          m[BasisVectorToNumber(v, Size(rack))][i] := m[BasisVectorToNumber(v, Size(rack))][i] + (-1)^(j+1); 
+          m[BasisVectorToNumber(v, Size(rack))][i] := m[BasisVectorToNumber(v, Size(rack))][i] + (-1)^(j+1);
         fi;
         if not CheckDegeneracy(w) = true then
-          m[BasisVectorToNumber(w, Size(rack))][i] := m[BasisVectorToNumber(w, Size(rack))][i] + (-1)^j; 
+          m[BasisVectorToNumber(w, Size(rack))][i] := m[BasisVectorToNumber(w, Size(rack))][i] + (-1)^j;
         fi;
       od;
     fi;
@@ -189,7 +189,7 @@ InstallGlobalFunction("QuandleHomology",
   function(rack, n)
     local a, b, t, m, M;
 
-    if not n > 0 then 
+    if not n > 0 then
       return fail;
     fi;
 
@@ -212,12 +212,12 @@ InstallGlobalFunction("SecondCohomologyTorsionGenerators", function(rack)
 
   a := BoundaryMap(rack, 1);
   b := SmithNormalFormIntegerMatTransforms(BoundaryMap(rack, 2));
- 
+
   M := Size(rack)^2-Rank(a);
 
   # non-zero rows of the matrix b, the 2-th boundary map
   m := Rank(b.normal);
-  
+
   r := TransposedMat(b.rowtrans);
 
   d := DiagonalOfMat(b.normal);
@@ -238,7 +238,7 @@ InstallGlobalFunction("SecondCohomologyTorsionGenerators", function(rack)
   return gens;
 end);
 
-### This function returns de n-th degenerated boundary map matrix 
+### This function returns de n-th degenerated boundary map matrix
 InstallGlobalFunction("DegeneratedBoundaryMap",
 function(rack, n)
   local m, u, v, w, i, j;
@@ -250,8 +250,8 @@ function(rack, n)
         v := ShallowCopy(u);
         Remove(v, j);
         w := Concatenation(u{[1..(j-1)]}, List([j+1..n+1], x->rack!.matrix[u[j]][u[x]]));
-        m[BasisVectorToNumber(v, Size(rack))][i] := m[BasisVectorToNumber(v, Size(rack))][i] + (-1)^(j+1); 
-        m[BasisVectorToNumber(w, Size(rack))][i] := m[BasisVectorToNumber(w, Size(rack))][i] + (-1)^j; 
+        m[BasisVectorToNumber(v, Size(rack))][i] := m[BasisVectorToNumber(v, Size(rack))][i] + (-1)^(j+1);
+        m[BasisVectorToNumber(w, Size(rack))][i] := m[BasisVectorToNumber(w, Size(rack))][i] + (-1)^j;
       od;
     fi;
   od;
@@ -263,7 +263,7 @@ InstallGlobalFunction("DegeneratedRackHomology",
   function(rack, n)
     local a, b, t, m, M;
 
-    if not n > 0 then 
+    if not n > 0 then
       return fail;
     fi;
 
@@ -312,7 +312,7 @@ InstallGlobalFunction("IsHomologous", function(rack, q1, q2)
     od;
   od;
   return true;
-end); 
+end);
 
 ### This function returns the multiplication of the 2-cocycles <q1> and <q2>
 InstallGlobalFunction("Mult2Cocycles", function(q1, q2)
@@ -331,7 +331,7 @@ InstallGlobalFunction("Mult2Cocycles", function(q1, q2)
   return q;
 end);
 
-### This function computes the Betti numbers 
+### This function computes the Betti numbers
 
 
 ### This function computes the torsion and its generators
@@ -361,19 +361,19 @@ InstallGlobalFunction("TorsionGenerators", function(rack, n)
   return gens;
 end);
 
-#InstallGlobalFunction(TorsionGenerators, 
+#InstallGlobalFunction(TorsionGenerators,
 #function(rack, n)
 #  local a, b, r, t, m, M, i, x, d, q, z, pos, tmp, gens;
 #
 #  a := #SmithNormalFormIntegerMat(BoundaryMap(rack, n-1));
 #  a := BoundaryMap(rack, n-1);
 #  b := SmithNormalFormIntegerMatTransforms(BoundaryMap(rack, n));
-# 
+#
 #  M := Size(rack)^n-Rank(a);
 #
 #  # non-zero rows of the matrix b, the n-th boundary map
 #  m := Rank(b.normal);
-#  
+#
 #  r := TransposedMat(b.rowtrans);
 #
 #  d := DiagonalOfMat(b.normal);
@@ -393,7 +393,7 @@ end);
 #  return gens;
 #end);
 
-### This function checks if the matrix is a rack 2-cocycle 
+### This function checks if the matrix is a rack 2-cocycle
 InstallGlobalFunction("Is2Cocycle", function(rack, q)
   local i, j, k;
   for i in [1..Size(rack)] do
@@ -423,8 +423,8 @@ InstallGlobalFunction("Torsion", function(rack, n)
   return Filtered(DiagonalOfMat(b), x->x>1);
 end);
 
-### This function checks if the list <c> is a cycle 
-InstallGlobalFunction("IsCycle", function(rack, c) 
+### This function checks if the list <c> is a cycle
+InstallGlobalFunction("IsCycle", function(rack, c)
   local n;
   n := LogInt(Size(c), Size(rack));
   return IsZero(BoundaryMap(rack, n-1)*c);
@@ -432,7 +432,7 @@ end);
 
 InstallGlobalFunction("Product2Cocycles", function(q1, q2)
   local m, i, j;
-  
+
   if Size(q1) <> Size(q2) then
     return fail;
   fi;
@@ -449,10 +449,10 @@ end);
 
 
 ### This function checks if two 2-cocycles are cohomologous
-### IMPORTANT: These are additive 2-cocycles! 
+### IMPORTANT: These are additive 2-cocycles!
 ### EXAMPLES:
 ###   gap> r := Rack(SymmetricGroup(4),(1,2));;
-###   gap> IsCohomologous2Cocycle(r, (1+FK2Cocycle(4))/2, NullMat(6,6));  
+###   gap> IsCohomologous2Cocycle(r, (1+FK2Cocycle(4))/2, NullMat(6,6));
 ###   false
 ###   gap> IsCohomologous2Cocycle(r, (1+FK2Cocycle(3))/2, NullMat(3,3));
 ###   true
@@ -462,8 +462,8 @@ InstallGlobalFunction("IsCohomologous2Cocycle", function(rack, q1, q2)
   c2 := [];
   for i in [1..Size(rack)] do
     for j in [1..Size(rack)] do
-      Add(c1, q1[i][j]); 
-      Add(c2, q2[i][j]); 
+      Add(c1, q1[i][j]);
+      Add(c2, q2[i][j]);
     od;
   od;
   return IsHomologous(rack, c1, c2);

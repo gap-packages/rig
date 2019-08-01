@@ -49,13 +49,13 @@ InstallGlobalFunction("YetterDrinfeldDatum", function(group, g)
   data := rec(
     group := group,
     representative := g,
-    dimension := "",	
+    dimension := "",
     relations := [],
-    top_degree := "",		
+    top_degree := "",
     comment := "",
-    rack := [],	       
+    rack := [],
     2cocycles := []
-  );		 
+  );
 
   rack_data := GetRack(group, g);
   data.rack := RackFromAMatrix(rack_data.m);
@@ -74,7 +74,7 @@ InstallGlobalFunction("YetterDrinfeldDatum", function(group, g)
   p := First([1..Size(cc_z)], x->g in cc_z[x]);
 
   for r in ir_z do
-    if r[1]=1 then 
+    if r[1]=1 then
       q := NullMat(n,n);
       for i in [1..n] do
         for j in [1..n] do
@@ -129,14 +129,14 @@ InstallGlobalFunction("QuantumSymmetrizer", function(data, n)
     return IdentityMat(rank^n, data.field)+MatrixOfRestrictedBraiding(data, (1,2), n);
   fi;
 
-  p := []; 
+  p := [];
   c := [];
   m := IdentityMat(rank^n, data.field);
 
   for i in [1..n-1] do
     Add(p, (i,i+1));
   od;
-  
+
   for i in [1..n-1] do
     Add(c, MatrixOfRestrictedBraiding(data, p[n-i], n));
   od;
@@ -155,7 +155,7 @@ InstallGlobalFunction("Relations4GAP",
 ### [IsRack, IsMatrix, IsInt],
 function(data, degree)
   local m, ns, i, j, a, b, res;
-  
+
   m := QuantumSymmetrizer(data, degree);
   TransposedMatDestructive(m);
   ns := NullspaceMatDestructive(m);
@@ -204,7 +204,7 @@ InstallGlobalFunction("_chi", function(sigma, tau)
     return -1;
   fi;
 end);
- 
+
 InstallGlobalFunction("FK2Cocycle", function(n)
   local e,i,j,q;
   e := Elements(ConjugacyClass(SymmetricGroup(n),(1,2)));
@@ -223,9 +223,9 @@ end);
 
 InstallGlobalFunction("CheckTypeD", function(group, x)
   local sg, y, c;
-  c := ConjugacyClass(group, x); 
+  c := ConjugacyClass(group, x);
   for y in c do
-    if not (x*y)^2 = (y*x)^2 then 
+    if not (x*y)^2 = (y*x)^2 then
       sg := Subgroup(group, [x,y]);
       if IsConjugate(sg, x, y) = false then
         return [x,y];
@@ -241,7 +241,7 @@ InstallGlobalFunction("CheckTypeDRandom", function(group, x, n)
   for i in [1..n] do
     t := Random(group);
     y := t*x*Inverse(t);
-    if not (x*y)^2 = (y*x)^2 then 
+    if not (x*y)^2 = (y*x)^2 then
       sg := Subgroup(group, [x,y]);
       if IsConjugate(sg, x, y) = false then
         return [x,y];

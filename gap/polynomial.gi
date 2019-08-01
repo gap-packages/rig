@@ -34,7 +34,7 @@ end;
 ### Data:
 ### Indeterminates: x := (a,b,c,d)
 ### Weight: w = (w1,w2,w3,w4)
-### Example (computes the classic Nelson polynomial invariant): 
+### Example (computes the classic Nelson polynomial invariant):
 ###   gap> x := Indeterminate(Rationals, "x");;
 ###   gap> y := Indeterminate(Rationals, "y");;
 ###   gap> PolynomialInvariant(DihedralRack(3), x, y, 1, 1, [1,1,1,1]);
@@ -45,7 +45,7 @@ InstallGlobalFunction("PolynomialInvariant", function(rack, a, b, c, d, w)
   for i in [1..Size(rack)] do
     p := p + a^__rr(rack, w[1], i)*b^__cc(rack, w[2], i)*c^__ss(rack, w[3], i)*d^__dd(rack, w[4], i);
   od;
-  return p; 
+  return p;
 end);
 
 InstallGlobalFunction("NelsonInvariant", function(rack, x, y)

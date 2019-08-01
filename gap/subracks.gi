@@ -15,10 +15,10 @@ InstallGlobalFunction("CanonicalSubrack", function(rack, subset)
   subrack := NullMat(size, size);
   for i in [1..size] do
     for j in [1..size] do
-      subrack[i][j] := rack!.matrix[tmp[i]][tmp[j]]; 
+      subrack[i][j] := rack!.matrix[tmp[i]][tmp[j]];
     od;
   od;
-  return RackFromAMatrix(ApplyLabels(subrack, tmp)); 
+  return RackFromAMatrix(ApplyLabels(subrack, tmp));
 end);
 
 InstallGlobalFunction("SubrackAsSubset",
@@ -70,7 +70,7 @@ InstallGlobalFunction("SubracksGeneratedByUpToIso", function(r,n)
 		m := NullMat(s, s);
 		for i in [1..s] do
 			for j in [1..s] do
-				m[i][j] := r!.matrix[t[i]][t[j]]; 
+				m[i][j] := r!.matrix[t[i]][t[j]];
 			od;
 		od;
 		#Add(sr, Rack(TranslateRack(m,t)));
@@ -121,7 +121,7 @@ function(r,l,n)
 		m := NullMat(s, s);
 		for i in [1..s] do
 			for j in [1..s] do
-				m[i][j] := r!.matrix[t[i]][t[j]]; 
+				m[i][j] := r!.matrix[t[i]][t[j]];
 			od;
 		od;
 		Add(sr, RackFromAMatrix(ApplyLabels(m,t)));
@@ -157,7 +157,7 @@ function(rack, subr, n)
     m := NullMat(s, s);
     for i in [1..s] do
       for j in [1..s] do
-	m[i][j] := rack!.matrix[r[i]][r[j]]; 
+	m[i][j] := rack!.matrix[r[i]][r[j]];
       od;
     od;
     tmp := RackFromAMatrix(ApplyLabels(m,r));
@@ -198,7 +198,7 @@ InstallGlobalFunction("Subracks", function(arg)
     subr := [1];
     n := arg[2];
   fi;
-  
+
   tmp := rack!.matrix[1];
   subracks := Set([subr]);
   for r in subracks do

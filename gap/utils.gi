@@ -11,7 +11,7 @@ function(v, rank)
       return fail;
     fi;
     s := s+((v[i]-1)*rank^(Size(v)-i));
-  od; 
+  od;
   return s+1;
 end);
 
