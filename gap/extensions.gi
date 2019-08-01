@@ -1,4 +1,4 @@
-### This function computes the abelian extension of <rack> by the 
+### This function computes the abelian extension of <rack> by the
 ### <group> 2-cocycle defined by the function. The action of the
 ### extension is defined as: (x,a)>(y,b)=(x>y, bf(x,y))
 ### EXAMPLE:

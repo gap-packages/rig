@@ -204,7 +204,7 @@ InstallGlobalFunction("ActNP", function(data, u, t)
     for k in [1..Size(monomial)] do
       mres[k] := data.rack.matrix[t][monomial[k]];
       cres := cres * data.q[t][monomial[k]]; ## TODO: Correct sequence?
-    od;  
+    od;
     result := AddNP(result, [[mres],[cres]], 1, 1);
   od;
   return result;

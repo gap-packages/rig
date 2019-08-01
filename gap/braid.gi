@@ -1,8 +1,8 @@
 #######################
-### braids 
+### braids
 #######################
 
-### This function computes the orbit of the element v=(i,j) 
+### This function computes the orbit of the element v=(i,j)
 ### under the action of the braiding.
 InstallGlobalFunction("BraidedOrbit",
 ###  "Computes the braided orbit of v",
@@ -19,7 +19,7 @@ InstallGlobalFunction("BraidedOrbit",
   return l;
 end);
 
-### This function computes all the orbits and return 
+### This function computes all the orbits and return
 ### the representatives of classes, with sizes.
 InstallGlobalFunction("BraidedRepresentatives",
 ###  "Returns a list of representatives of classes under the braided action",
@@ -40,7 +40,7 @@ InstallGlobalFunction("BraidedRepresentatives",
   return reps;
 end);
 
-### k(rack,n) is the total number of j such that the orbit of 
+### k(rack,n) is the total number of j such that the orbit of
 ### (1,j) has length n.
 InstallGlobalFunction("Nr_k",
   function(rack, n)
@@ -69,7 +69,7 @@ end);
 InstallGlobalFunction("Braiding",
   function(rack)
   local m,x;
-  x := NullMat(Size(rack),Size(rack))+1;                        
+  x := NullMat(Size(rack),Size(rack))+1;
   m := QuantumSymmetrizer(rack, x, 2)-IdentityMat(Size(rack)*Size(rack));;
   return m;
 end);
@@ -80,16 +80,16 @@ end);
 InstallGlobalFunction("FiniteEnvelopingGroup", function(rack)
   local n, f, x, rels, i, j, p, deg;
   n := Size(rack);
-  
+
  # if not IsIndecomposable(rack) then
  #   return fail;
  # fi;
 
   f := FreeGroup(n);
-  x := GeneratorsOfGroup(f); 
-  
+  x := GeneratorsOfGroup(f);
+
   rels := [];
-  
+
   for i in [1..n] do
     for j in [1..n] do
       Add(rels, x[i]*x[j]*Inverse(x[rack!.matrix[i][j]]*x[i]));
@@ -125,7 +125,7 @@ end);
 
 ### This function computes the orbit of B_n acting on v
 InstallGlobalFunction("HurwitzOrbit", function(rack, v)
-  local o, l, t, i, w,  x, stop; 
+  local o, l, t, i, w,  x, stop;
   o := [v];
   l := [v];
   stop := false;
@@ -149,7 +149,7 @@ InstallGlobalFunction("HurwitzOrbits", function(rack, n)
   local a,x,y,o,l;
   a := [];
   l := [];
-  for x in IteratorOfTuples([1..Size(rack)], n) do 
+  for x in IteratorOfTuples([1..Size(rack)], n) do
     if not x in a then
       o := HurwitzOrbit(rack, x);
       Add(l,o);
@@ -163,28 +163,28 @@ end);
 
 ### This function counts the number of n-Hurwitz orbits of size m
 InstallGlobalFunction("NrHurwitzOrbits", function(rack, n, m)
-  local all,x,i; 
+  local all,x,i;
   i:=0;
   all:=HurwitzOrbits(rack, n);
   for x in all do
     if Size(x) = m then
       i := i+1;
     fi;
-  od;    
+  od;
   return i;
 end);
 
-### This function returns the sizes of the Hurwitz orbits 
+### This function returns the sizes of the Hurwitz orbits
 InstallGlobalFunction("SizesHurwitzOrbits", function(rack, n)
-  local all,x,s; 
+  local all,x,s;
   s := [];
   all := HurwitzOrbits(rack, n);
   for x in all do
     if not Size(x) in s then
       Add(s, Size(x));
     fi;
-  od;    
-  return s; 
+  od;
+  return s;
 end);
 
 ### This function returns a list with one representative per orbit

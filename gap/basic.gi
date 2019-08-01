@@ -1,18 +1,18 @@
 
 InstallGlobalFunction("NewRack", function(n)
-	local rack; 
+	local rack;
   rack := rec(
     isRack := false,
     matrix := NullMat(n,n),
     labels := [1..n],
     size := n,
-    basis := "",				
-    comments := "",         
+    basis := "",
+    comments := "",
     inn := "",
     aut := "",
     env := ""
-  );    
-  return rack; 
+  );
+  return rack;
 end);
 
 InstallGlobalFunction("IsRackMatrix", function(matrix)
@@ -59,12 +59,12 @@ InstallGlobalFunction("IsRack", function(obj)
   return false;
 end);
 
-### This function computes the alexander rack 
-### given by: i>j = si+tj                              
-### Condition: s(t+s+-1)=0                            
+### This function computes the alexander rack
+### given by: i>j = si+tj
+### Condition: s(t+s+-1)=0
 ### REMARK: if s=1-t the result is the Alexander quandle
 InstallGlobalFunction("AlexanderRack", function(n,s,t)
-  local i,j,m; 
+  local i,j,m;
   if (s*(t+s-1) mod n) <> 0 then
     return fail;
   else
@@ -81,7 +81,7 @@ InstallGlobalFunction("AlexanderRack", function(n,s,t)
   fi;
 end);
 
-### Creates an abelian Rack 
+### Creates an abelian Rack
 InstallGlobalFunction("AbelianRack", function(n)
   return AffineCyclicRack(n, 1);
 end);
@@ -101,19 +101,19 @@ end);
 ### This function creates a rack object with the list of permutation given by <list>
 InstallGlobalFunction("RackFromPermutations", function(list)
   local i,j,n,m,rack;
-  
+
 	n := Size(list);
   m := NullMat(n,n);
   for i in [1..n] do
     for j in [1..n] do
-      m[i][j] := j^list[i]; 
+      m[i][j] := j^list[i];
     od;
   od;
   return RackFromAMatrix(m);
 end);
 
 ### This function returns the size of the finite <rack>
-InstallOtherMethod(Size, 
+InstallOtherMethod(Size,
 	[IsRecord],
   function(rack)
   	return rack.size;
@@ -136,7 +136,7 @@ InstallOtherMethod(IsInjective,
     return true;
 end);
 
-### Creates a cyclic rack", 
+### Creates a cyclic rack",
 InstallGlobalFunction("CyclicRack", function(n)
   local m, i, j;
   m := NullMat(n,n);
@@ -151,7 +151,7 @@ InstallGlobalFunction("CyclicRack", function(n)
   return RackFromAMatrix(m);
 end);
 
-### This function creates a dihedral quandle 
+### This function creates a dihedral quandle
 InstallGlobalFunction("DihedralRack", function(n)
   local m, i, j;
   m := NullMat(n,n);
@@ -170,7 +170,7 @@ InstallGlobalFunction("DihedralQuandle", function(n)
   return DihedralRack(n);
 end);
 
-### This function creates a trivial quandle 
+### This function creates a trivial quandle
 InstallGlobalFunction("TrivialRack", function(n)
   local i, j, m;
   m := NullMat(n,n);
@@ -241,7 +241,7 @@ InstallGlobalFunction("AffineSimpleQuandle", function(field, z)
 end);
 
 
-### This function apply a permutation to a rack 
+### This function apply a permutation to a rack
 InstallGlobalFunction("PermuteRack", function(rack, p)
   local tmp, i, j, m;
   m := rack.matrix;
@@ -254,7 +254,7 @@ InstallGlobalFunction("PermuteRack", function(rack, p)
   return RackFromAMatrix(tmp);
 end);
 
-### Computes the inner group of a <rack> 
+### Computes the inner group of a <rack>
 InstallGlobalFunction("InnerGroup", function(rack)
   local i;
 	if rack.inn <> "" then
@@ -265,7 +265,7 @@ InstallGlobalFunction("InnerGroup", function(rack)
   fi;
 end);
 
-# This function computes the transvection group of a rack 
+# This function computes the transvection group of a rack
 InstallGlobalFunction("TransvectionsGroup", function(rack)
   local x, y, gens, p;
   gens := [];
@@ -295,7 +295,7 @@ InstallGlobalFunction("MinimalGeneratingSubset", function(rack)
 	return rack.basis;
 end);
 
-InstallGlobalFunction("IsIsomorphicByPermutation", function(rack1, rack2, p) 
+InstallGlobalFunction("IsIsomorphicByPermutation", function(rack1, rack2, p)
 ### Checks if the permutation <p> gives an isomorphism from <rack1> to <rack2>
 #  [IsRack, IsRack, IsPerm],
   local size, rack1_ij, rack2_ij, i, j;
@@ -318,7 +318,7 @@ InstallGlobalFunction("IsIsomorphicByPermutation", function(rack1, rack2, p)
 end);
 
 ### This function checks if a given function is a rack morphism from <r> to <s>
-### Example: 
+### Example:
 ### gap> r := DihedralRack(3);
 ### gap> s := r;
 ### gap> for f in Hom(r, s) do Print("f=", f, " is morphism?", IsMorphism(f, r, s), "\n"); od;
@@ -334,13 +334,13 @@ InstallGlobalFunction("IsMorphism", function(f, r, s)
   return true;
 end);
 
-### This function returns an epimorphism from <r> to <s> (if exists) 
+### This function returns an epimorphism from <r> to <s> (if exists)
 InstallGlobalFunction("IsQuotient", function(r, s)
-  local f, h; 
+  local f, h;
   h := Hom(r, s);
   for f in h do
     if Size(Unique(f))=Size(s) then
-      return f;  
+      return f;
     fi;
   od;
   return false;
@@ -394,23 +394,23 @@ end);
 ### This function checks if <rack1> and <rack2> are isomorphic
 ### For that purpose a minimimal generating subset of <rack1> is computes
 InstallGlobalFunction("IsomorphismRacks", function(rack1, rack2)
-  local i, basis, f, s, pi, p; 
+  local i, basis, f, s, pi, p;
 
   if Size(rack1) <> Size(rack2) then
     return false;
   fi;
 
-  ### compute a minimal generating set 
+  ### compute a minimal generating set
   basis := MinimalGeneratingSubset(rack1);
 
   for f in Combinations([1..Size(rack1)], Size(basis)) do
     for s in PermutationsList(f) do
-      pi := [1..Size(rack1)] * 0; 
+      pi := [1..Size(rack1)] * 0;
       for i in [1..Size(basis)] do
         pi[basis[i]] := s[i];
       od;
       p := ExtendMorphism(rack1, rack2, pi);
-      if p <> false and PermList(p) <> fail then 
+      if p <> false and PermList(p) <> fail then
         if IsIsomorphicByPermutation(rack1, rack2, PermList(p)) = true then
           return PermList(p);
         fi;
@@ -448,7 +448,7 @@ InstallGlobalFunction("IsFaithful", function(rack)
 end);
 
 ### Is the rack homogeneous?
-### A rack is homogeneous if its automorphism group acts transitively 
+### A rack is homogeneous if its automorphism group acts transitively
 InstallGlobalFunction("IsHomogeneous", function(rack)
   return IsTransitive(AutomorphismGroup(rack), [1..Size(rack)]);
 end);
@@ -474,13 +474,13 @@ InstallGlobalFunction("RackFromAConjugacyClass", function(group, g)
 end);
 
 ### This function returns the rack associated to the vertices of
-### the tetrahedron, i.e. (1,2,3)^A4 
+### the tetrahedron, i.e. (1,2,3)^A4
 InstallGlobalFunction("TetrahedronRack", function()
   return RackFromAConjugacyClass(AlternatingGroup(4),(1,2,3));
 end);
 
 ### This function returns the rack associated to the vertices of
-### the tetrahedron, i.e. (1,3,2)^A4 
+### the tetrahedron, i.e. (1,3,2)^A4
 InstallGlobalFunction("InverseTetrahedronRack", function()
   return RackFromAConjugacyClass(AlternatingGroup(4),(1,3,2));
 end);
@@ -517,7 +517,7 @@ end);
 ### This function computes the direct product of two given racks
 InstallGlobalFunction("DirectProductOfRacks", function(rack1, rack2)
   local x,y,m,n1,n2,xy,tmp;
-  
+
   n1 := Size(rack1);
   n2 := Size(rack2);
   xy := Cartesian(rack1.matrix[1], rack2.matrix[1]);
@@ -526,7 +526,7 @@ InstallGlobalFunction("DirectProductOfRacks", function(rack1, rack2)
   for x in xy do
     for y in xy do
       tmp := [rack1.matrix[x[1]][y[1]], rack2.matrix[x[2]][y[2]]];
-      m[Position(xy,x)][Position(xy,y)] := Position(xy, tmp); 
+      m[Position(xy,x)][Position(xy,y)] := Position(xy, tmp);
     od;
   od;
   return RackFromAMatrix(m);
@@ -556,7 +556,7 @@ InstallGlobalFunction(EnvelopingGroup, function(rack)
  	n := Size(rack);
 
 	f := FreeGroup(n);
-	x := GeneratorsOfGroup(f); 
+	x := GeneratorsOfGroup(f);
 
 	rels := [];
 
@@ -573,12 +573,12 @@ InstallGlobalFunction("Components", function(rack)
   return Orbits(InnerGroup(rack));
 end);
 
-### Checks if the rack is a quandle 
-### i>i=i for all i  
+### Checks if the rack is a quandle
+### i>i=i for all i
 InstallGlobalFunction(IsQuandle, function(rack)
   local i;
   for i in [1..Size(rack)] do
-    if not RackAction(rack, i, i) = i then 
+    if not RackAction(rack, i, i) = i then
       return false;
     fi;
   od;
@@ -655,11 +655,11 @@ end);
 #####################
 ### other methods ###
 #####################
-InstallOtherMethod(AutomorphismGroup, 
+InstallOtherMethod(AutomorphismGroup,
   "Returns the automorphism group of <rack>",
   [IsRecord],
   function(rack)
-  #local i, f, s, pi, p, gens; 
+  #local i, f, s, pi, p, gens;
   local hom, l;
 
   if rack.aut = "" then
@@ -670,8 +670,8 @@ InstallOtherMethod(AutomorphismGroup,
 
 end);
 
-InstallOtherMethod(IsSimple, 
-  "Checks if the <rack> is simple", 
+InstallOtherMethod(IsSimple,
+  "Checks if the <rack> is simple",
   [IsRecord],
   function(rack)
   local inn, der, sizes;
@@ -711,7 +711,7 @@ InstallOtherMethod(IsSimple,
   return true;
 end);
 
-### This function computes the inverse of the rack 
+### This function computes the inverse of the rack
 InstallOtherMethod(Inverse,
   "Returns the inverse rack",
   [IsRecord],
@@ -729,7 +729,7 @@ end);
 
 ### This function computes the rank of a rack
 InstallOtherMethod(Rank,
-  "Computes the rank of a rack", 
+  "Computes the rank of a rack",
   [IsRecord],
   function(rack)
     local i,p;
@@ -755,7 +755,7 @@ InstallGlobalFunction("LocalExponent", function(rack, i, j)
   local k,e;
   e := 1;
   k := j;
-  while rack.matrix[i][k] <> j do 
+  while rack.matrix[i][k] <> j do
     k := rack.matrix[i][k];
     e := e+1;
   od;
@@ -786,7 +786,7 @@ end);
 
 ### This function computes the set of morphism from one rack to another
 InstallOtherMethod(Hom,
-  "Computes the set of morphism from <rack1> to <rack2>", 
+  "Computes the set of morphism from <rack1> to <rack2>",
   [IsRecord, IsRecord],
   function(rack1, rack2)
     local l,o,w,i,j,f,g;
@@ -795,7 +795,7 @@ InstallOtherMethod(Hom,
     while not Size(l) = 0 do
       w := l[1];
       Remove(l,1);
-      #if w 
+      #if w
         if not 0 in w then
           Add(o,w);
         else
@@ -813,11 +813,11 @@ InstallOtherMethod(Hom,
   #  fi;
     return o;
 end);
-   
+
 ### This function computes the degree of <rack>
 ### The degree is defined as the least commom multiple of the orders of the permutations defining <rack>
 InstallOtherMethod(Degree,
-  "Computes the set of degrees of the <rack>", 
+  "Computes the set of degrees of the <rack>",
   [IsRecord],
   function(rack)
     local i,d,m;
@@ -860,7 +860,7 @@ end);
 
 ### General function to constructing racks
 ###
-### EXAMPLES: 
+### EXAMPLES:
 ### Construct the rack associated to a conjugacy class of a group
 ###     gap> Rack(SymmetricGroup(3), (1,2));
 ###     gap> Rack(SymmetricGroup(3), (), (1,2));
@@ -868,11 +868,11 @@ end);
 ###     gap> Rack(ConjugacyClass(SymmetricGroup(3), (1,2)));
 ###     gap> Rack(ConjugacyClasses(SymmetricGroup(3));
 ###
-### EXAMPLE: 
+### EXAMPLE:
 ### Construct the rack with a given matrix
-###     gap> Rack([[1, 3, 2], [3, 2, 1], [2, 1, 3]]); 
+###     gap> Rack([[1, 3, 2], [3, 2, 1], [2, 1, 3]]);
 ###
-### EXAMPLE: 
+### EXAMPLE:
 ### Contruct the rack given by permutations
 ###     gap> Rack((2,3), (1,3), (1,2));
 ###     gap> Rack([(2,3), (1,3), (1,2)]);
@@ -883,7 +883,7 @@ InstallGlobalFunction("Rack", function(arg)
   if IsGroup(arg[1]) then
     group := arg[1];
     # remove the group from the argument
-    Remove(arg, 1); 
+    Remove(arg, 1);
     if IsList(arg[1]) then
       return RackFromConjugacyClasses(group, arg[1]);
     else
@@ -908,7 +908,7 @@ InstallGlobalFunction("Rack", function(arg)
     fi;
   fi;
 
-  # Only conjugacy classes in the argument 
+  # Only conjugacy classes in the argument
   if IsConjugacyClassGroupRep(arg[1]) then
     return RackFromConjugacyClasses(ActingDomain(arg[1]), List(arg, Representative));
   fi;
@@ -932,7 +932,7 @@ end);
 
 ### This function checks whether <f> is a good involution with respect to <rack>
 ### This means:
-### 1) f^2 is the identity 
+### 1) f^2 is the identity
 ### 2) f(x>y)=x>f(y) for all x,y
 ### 3) x>(f(x)>y)=y for all x,y
 InstallGlobalFunction("IsGoodInvolution", function(rack, f)
@@ -963,7 +963,7 @@ InstallGlobalFunction("GoodInvolutions", function(rack)
   inv := [];
 
   p := Permutations(rack);
-  
+
   for c in Filtered(ConjugacyClasses(SymmetricGroup(Size(rack))), c->Order(Representative(c)) <= 2) do
     for f in c do
       if ForAll([1..Size(rack)], x->p[x^f]=Inverse(p[x])) then
@@ -998,7 +998,7 @@ InstallGlobalFunction("TableL", function(rack)
   Display(rack.matrix);
 end);
 
-### This function returns the transposed table (or matrix) of the rack 
+### This function returns the transposed table (or matrix) of the rack
 ### The transposed table is defined as M(j,i)=i>j
 InstallGlobalFunction("TableR", function(rack)
   Display(TransposedMat(rack.matrix));
@@ -1046,22 +1046,22 @@ InstallGlobalFunction("AmalgamatedSum", function(rack1, rack2, sigma, tau)
 end);
 
 ### This function returns true if the maps <sigma> and <tau> satisfy
-### a) phi_z sigma_y = sigma_{tau_z(y)} phi_z, and 
+### a) phi_z sigma_y = sigma_{tau_z(y)} phi_z, and
 ### b) phi_y tau_z = tau_{sigma_y(z)} phi_y
 InstallGlobalFunction("AmalgamatedMaps", function(rack1, rack2)
   local arack1, arack2, sigma, tau, maps;
-  
+
   maps := [];
 
   for sigma in IteratorOfTuples(AutomorphismGroup(rack2), Size(rack1)) do
     for tau in IteratorOfTuples(AutomorphismGroup(rack1), Size(rack2)) do
-      if CheckAmalgamatedMaps(rack1, rack2, sigma, tau) = true then 
+      if CheckAmalgamatedMaps(rack1, rack2, sigma, tau) = true then
         Add(maps, [sigma, tau]);
       fi;
     od;
   od;
   return maps;
-end);  
+end);
 
 ### This function returns true if the maps
 ### <sigma> and <tau> are amalgamated with respect to <rack1> and <rack2>

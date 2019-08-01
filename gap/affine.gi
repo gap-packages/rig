@@ -5,14 +5,14 @@
 
 InstallGlobalFunction("ContainsCommutingElements", function(rack)
   local j, k;
-  for j in [1..Size(rack)] do 
-    for k in [1..Size(rack)] do 
+  for j in [1..Size(rack)] do
+    for k in [1..Size(rack)] do
       if j <> k then
         if rack.matrix[j][k] = k then
           return true;
         fi;
-      fi; 
-    od; 
+      fi;
+    od;
   od;
   return false;
 end);
@@ -47,7 +47,7 @@ InstallGlobalFunction("AffinisationSubtract", function(matrix, plus, minus)
       return j;
     fi;
   od;
-  return fail; 
+  return fail;
 end);
 
 ### WARNING: It works only for indecomposable quandles
@@ -76,14 +76,14 @@ InstallGlobalFunction("IsAffineIndecomposableQuandle", function(rack)
     #return [false, "Affinisation is not abelian."];
   fi;
   p := rack.matrix[1];
-  for j in [1..Size(rack)] do 
+  for j in [1..Size(rack)] do
     for k in [1..Size(rack)] do
       x := AffinisationSubtract(m, m[j][p[k]], p[j]);
       if x <> rack.matrix[j][k] then
         return false;
         #return [false, "Action is not realised."];
       fi;
-    od; 
+    od;
   od;
   return true;
   #return [true, StructureDescription(a)];
