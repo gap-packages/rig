@@ -1,0 +1,579 @@
+<html><head><title>[Example] 3 List of functions</title></head>
+<body text="#000000" bgcolor="#ffffff">
+[<a href = "chapters.htm">Up</a>] [<a href ="CHAP002.htm">Previous</a>] [<a href = "theindex.htm">Index</a>]
+<h1>3 List of functions</h1><p>
+<p>
+The following is a list of the functions available in the <font face="Gill Sans,Helvetica,Arial">RiG</font> package. 
+<p>
+<li><code>IsAffineIndecomposableQuandle( </code><var>quandle</var><code> ) ;</code>
+<p>
+checks if the <var>quandle</var> is an affine quandle. This function only works 
+with indecomposable quandles. For example:
+<p>
+<pre>
+gap&gt; r := SmallQuandle(5,1);;
+gap&gt; IsAffineIndecomposableQuandle(r);
+true
+gap&gt; s := SmallQuandle(6,1);;
+gap&gt; IsAffineIndecomposableQuandle(s);
+false
+</pre>
+<p>
+<li><code>AbelianRack( </code><var>n</var><code> ) ;</code>
+<li><code>TrivialRack( </code><var>n</var><code> ) ;</code>
+<p>
+creates an abelian rack of size <var>n</var>. For example:
+<p>
+<pre>
+gap&gt; r := TrivialRack(3);;
+gap&gt; Display(r);
+rec(
+  isRack := true,
+  matrix := [ [ 1, 2, 3 ], [ 1, 2, 3 ], [ 1, 2, 3 ] ],
+  labels := [ 1 .. 3 ],
+  size := 3,
+  basis := "",
+  comments := "",
+  inn := "",
+  aut := "",
+  env := "" )
+</pre>
+<p>
+<li><code>AffineCyclicRack( </code><var>n</var><code>, </code><var>x</var><code> )</code>
+<p>
+creates an affine rack associated to the cyclic group of order <var>n</var> and
+the multiplication by <var>x</var>. For example, the dihedral rack of size 3
+can be obtained as:
+<p>
+<pre>
+gap&gt; r := AffineCyclicRack(3,2);;
+gap&gt; Display(r);
+rec(
+  isRack := true,
+  matrix := [ [ 1, 3, 2 ], [ 3, 2, 1 ], [ 2, 1, 3 ] ],
+  labels := [ 1 .. 3 ],
+  size := 3,
+  basis := "",
+  comments := "",
+  inn := "",
+  aut := "",
+  env := "" )
+</pre>
+<p>
+<li><code>AffineRack( </code><var>field</var><code>, </code><var>field_element</var><code> )</code>
+<p>
+creates an affine rack associated to <var>field</var> and the multiplication
+by the <var>field_element</var>. For example:
+<p>
+<pre>
+gap&gt; r := AffineRack(GF(3), Z(3));;
+gap&gt; Display(r);
+rec(
+  isRack := true,
+  matrix := [ [ 1, 3, 2 ], [ 3, 2, 1 ], [ 2, 1, 3 ] ],
+  labels := [ 1 .. 3 ],
+  size := 3,
+  basis := "",
+  comments := "",
+  inn := "",
+  aut := "",
+  env := "" )
+</pre>
+<p>
+<li><code>AlexanderRack( </code><var>n</var><code>, </code><var>s</var><code>, </code><var>t</var><code> )</code>
+<p>
+returns the Alexander rack of size <var>n</var> associated to <var>s</var> and <var>t</var>.
+If <i>s</i>=1&#8722;<i>t</i> then the result is the Alexander quandle.
+<p>
+<li><code>CyclicRack( </code><var>n</var><code> )</code>
+<p>
+returns the cyclic rack of order <var>n</var>. For example:
+<p>
+<pre>
+gap&gt; r := CyclicRack(3);;
+gap&gt; Display(r);
+rec(
+  isRack := true,
+  matrix := [ [ 2, 3, 1 ], [ 2, 3, 1 ], [ 2, 3, 1 ] ],
+  labels := [ 1 .. 3 ],
+  size := 3,
+  basis := "",
+  comments := "",
+  inn := "",
+  aut := "",
+  env := "" )
+</pre>
+<p>
+<li><code>CoreRack( </code><var>group</var><code> )</code>
+<p>
+returns the core rack of the group <var>group</var>. For example:
+<p>
+<pre>
+gap&gt; r := CoreRack(CyclicGroup(3));;
+gap&gt; Display(r);
+rec(
+  isRack := true,
+  matrix := [ [ 1, 3, 2 ], [ 3, 2, 1 ], [ 2, 1, 3 ] ],
+  labels := [ 1 .. 3 ],
+  size := 3,
+  basis := "",
+  comments := "",
+  inn := "",
+  aut := "",
+  env := "" )
+</pre>
+<p>
+<li><code>DihedralRack( </code><var>n</var><code> )</code>
+<p>
+creates a dihedral rack of size <var>n</var>. For example:
+<p>
+<pre>
+gap&gt; r := DihedralRack(5);;
+gap&gt; Display(r.matrix);
+[ [  1,  5,  4,  3,  2 ],
+  [  3,  2,  1,  5,  4 ],
+  [  5,  4,  3,  2,  1 ],
+  [  2,  1,  5,  4,  3 ],
+  [  4,  3,  2,  1,  5 ] ]
+</pre>
+<p>
+<li><code>DirectProductOfRack( </code><var>rack1</var><code>, </code><var>rack2</var><code> )</code>
+<p>
+returns the direct product of <var>rack1</var> and <var>rack2</var>.
+For example:
+<p>
+<pre>
+gap&gt; r := DirectProductOfRacks(DihedralRack(3), TrivialRack(2));;
+gap&gt; Display(r.matrix);
+[ [  1,  2,  5,  6,  3,  4 ],
+  [  1,  2,  5,  6,  3,  4 ],
+  [  5,  6,  3,  4,  1,  2 ],
+  [  5,  6,  3,  4,  1,  2 ],
+  [  3,  4,  1,  2,  5,  6 ],
+  [  3,  4,  1,  2,  5,  6 ] ]
+</pre>
+<p>
+<li><code>HomogeneousRack( </code><var>group</var><code>, </code><var>automorphism</var><code> )</code>
+<li><code>TwistedHomogeneousRack( </code><var>group</var><code>, </code><var>automorphism</var><code> )</code>
+<p>
+creates a (twisted)homogeneous rack associated to the <var>automorphism</var> 
+of the <var>group</var> given. For example:
+<p>
+<pre>
+gap&gt; f := ConjugatorAutomorphism(SymmetricGroup(3), (1,2)));;
+gap&gt; r := HomogeneousRack(SymmetricGroup(3), f);;
+gap&gt; Display(r.matrix);
+[ [  1,  6,  3,  5,  4,  2 ],
+  [  4,  2,  6,  1,  5,  3 ],
+  [  1,  6,  3,  5,  4,  2 ],
+  [  5,  3,  2,  4,  1,  6 ],
+  [  4,  2,  6,  1,  5,  3 ],
+  [  5,  3,  2,  4,  1,  6 ] ]
+</pre>
+<p>
+<li><code>RackByListOfPermutations( </code><var>list</var><code> )</code>
+<p>
+returns the rack given by the list of permutations given in <var>list</var>. For example:
+<p>
+<pre>
+gap&gt; r := RackFromListOfPermutations([(2,3),(1,3),(1,2)]);;
+gap&gt; Display(r.matrix);
+[ [  1,  3,  2 ],
+  [  3,  2,  1 ],
+  [  2,  1,  3 ] ]
+</pre>
+<p>
+<li><code>Rank(</code><var>rack</var><code>)</code>
+<p>
+return the rank of <var>rack</var>. If <var>rack</var> is a quandle, the result is 1.
+<p>
+<li><code>AutomorphismGroup( </code><var>rack</var><code> )</code>
+<p>
+returns the group of automorphism of <var>rack</var>. For example:
+<p>
+<pre>
+gap&gt; AutomorphismGroup(TrivialRack(3));                  
+Group([ (), (2,3), (1,2), (1,2,3), (1,3,2), (1,3) ])
+</pre>
+<p>
+<li><code>InnerGroup( </code><var>rack</var><code> )</code>
+<p>
+returns the inner group of the rack. For example
+<p>
+<pre>
+gap&gt; InnerGroup(DihedralRack(3));
+Group([ (2,3), (1,3), (1,2) ])
+gap&gt; InnerGroup(TrivialRack(5)); 
+Group(())
+</pre>
+<p>
+<li><code>IsomorphismRack( </code><var>r</var><code>, </code><var>s</var><code> )</code>
+<p>
+computes  an  isomorphism  between  the  racks  <var>r</var>  and  <var>s</var> if they are
+isomorphic and returns <code>fail</code> otherwise.
+<p>
+<pre>
+gap&gt; a := Rack(AlternatingGroup(4), (1,2,3));;
+gap&gt; b := Rack(AlternatingGroup(4), (1,3,2));;
+gap&gt; c := AbelianRack(4);
+gap&gt; IsomorphismRacks(a,b);
+(3,4)
+gap&gt; IsomosphismRacks(a,c);
+fail
+</pre>
+<p>
+<li><code>IsMorphism ( </code><var>f</var><code>, </code><var>r</var><code>, </code><var>s</var><code> )</code>
+<p>
+Checks if <var>f</var> is a rack morphism from <var>r</var> to <var>s</var>
+<p>
+<pre>
+gap&gt; r := SmallQuandle(6,1);;
+gap&gt; s := DihedralRack(3);;
+gap&gt; for f in Hom(r,s) do Print("Is f=", f, ", a rack morphism? ", IsMorphism(f, r, s), "\n"); od;
+Is f=[ 1, 1, 1, 1, 1, 1 ], a rack morphism? true
+Is f=[ 1, 1, 2, 2, 3, 3 ], a rack morphism? true
+Is f=[ 1, 1, 3, 3, 2, 2 ], a rack morphism? true
+Is f=[ 2, 2, 1, 1, 3, 3 ], a rack morphism? true
+Is f=[ 2, 2, 2, 2, 2, 2 ], a rack morphism? true
+Is f=[ 2, 2, 3, 3, 1, 1 ], a rack morphism? true
+Is f=[ 3, 3, 1, 1, 2, 2 ], a rack morphism? true
+Is f=[ 3, 3, 2, 2, 1, 1 ], a rack morphism? true
+Is f=[ 3, 3, 3, 3, 3, 3 ], a rack morphism? true
+</pre>
+<p>
+<li><code>IsQuotient ( </code><var>r</var><code>, </code><var>s</var><code> )</code>
+<p>
+checks if there exists an epimorphism of racks from <var>r</var> to <var>s</var> The following
+example shows that the two indecomposable quandles of size 6 are not simple.
+<p>
+<pre>
+gap&gt; IsQuotient(SmallQuandle(6,1), DihedralRack(3));
+[ 1, 1, 2, 2, 3, 3 ]
+gap&gt; IsQuotient(SmallQuandle(6,2), DihedralRack(3));
+[ 1, 1, 2, 2, 3, 3 ]
+</pre>
+<p>
+<pre>
+gap&gt; IsQuotient(DihedralRack(4), TrivialRack(2));
+[ 1, 2, 1, 2 ]
+</pre>
+<p>
+<li><code>Rack( </code><var>matrix</var><code> ) F</code>
+<p>
+creates a rack structure over the set <i>X</i>={1,&#183;.&#183;,<i>n</i>} with the structure 
+given by <var>matrix</var>. For example, to get the abelian rack of two elements:
+<p>
+<pre>
+gap&gt; a := AbelianRack(2);;
+gap&gt; b := Rack([[1,2],[1,2]]);;
+gap&gt; Display(b.matrix); 
+[ [  1,  2 ],
+  [  1,  2 ] ]
+gap&gt; a=b;
+true
+</pre>
+<p>
+<li><code>Rack( </code><var>group</var><code>, </code><var>group_element</var><code> ) F</code>
+<p>
+creates a rack structure from the conjugacy class in <var>group</var> of 
+<var>group_element</var>. For example, the rack associated to the 
+vertices of the tetrahedron is the rack of the conjugacy class
+of (1,2,3) in the alternating group in four letters:
+<p>
+<pre>
+gap&gt; r := Rack(AlternatingGroup(4), (1,2,3));;
+gap&gt; Display(r.matrix);
+[ [  1,  3,  4,  2 ],
+  [  4,  2,  1,  3 ],
+  [  2,  4,  3,  1 ],
+  [  3,  1,  2,  4 ] ]
+</pre>
+<p>
+<li><code>Rack( </code><var>set</var><code> )</code>
+<p>
+creates a rack structure from the elements of the <var>set</var>. For example:
+<p>
+<pre>
+gap&gt; set := Set([(1,2),(2,3),(1,3)]);;
+gap&gt; Rack(set) = Rack(SymmetricGroup(3), (1,2));
+true
+</pre>
+<p>
+<li><code>BoundaryMap( </code><var>rack</var><code>, </code><var>n</var><code> ) F</code>
+<p>
+computes the rack boundary map.
+<p>
+<li><code>RackHomology ( </code><var>rack</var><code>, </code><var>order</var><code> ) F</code>
+<li><code>RackCohomology ( </code><var>rack</var><code>, </code><var>order</var><code> ) F</code>
+<p>
+computes the abelian rack (co)homology. 
+<p>
+<pre>
+gap&gt; RackCohomology(DihedralRack(3),2);
+[ 1, [  ] ]
+gap&gt; RackCohomology(TrivialRack(3),2); 
+[ 9, [  ] ]
+gap&gt; RackHomology(TrivialRack(2),2);
+[ 4, [  ] ]
+gap&gt; RackHomology(DihedralRack(4),2);    
+[ 4, [ 2, 2 ] ]
+</pre>
+<p>
+<li><code>QuantumSymmetrizer( </code><var>rack</var><code>, </code><var>q</var><code>, </code><var>n</var><code> )</code>
+<p>
+computes the quantum symmetrizer of degree <var>n</var>.
+<p>
+<li><code>Dimension( </code><var>nichols_datum</var><code>, </code><var>n</var><code> )</code>
+<p>
+computes the dimension in degree <var>n</var> of the Nichols algebra <var>nichols_datum</var> In
+the following example we compute all dimensions of a known 12-dimensional
+Nichols algebra.
+<p>
+<pre>
+gap&gt; r := DihedralRack(3);;
+gap&gt; q := [ [ -1, -1, -1 ], [ -1, -1, -1 ], [ -1, -1, -1 ] ];;
+gap&gt; n := NicholsDatum(r, q, Rationals);;
+gap&gt; for i in [0..5] do
+Print("Degree ", i, ", dimension=", Dimension(n,i), "\n");
+od;
+Degree 0, dimension=1
+Degree 1, dimension=3
+Degree 2, dimension=4
+Degree 3, dimension=3
+Degree 4, dimension=1
+Degree 5, dimension=0
+</pre>
+<p>
+<li><code>Relations4GAP( </code><var>nichols_datum</var><code>, </code><var>n</var><code> )</code>
+<p>
+returns the relation in degree <var>n</var> of the Nichols algebra <var>nichols_datum</var> The
+relations are returned in gbnp format.  In the following example we calculate
+all relations in degree two of a 12-dimensional Nichols algebra.
+<p>
+<pre>
+gap&gt; LoadPackage("gbnp");
+gap&gt; r := DihedralRack(3);;
+gap&gt; q := [ [ -1, -1, -1 ], [ -1, -1, -1 ], [ -1, -1, -1 ] ];;
+gap&gt; rels := Relations4GAP(r, q, 2);;
+gap&gt; PrintNPList(rels);
+ a^2 
+ b^2 
+ ab + bc + ca 
+ ac + ba + cb 
+ c^2 
+</pre>
+<p>
+<li><code>RackOrbit( </code><var>rack</var><code>, </code><var>i</var><code> )</code>
+<p>
+returns the orbit of the element <var>i</var>, given by the action of the inner group.
+<p>
+<pre>
+gap&gt; r := DihedralRack(4);;
+gap&gt; RackOrbit(r, 1);
+[1, 3]
+</pre>
+<p>
+<li><code>Nr_k ( </code><var>rack</var><code>, </code><var>n</var><code> )</code>
+<p>
+returns the number of <i>j</i> such that the braided orbit of (1,<i>j</i>) 
+has <var>n</var> elements.
+<p>
+<pre>
+gap&gt; Check := function(rack)
+&gt; local n,s,d;
+&gt; d := Size(rack);
+&gt; s := 0;
+&gt; for n in [3..d^2] do
+&gt;   s := s+(n-2)*Nr_k(rack,n)/(2*n);
+&gt; od;
+&gt; if s &lt;= 1 then
+&gt;   return s;
+&gt; else
+&gt;   return fail;
+&gt; fi;
+&gt; end;
+gap&gt; a4 := AlternatingGroup(4);;
+gap&gt; s4 := SymmetricGroup(4);;
+gap&gt; s5 := SymmetricGroup(5);;
+gap&gt; Check(RackFromAConjugacyClass(a4, (1,2,3)));
+1/2
+gap&gt; Check(RackFromAConjugacyClass(s4, (1,2)));    
+2/3
+gap&gt; Check(RackFromAConjugacyClass(s4, (1,2,3,4));
+2/3
+gap&gt; Check(RackFromAConjugacyClass(s5, (1,2)));    
+1
+gap&gt; Check(AffineCyclicRack(5,2));                            
+1
+gap&gt; Check(AffineCyclicRack(5,3));
+1
+gap&gt; Check(AffineCyclicRack(7,5));  
+1
+gap&gt; Check(AffineCyclicRack(7,3));
+1
+gap&gt; Check(DihedralRack(3));      
+1/3
+</pre>
+<p>
+<li><code>Nr_l ( </code><var>rack</var><code>, </code><var>n</var><code> )</code>
+<p>
+returns the number of braided orbits with <var>n</var> elements, when <var>rack</var> is of
+group-type.
+<p>
+<li><code>Braiding ( </code><var>rack</var><code> )</code>
+<p>
+returns the braiding given by <var>rack</var>.
+<p>
+<pre>
+gap&gt; Display(Braiding(TrivialRack(2)));  
+[ [  1,  0,  0,  0 ],
+  [  0,  0,  1,  0 ],
+  [  0,  1,  0,  0 ],
+  [  0,  0,  0,  1 ] ]
+</pre>
+<p>
+<li><code>SubracksUpToIso ( </code><var>rack</var><code>, </code><var>subr</var><code>, </code><var>n</var><code> )</code>
+<p>
+returns all the subracks of <var>rack</var> containing <var>subr</var> of size less or equal than
+<var>n</var> (up to rack isomorphism).
+<p>
+<pre>
+gap&gt; r := DihedralRack(8);;
+gap&gt; subracks := SubracksUpToIso(r,[1],8);;
+gap&gt; for s in subracks do
+&gt; Print(Size(s),"\n");
+&gt; od;
+1
+8
+4
+2
+</pre>
+<p>
+<li><code>IsConnected ( </code><var>rack</var><code> )</code>
+<li><code>IsIndecomposable ( </code><var>rack</var><code> )</code>
+<p>
+returns true if the rack is indecomposable (i.e. connected).
+<p>
+<pre>
+gap&gt; r := DihedralRack(3);;
+gap&gt; IsIndecomposable(r);
+true
+gap&gt; s := DihedralRack(4);;
+gap&gt; IsIndecomposable(s);
+false
+</pre>
+<p>
+<li><code>IsHomogeneous ( </code><var>rack</var><code> )</code>
+<p>
+returns true is the automorphism group of the rack acts transitively on <var>rack</var>.
+<p>
+<li><code>IsHomologous( </code><var>rack</var><code>, </code><var>q1</var><code>, </code><var>q2</var><code> )</code>
+<li><code>TorsionGenerators( </code><var>rack</var><code>, </code><var>n</var><code> )</code>
+<li><code>SecondCohomologyTorsionGenerators( </code><var>rack</var><code> )</code>
+<li><code>LocalExponent( </code><var>rack</var><code>, </code><var>i</var><code>, </code><var>j</var><code> )</code>
+<li><code>LocalExponents( </code><var>rack</var><code> )</code>
+<li><code>Degree( </code><var>rack</var><code> )</code>
+<li><code>RackAction( </code><var>rack</var><code>, </code><var>i</var><code>, </code><var>j</var><code> )</code>
+<li><code>InverseRackAction( </code><var>rack</var><code>, </code><var>i</var><code>, </code><var>j</var><code> )</code>
+<li><code>Hom( </code><var>rack1</var><code>, </code><var>rack2</var><code> )</code>
+<p>
+<li><code>Permutations( </code><var>rack</var><code> )</code>
+<p>
+returns the list of permutations generating the <var>rack</var>.
+<p>
+<pre>
+gap&gt; r := TetrahedronRack();;
+gap&gt; Permutations(r);
+[ (2,3,4), (1,4,3), (1,2,4), (1,3,2) ]
+</pre>
+<p>
+<li><code>HurwitzOrbit( </code><var>rack</var><code>, </code><var>vector</var><code> )</code>
+<p>
+computes the Hurwitz orbit of the <var>vector</var>
+<p>
+<pre>
+gap&gt; r := DihedralRack(3);   
+gap&gt; HurwitzOrbit(r, [1,1,1]); 
+[ [ 1, 1, 1 ] ]
+gap&gt; HurwitzOrbit(r, [1,2,3]);
+[ [ 1, 2, 3 ], [ 3, 1, 3 ], [ 1, 1, 2 ], [ 2, 3, 3 ], [ 3, 2, 1 ], [ 1, 3, 1 ], [ 3, 3, 2 ], [ 2, 1, 1 ] ]
+</pre>
+<p>
+<li><code>HurwitzOrbits( </code><var>rack</var><code>, </code><var>n</var><code> )</code>
+<p>
+returns the list of all <var>n</var>-Hurwitz orbits associated to the rack <var>rack</var>.
+<p>
+<pre>
+gap&gt; r := DihedralRack(3);;
+gap&gt; HurwitzOrbits(r, 3);
+[ [ [ 1, 1, 1 ] ], [ [ 1, 1, 2 ], [ 1, 3, 1 ], [ 2, 1, 1 ], [ 1, 2, 3 ], [ 3, 2, 1 ], [ 3, 1, 3 ], [ 3, 3, 2 ], 
+      [ 2, 3, 3 ] ], [ [ 1, 1, 3 ], [ 1, 2, 1 ], [ 3, 1, 1 ], [ 1, 3, 2 ], [ 2, 3, 1 ], [ 2, 1, 2 ], [ 2, 2, 3 ], 
+      [ 3, 2, 2 ] ], [ [ 1, 2, 2 ], [ 3, 1, 2 ], [ 2, 3, 2 ], [ 3, 3, 1 ], [ 2, 1, 3 ], [ 3, 2, 3 ], [ 2, 2, 1 ], 
+      [ 1, 3, 3 ] ], [ [ 2, 2, 2 ] ], [ [ 3, 3, 3 ] ] ]
+</pre>
+<p>
+<li><code>HurwitzOrbitsRepresentatives( </code><var>rack</var><code>, </code><var>n</var><code> )</code>
+<p>
+returns the list of representatives of all <var>n</var>-Hurwitz orbits of the rack <var>rack</var>.
+<p>
+<pre>
+gap&gt; r := DihedralRack(3);;
+gap&gt; HurwitzOrbitsRepresentatives(r, 3);
+[ [ 1, 1, 1 ], [ 1, 1, 2 ], [ 1, 1, 3 ], [ 1, 2, 2 ], [ 2, 2, 2 ], [ 3, 3, 3 ] ]
+</pre>
+<p>
+<li><code>HurwitzOrbitsRepresentativesWS( </code><var>rack</var><code>, </code><var>n</var><code> )</code>
+<p>
+returns the list of representatives of all <var>n</var>-Hurwitz orbits of the rack
+<var>rack</var>. The sizes of each orbit are included.
+<p>
+<pre>
+gap&gt; r := DihedralRack(3);;
+gap&gt; SizesHurwitzOrbits(r, 3);
+[ 1, 8 ]
+gap&gt; HurwitzOrbitsRepresentativesWS(r, 3);
+[ [ [ 1, 1, 1 ], 1 ], [ [ 1, 1, 2 ], 8 ], [ [ 1, 1, 3 ], 8 ], [ [ 1, 2, 2 ], 8 ], [ [ 2, 2, 2 ], 1 ], [ [ 3, 3, 3 ], 1 ] ]
+</pre>
+<p>
+<li><code>NrHurwitzOrbits( </code><var>rack</var><code>, </code><var>n</var><code>, </code><var>size</var><code> )</code>
+<p>
+returns the number of <var>n</var>-Hurwitz orbits of a given <var>size</var>
+<p>
+<pre>
+gap&gt; r := DihedralRack(3);;
+gap&gt; NrHurwitzOrbits(r, 3, 8);
+3
+</pre>
+<p>
+<li><code>SizesHurwitzOrbits( </code><var>rack</var><code>, </code><var>n</var><code> )</code>
+<p>
+returns the sizes all <var>n</var>-Hurwitz orbits of <var>rack</var>.
+<p>
+<pre>
+gap&gt; r := TetrahedronRack();;
+gap&gt; SizesHurwitzOrbits(r, 3);
+[ 1, 8, 12 ]
+</pre>
+<p>
+<li><code>SmallIndecomposableQuandle( </code><var>size</var><code>, </code><var>number</var><code> )</code>
+<p>
+returns the indecomposable quandle.
+<p>
+<li><code>TetrahedronRack()</code>
+<p>
+returns the rack associated to the vertices of the tetrahedron.
+<p>
+<pre>
+gap&gt; r := TetrahedronRack();;
+gap&gt; Display(r.matrix);
+[ [  1,  3,  4,  2 ],
+  [  4,  2,  1,  3 ],
+  [  2,  4,  3,  1 ],
+  [  3,  1,  2,  4 ] ]
+</pre>
+<p>
+<p>
+[<a href = "chapters.htm">Up</a>] [<a href ="CHAP002.htm">Previous</a>] [<a href = "theindex.htm">Index</a>]
+<P>
+<address>Example manual<br>August 2019
+</address></body></html>
