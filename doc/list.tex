@@ -13,6 +13,7 @@ gap> IsAffineIndecomposableQuandle(r);
 true
 gap> s := SmallQuandle(6,1);;
 gap> IsAffineIndecomposableQuandle(s);
+# It contains commuting elements
 false
 \endexample
 
@@ -25,15 +26,15 @@ creates an abelian rack of size <n>. For example:
 gap> r := TrivialRack(3);;
 gap> Display(r);
 rec(
-  isRack := true,
-  matrix := [ [ 1, 2, 3 ], [ 1, 2, 3 ], [ 1, 2, 3 ] ],
-  labels := [ 1 .. 3 ],
-  size := 3,
+  aut := "",
   basis := "",
   comments := "",
+  env := "",
   inn := "",
-  aut := "",
-  env := "" )
+  isRack := true,
+  labels := [ 1 .. 3 ],
+  matrix := [ [ 1, 2, 3 ], [ 1, 2, 3 ], [ 1, 2, 3 ] ],
+  size := 3 )
 \endexample
 
 \>AffineCyclicRack( <n>, <x> )
@@ -46,15 +47,15 @@ can be obtained as:
 gap> r := AffineCyclicRack(3,2);;
 gap> Display(r);
 rec(
-  isRack := true,
-  matrix := [ [ 1, 3, 2 ], [ 3, 2, 1 ], [ 2, 1, 3 ] ],
-  labels := [ 1 .. 3 ],
-  size := 3,
+  aut := "",
   basis := "",
   comments := "",
+  env := "",
   inn := "",
-  aut := "",
-  env := "" )
+  isRack := true,
+  labels := [ 1 .. 3 ],
+  matrix := [ [ 1, 3, 2 ], [ 3, 2, 1 ], [ 2, 1, 3 ] ],
+  size := 3 )
 \endexample
 
 \>AffineRack( <field>, <field_element> )
@@ -66,15 +67,15 @@ by the <field_element>. For example:
 gap> r := AffineRack(GF(3), Z(3));;
 gap> Display(r);
 rec(
-  isRack := true,
-  matrix := [ [ 1, 3, 2 ], [ 3, 2, 1 ], [ 2, 1, 3 ] ],
-  labels := [ 1 .. 3 ],
-  size := 3,
+  aut := "",
   basis := "",
   comments := "",
+  env := "",
   inn := "",
-  aut := "",
-  env := "" )
+  isRack := true,
+  labels := [ 1 .. 3 ],
+  matrix := [ [ 1, 3, 2 ], [ 3, 2, 1 ], [ 2, 1, 3 ] ],
+  size := 3 )
 \endexample
 
 \>AlexanderRack( <n>, <s>, <t> )
@@ -93,15 +94,15 @@ returns the cyclic rack of order <n>. For example:
 gap> r := CyclicRack(3);;
 gap> Display(r);
 rec(
-  isRack := true,
-  matrix := [ [ 2, 3, 1 ], [ 2, 3, 1 ], [ 2, 3, 1 ] ],
-  labels := [ 1 .. 3 ],
-  size := 3,
+  aut := "",
   basis := "",
   comments := "",
+  env := "",
   inn := "",
-  aut := "",
-  env := "" )
+  isRack := true,
+  labels := [ 1 .. 3 ],
+  matrix := [ [ 2, 3, 1 ], [ 2, 3, 1 ], [ 2, 3, 1 ] ],
+  size := 3 )
 \endexample
 
 \>CoreRack( <group> )
@@ -112,15 +113,15 @@ returns the core rack of the group <group>. For example:
 gap> r := CoreRack(CyclicGroup(3));;
 gap> Display(r);
 rec(
-  isRack := true,
-  matrix := [ [ 1, 3, 2 ], [ 3, 2, 1 ], [ 2, 1, 3 ] ],
-  labels := [ 1 .. 3 ],
-  size := 3,
+  aut := "",
   basis := "",
   comments := "",
+  env := "",
   inn := "",
-  aut := "",
-  env := "" )
+  isRack := true,
+  labels := [ 1 .. 3 ],
+  matrix := [ [ 1, 3, 2 ], [ 3, 2, 1 ], [ 2, 1, 3 ] ],
+  size := 3 )
 \endexample
 
 \>DihedralRack( <n> ) 
@@ -160,7 +161,7 @@ creates a (twisted)homogeneous rack associated to the <automorphism>
 of the <group> given. For example:
 
 \beginexample
-gap> f := ConjugatorAutomorphism(SymmetricGroup(3), (1,2)));;
+gap> f := ConjugatorAutomorphism(SymmetricGroup(3), (1,2));;
 gap> r := HomogeneousRack(SymmetricGroup(3), f);;
 gap> Display(r.matrix);
 [ [  1,  6,  3,  5,  4,  2 ],
@@ -171,12 +172,12 @@ gap> Display(r.matrix);
   [  5,  3,  2,  4,  1,  6 ] ]
 \endexample
 
-\>RackByListOfPermutations( <list> )
+\>RackFromPermutations( <list> )
 
 returns the rack given by the list of permutations given in <list>. For example:
 
 \beginexample
-gap> r := RackFromListOfPermutations([(2,3),(1,3),(1,2)]);;
+gap> r := RackFromPermutations([(2,3),(1,3),(1,2)]);;
 gap> Display(r.matrix);
 [ [  1,  3,  2 ],
   [  3,  2,  1 ],
@@ -192,7 +193,7 @@ return the rank of <rack>. If <rack> is a quandle, the result is 1.
 returns the group of automorphism of <rack>. For example:
 
 \beginexample
-gap> AutomorphismGroup(TrivialRack(3));                  
+gap> AutomorphismGroup(TrivialRack(3));
 Group([ (), (2,3), (1,2), (1,2,3), (1,3,2), (1,3) ])
 \endexample
 
@@ -203,7 +204,7 @@ returns the inner group of the rack. For example
 \beginexample
 gap> InnerGroup(DihedralRack(3));
 Group([ (2,3), (1,3), (1,2) ])
-gap> InnerGroup(TrivialRack(5)); 
+gap> InnerGroup(TrivialRack(5));
 Group(())
 \endexample
 
@@ -215,10 +216,10 @@ isomorphic and returns `fail' otherwise.
 \beginexample
 gap> a := Rack(AlternatingGroup(4), (1,2,3));;
 gap> b := Rack(AlternatingGroup(4), (1,3,2));;
-gap> c := AbelianRack(4);
+gap> c := AbelianRack(4);;
 gap> IsomorphismRacks(a,b);
 (3,4)
-gap> IsomosphismRacks(a,c);
+gap> IsomorphismRacks(a,c);
 fail
 \endexample
 
@@ -266,7 +267,7 @@ given by <matrix>. For example, to get the abelian rack of two elements:
 \beginexample
 gap> a := AbelianRack(2);;
 gap> b := Rack([[1,2],[1,2]]);;
-gap> Display(b.matrix); 
+gap> Display(b.matrix);
 [ [  1,  2 ],
   [  1,  2 ] ]
 gap> a=b;
@@ -311,11 +312,11 @@ computes the abelian rack (co)homology.
 \beginexample
 gap> RackCohomology(DihedralRack(3),2);
 [ 1, [  ] ]
-gap> RackCohomology(TrivialRack(3),2); 
+gap> RackCohomology(TrivialRack(3),2);
 [ 9, [  ] ]
 gap> RackHomology(TrivialRack(2),2);
 [ 4, [  ] ]
-gap> RackHomology(DihedralRack(4),2);    
+gap> RackHomology(DihedralRack(4),2);
 [ 4, [ 2, 2 ] ]
 \endexample
 
@@ -325,8 +326,8 @@ computes the quantum symmetrizer of degree <n>.
 
 \> Dimension( <nichols_datum>, <n> )
 
-computes the dimension in degree <n> of the Nichols algebra <nichols_datum> In
-the following example we compute all dimensions of a known 12-dimensional
+computes the dimension in degree <n> of the Nichols algebra <nichols_datum>.
+In the following example we compute all dimensions of a known 12-dimensional
 Nichols algebra.
 
 \beginexample
@@ -334,8 +335,8 @@ gap> r := DihedralRack(3);;
 gap> q := [ [ -1, -1, -1 ], [ -1, -1, -1 ], [ -1, -1, -1 ] ];;
 gap> n := NicholsDatum(r, q, Rationals);;
 gap> for i in [0..5] do
-Print("Degree ", i, ", dimension=", Dimension(n,i), "\n");
-od;
+>   Print("Degree ", i, ", dimension=", Dimension(n,i), "\n");
+> od;
 Degree 0, dimension=1
 Degree 1, dimension=3
 Degree 2, dimension=4
@@ -351,7 +352,6 @@ relations are returned in gbnp format.  In the following example we calculate
 all relations in degree two of a 12-dimensional Nichols algebra.
 
 \beginexample
-gap> LoadPackage("gbnp");
 gap> r := DihedralRack(3);;
 gap> q := [ [ -1, -1, -1 ], [ -1, -1, -1 ], [ -1, -1, -1 ] ];;
 gap> rels := Relations4GAP(r, q, 2);;
@@ -370,7 +370,7 @@ returns the orbit of the element <i>, given by the action of the inner group.
 \beginexample
 gap> r := DihedralRack(4);;
 gap> RackOrbit(r, 1);
-[1, 3]
+[ 1, 3 ]
 \endexample
 
 \>Nr_k ( <rack>, <n> )
@@ -391,27 +391,27 @@ gap> Check := function(rack)
 > else
 >   return fail;
 > fi;
-> end;
+> end;;
 gap> a4 := AlternatingGroup(4);;
 gap> s4 := SymmetricGroup(4);;
 gap> s5 := SymmetricGroup(5);;
 gap> Check(RackFromAConjugacyClass(a4, (1,2,3)));
 1/2
-gap> Check(RackFromAConjugacyClass(s4, (1,2)));    
+gap> Check(RackFromAConjugacyClass(s4, (1,2)));
 2/3
-gap> Check(RackFromAConjugacyClass(s4, (1,2,3,4));
+gap> Check(RackFromAConjugacyClass(s4, (1,2,3,4)));
 2/3
-gap> Check(RackFromAConjugacyClass(s5, (1,2)));    
+gap> Check(RackFromAConjugacyClass(s5, (1,2)));
 1
-gap> Check(AffineCyclicRack(5,2));                            
+gap> Check(AffineCyclicRack(5,2));
 1
 gap> Check(AffineCyclicRack(5,3));
 1
-gap> Check(AffineCyclicRack(7,5));  
+gap> Check(AffineCyclicRack(7,5));
 1
 gap> Check(AffineCyclicRack(7,3));
 1
-gap> Check(DihedralRack(3));      
+gap> Check(DihedralRack(3));
 1/3
 \endexample
 
@@ -425,7 +425,7 @@ group-type.
 returns the braiding given by <rack>.
 
 \beginexample
-gap> Display(Braiding(TrivialRack(2)));  
+gap> Display(Braiding(TrivialRack(2)));
 [ [  1,  0,  0,  0 ],
   [  0,  0,  1,  0 ],
   [  0,  1,  0,  0 ],
@@ -492,11 +492,12 @@ gap> Permutations(r);
 computes the Hurwitz orbit of the <vector>
 
 \beginexample
-gap> r := DihedralRack(3);   
-gap> HurwitzOrbit(r, [1,1,1]); 
+gap> r := DihedralRack(3);;
+gap> HurwitzOrbit(r, [1,1,1]);
 [ [ 1, 1, 1 ] ]
 gap> HurwitzOrbit(r, [1,2,3]);
-[ [ 1, 2, 3 ], [ 3, 1, 3 ], [ 1, 1, 2 ], [ 2, 3, 3 ], [ 3, 2, 1 ], [ 1, 3, 1 ], [ 3, 3, 2 ], [ 2, 1, 1 ] ]
+[ [ 1, 2, 3 ], [ 3, 1, 3 ], [ 1, 1, 2 ], [ 2, 3, 3 ], [ 3, 2, 1 ], 
+  [ 1, 3, 1 ], [ 3, 3, 2 ], [ 2, 1, 1 ] ]
 \endexample 
 
 \>HurwitzOrbits( <rack>, <n> )
@@ -506,10 +507,14 @@ returns the list of all <n>-Hurwitz orbits associated to the rack <rack>.
 \beginexample
 gap> r := DihedralRack(3);;
 gap> HurwitzOrbits(r, 3);
-[ [ [ 1, 1, 1 ] ], [ [ 1, 1, 2 ], [ 1, 3, 1 ], [ 2, 1, 1 ], [ 1, 2, 3 ], [ 3, 2, 1 ], [ 3, 1, 3 ], [ 3, 3, 2 ], 
-      [ 2, 3, 3 ] ], [ [ 1, 1, 3 ], [ 1, 2, 1 ], [ 3, 1, 1 ], [ 1, 3, 2 ], [ 2, 3, 1 ], [ 2, 1, 2 ], [ 2, 2, 3 ], 
-      [ 3, 2, 2 ] ], [ [ 1, 2, 2 ], [ 3, 1, 2 ], [ 2, 3, 2 ], [ 3, 3, 1 ], [ 2, 1, 3 ], [ 3, 2, 3 ], [ 2, 2, 1 ], 
-      [ 1, 3, 3 ] ], [ [ 2, 2, 2 ] ], [ [ 3, 3, 3 ] ] ]
+[ [ [ 1, 1, 1 ] ], 
+  [ [ 1, 1, 2 ], [ 1, 3, 1 ], [ 2, 1, 1 ], [ 1, 2, 3 ], [ 3, 2, 1 ], 
+      [ 3, 1, 3 ], [ 3, 3, 2 ], [ 2, 3, 3 ] ], 
+  [ [ 1, 1, 3 ], [ 1, 2, 1 ], [ 3, 1, 1 ], [ 1, 3, 2 ], [ 2, 3, 1 ], 
+      [ 2, 1, 2 ], [ 2, 2, 3 ], [ 3, 2, 2 ] ], 
+  [ [ 1, 2, 2 ], [ 3, 1, 2 ], [ 2, 3, 2 ], [ 3, 3, 1 ], [ 2, 1, 3 ], 
+      [ 3, 2, 3 ], [ 2, 2, 1 ], [ 1, 3, 3 ] ], [ [ 2, 2, 2 ] ], 
+  [ [ 3, 3, 3 ] ] ]
 \endexample
 
 \>HurwitzOrbitsRepresentatives( <rack>, <n> )
@@ -519,7 +524,8 @@ returns the list of representatives of all <n>-Hurwitz orbits of the rack <rack>
 \beginexample
 gap> r := DihedralRack(3);;
 gap> HurwitzOrbitsRepresentatives(r, 3);
-[ [ 1, 1, 1 ], [ 1, 1, 2 ], [ 1, 1, 3 ], [ 1, 2, 2 ], [ 2, 2, 2 ], [ 3, 3, 3 ] ]
+[ [ 1, 1, 1 ], [ 1, 1, 2 ], [ 1, 1, 3 ], [ 1, 2, 2 ], [ 2, 2, 2 ], 
+  [ 3, 3, 3 ] ]
 \endexample
 
 \>HurwitzOrbitsRepresentativesWS( <rack>, <n> )
@@ -532,7 +538,8 @@ gap> r := DihedralRack(3);;
 gap> SizesHurwitzOrbits(r, 3);
 [ 1, 8 ]
 gap> HurwitzOrbitsRepresentativesWS(r, 3);
-[ [ [ 1, 1, 1 ], 1 ], [ [ 1, 1, 2 ], 8 ], [ [ 1, 1, 3 ], 8 ], [ [ 1, 2, 2 ], 8 ], [ [ 2, 2, 2 ], 1 ], [ [ 3, 3, 3 ], 1 ] ]
+[ [ [ 1, 1, 1 ], 1 ], [ [ 1, 1, 2 ], 8 ], [ [ 1, 1, 3 ], 8 ], 
+  [ [ 1, 2, 2 ], 8 ], [ [ 2, 2, 2 ], 1 ], [ [ 3, 3, 3 ], 1 ] ]
 \endexample
 
 \>NrHurwitzOrbits( <rack>, <n>, <size> )
