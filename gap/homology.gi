@@ -203,7 +203,7 @@ InstallGlobalFunction("QuandleHomology",
     m := Rank(b);
 
     t := Filtered(DiagonalOfMat(b), x->x>1);
-	return [M-m+Size(rack)*(Size(rack)-1)^(n-1)-(Size(rack))^n, t];
+    return [M-m+Size(rack)*(Size(rack)-1)^(n-1)-(Size(rack))^n, t];
 end);
 
 ### This function returns the list of 2-cocycles that generate tor(H^2(X))

@@ -32,8 +32,8 @@ InstallGlobalFunction("BraidedRepresentatives",
     for j in [1..Size(rack)] do
       o := BraidedOrbit(rack, [i,j]);
       if Intersection(o,tmp) = [] then
-	Add(tmp, o[1]);
-	Add(reps, [o[1], Size(o)]);
+        Add(tmp, o[1]);
+        Add(reps, [o[1], Size(o)]);
       fi;
     od;
   od;

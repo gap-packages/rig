@@ -1,6 +1,6 @@
 
 InstallGlobalFunction("NewRack", function(n)
-	local rack;
+  local rack;
   rack := rec(
     isRack := false,
     matrix := NullMat(n,n),
@@ -39,7 +39,7 @@ InstallGlobalFunction("RackFromAMatrix", function(matrix)
   if IsRackMatrix(matrix) = true then
     rack := NewRack(Size(matrix));
     rack.isRack := true;
-		rack.matrix := matrix;
+    rack.matrix := matrix;
     return rack;
   else
     Error("This is not a rack");
@@ -71,7 +71,7 @@ InstallGlobalFunction("AlexanderRack", function(n,s,t)
     m := NullMat(n,n);
     for i in [1..n] do
       for j in [1..n] do
-      	m[i][j] := (s*i+t*j) mod n;
+        m[i][j] := (s*i+t*j) mod n;
         if m[i][j] = 0 then
           m[i][j] := n;
         fi;
@@ -102,7 +102,7 @@ end);
 InstallGlobalFunction("RackFromPermutations", function(list)
   local i,j,n,m,rack;
 
-	n := Size(list);
+  n := Size(list);
   m := NullMat(n,n);
   for i in [1..n] do
     for j in [1..n] do
@@ -114,9 +114,9 @@ end);
 
 ### This function returns the size of the finite <rack>
 InstallOtherMethod(Size,
-	[IsRecord],
+  [IsRecord],
   function(rack)
-  	return rack.size;
+    return rack.size;
 end);
 
 ### This function returns true if <rack> is injective, i.e. X -> G_X is injective
@@ -257,10 +257,10 @@ end);
 ### Computes the inner group of a <rack>
 InstallGlobalFunction("InnerGroup", function(rack)
   local i;
-	if rack.inn <> "" then
-		return rack.inn;
-	else
-   	rack.inn := Group(Permutations(rack));
+  if rack.inn <> "" then
+    return rack.inn;
+  else
+    rack.inn := Group(Permutations(rack));
     return rack.inn;
   fi;
 end);
@@ -281,18 +281,18 @@ end);
 ### This function returns a minimal generating subset for the <rack>
 InstallGlobalFunction("MinimalGeneratingSubset", function(rack)
   local i, j, c, tmp;
-	if rack.basis = "" then
+  if rack.basis = "" then
     for i in [1..Size(rack)] do
       for c in Combinations(rack!.matrix[1], i) do
         tmp := CanonicalSubrack(rack, c);
         if Size(tmp) = Size(rack) then
-					rack.basis := c;
+          rack.basis := c;
           return c;
         fi;
       od;
     od;
-	fi;
-	return rack.basis;
+  fi;
+  return rack.basis;
 end);
 
 InstallGlobalFunction("IsIsomorphicByPermutation", function(rack1, rack2, p)
@@ -310,7 +310,7 @@ InstallGlobalFunction("IsIsomorphicByPermutation", function(rack1, rack2, p)
       rack1_ij := rack1!.matrix[i][j]^p;
       rack2_ij := rack2!.matrix[i^p][j^p];
       if not rack1_ij = rack2_ij then
-	      return false;
+        return false;
       fi;
     od;
   od;
@@ -499,8 +499,8 @@ InstallGlobalFunction("RackFromConjugacyClasses", function(group, list)
       m[i][j] := Position(gg, gg[i]*gg[j]*Inverse(gg[i]));
     od;
   od;
-	tmp := RackFromAMatrix(m);
-	tmp.labels := gg;
+  tmp := RackFromAMatrix(m);
+  tmp.labels := gg;
   return tmp;
 end);
 
@@ -508,7 +508,7 @@ InstallGlobalFunction("RackOrbit", function(rack, i)
   if not i in [1..Size(rack)] then
     return fail;
   else
-	  return Orbit(InnerGroup(rack), i);
+    return Orbit(InnerGroup(rack), i);
     #return Set(InnerGroup(rack), g->i^g);
   fi;
 end);
@@ -552,20 +552,20 @@ end);
 
 ### This function returns the Enveloping group of a rack
 InstallGlobalFunction(EnvelopingGroup, function(rack)
-	local n, f, x, rels, i, j;
- 	n := Size(rack);
+  local n, f, x, rels, i, j;
+  n := Size(rack);
 
-	f := FreeGroup(n);
-	x := GeneratorsOfGroup(f);
+  f := FreeGroup(n);
+  x := GeneratorsOfGroup(f);
 
-	rels := [];
+  rels := [];
 
-	for i in [1..n] do
-  	for j in [1..n] do
-    	Add(rels, x[i]*x[j]*Inverse(x[rack!.matrix[i][j]]*x[i]));
-	  od;
-	od;
-	return f/rels;
+  for i in [1..n] do
+    for j in [1..n] do
+      Add(rels, x[i]*x[j]*Inverse(x[rack!.matrix[i][j]]*x[i]));
+    od;
+  od;
+  return f/rels;
 end);
 
 ### This function returns the set of orbits of a rack
@@ -613,7 +613,7 @@ end);
 ### Is the rack indecomposable?
 ### REMARK: indecomposable is the same as connected
 InstallGlobalFunction("IsConnected", function(rack)
-	return IsTransitive(InnerGroup(rack), [1..Size(rack)]);
+  return IsTransitive(InnerGroup(rack), [1..Size(rack)]);
 end);
 
 ### Is the rack decomposable?
