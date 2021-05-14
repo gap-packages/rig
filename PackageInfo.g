@@ -3,6 +3,7 @@ PackageName := "rig",
 Subtitle := "Racks in GAP",
 Version := "1",
 Date := "24/05/2014", # dd/mm/yyyy format
+License := "GPL-2.0-or-later",
 
 Persons := [
   rec( 
