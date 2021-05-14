@@ -208,7 +208,8 @@ Degree 5, dimension=0
 # Relations4GAP( <nichols_datum>, <n> )
 gap> r := DihedralRack(3);;
 gap> q := [ [ -1, -1, -1 ], [ -1, -1, -1 ], [ -1, -1, -1 ] ];;
-gap> rels := Relations4GAP(r, q, 2);;
+gap> n := NicholsDatum(r, q, Rationals);;
+gap> rels := Relations4GAP(n, 2);;
 gap> PrintNPList(rels);
  a^2 
  b^2 

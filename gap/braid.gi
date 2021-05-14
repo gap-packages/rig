@@ -68,9 +68,10 @@ end);
 ### This function computes the braiding associated to <rack>
 InstallGlobalFunction("Braiding",
   function(rack)
-  local m,x;
+  local x,d,m;
   x := NullMat(Size(rack),Size(rack))+1;
-  m := QuantumSymmetrizer(rack, x, 2)-IdentityMat(Size(rack)*Size(rack));;
+  d := NicholsDatum(rack, x, Rationals);
+  m := QuantumSymmetrizer(d, 2)-IdentityMat(Size(rack)*Size(rack));
   return m;
 end);
 
