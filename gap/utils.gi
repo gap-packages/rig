@@ -2,7 +2,6 @@
 ### v=vector in [0...n-1]
 ### n=rank
 InstallGlobalFunction(BasisVectorToNumber,
-[IsList, IsInt],
 function(v, rank)
   local s, i;
   s := 0;
@@ -20,7 +19,6 @@ end);
 ### rank = rank of the nichols algebra
 ### the letters are 1,2,...,rank
 InstallGlobalFunction(NumberToBasisVector,
-[IsInt, IsInt, IsInt],
 function(i, n, rank)
   local v, x, y;
   v := [];
@@ -39,7 +37,6 @@ function(i, n, rank)
 end);
 
 InstallGlobalFunction(CheckDegeneracy,
-[IsList],
 function(v)
   local i;
   for i in [1..Size(v)-1] do
