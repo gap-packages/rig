@@ -14,7 +14,7 @@ Persons := [
     Email         := "lvendramin@dm.uba.ar",
     WWWHome       := "http://mate.dm.uba.ar/~lvendram",
     PostalAddress := Concatenation( [
-                       "Departamento de matem·tica, FCEyN, UBA",
+                       "Departamento de matem√°tica, FCEyN, UBA",
                        "Ciudad Universitaria, Pab. 1,\n",
                        "Buenos Aires, Argentina" ] ),
     Place         := "Buenos Aires",
