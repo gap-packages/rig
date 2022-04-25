@@ -67,9 +67,9 @@ Here you can find a comprehensive list of references relevant to quandles and re
 
 Links
 -----
-* GAP - Groups, Algorithms, Programming - a System for Computational Discrete Algebra   [http://www.gap-system.org/]
+* GAP - Groups, Algorithms, Programming - a System for Computational Discrete Algebra   [https://www.gap-system.org/]
 * GBNP, GAP Package for Gröbner Bases for Non-commutative Polynomials [http://mathdox.org/products/gbnp/]
-* Sage: Open Source Mathematics Software [http://www.sagemath.org/]
+* Sage: Open Source Mathematics Software [https://www.sagemath.org/]
 * Small Connected Quandles and Their Knot Colorings [http://shell.cas.usf.edu/~saito/QuandleColor/]
 * KnotInfo: Table of knot invariants, by C. Livingston and J. Cha [http://www.indiana.edu/~knotinfo/]
-* A table of virtual knots, by Jeremy Green [http://www.math.toronto.edu/drorbn/Students/GreenJ/index.html]
+* A table of virtual knots, by Jeremy Green [https://www.math.toronto.edu/drorbn/Students/GreenJ/index.html]
