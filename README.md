@@ -46,7 +46,7 @@ L. Vendramin. Rig, a GAP package for racks, quandles and Nichols algebras. Avail
 
 Contributions
 -------------
-You are welcome to contribute with code, patches, ideas, testing, wiki, comments, documentation. See the wiki for the list of contributors. Special thanks go to: W. E. Clark, D. Holt, A. Hulpke, A. Lochmann, G. Royle, M. Saito, D. Stanovsky.
+You are welcome to contribute with code, patches, ideas, testing, wiki, comments, documentation. See the wiki for the list of contributors. Special thanks go to: W. E. Clark, D. Holt, A. Hulpke, A. Lochmann, G. Royle, M. Saito, D. Stanovsky, G. Whitney.
 
 Usage
 -----
