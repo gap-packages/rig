@@ -361,11 +361,40 @@ end);
 #  return fail;
 #end);
 
+#InstallGlobalFunction("ExtendMorphism", function(rack1, rack2, f)
+#  local c, done, i, j;
+#
+#  c := true;
+#  done := true;
+#
+#  while c = true do
+#    c := false;
+#    for i in [1..Size(rack1)] do
+#      for j in [1..Size(rack1)] do
+#        if f[i]*f[j] <> 0 then
+#          ###if f[rack1!.matrix[i][j]] = 0 and rack1!.matrix[i][j] <> 0 then
+#          if f[rack1!.matrix[i][j]] = 0 then
+#            f[rack1!.matrix[i][j]] := rack2!.matrix[f[i]][f[j]];
+#            c := true;
+#          elif f[rack1!.matrix[i][j]] <> 0 and f[rack1!.matrix[i][j]] <> rack2!.matrix[f[i]][f[j]] then
+#            done := false;
+#            c := false;
+#          fi;
+#        fi;
+#      od;
+#    od;
+#    if done = true then
+#      return f;
+#    else
+#      return done;
+#    fi;
+#  od;  
+#end);
+
 InstallGlobalFunction("ExtendMorphism", function(rack1, rack2, f)
-  local c, done, i, j;
+  local c, i, j;
 
   c := true;
-  done := true;
 
   while c = true do
     c := false;
@@ -377,18 +406,13 @@ InstallGlobalFunction("ExtendMorphism", function(rack1, rack2, f)
             f[rack1!.matrix[i][j]] := rack2!.matrix[f[i]][f[j]];
             c := true;
           elif f[rack1!.matrix[i][j]] <> 0 and f[rack1!.matrix[i][j]] <> rack2!.matrix[f[i]][f[j]] then
-            done := false;
-            c := false;
+            return false;
           fi;
         fi;
       od;
     od;
-    if done = true then
-      return f;
-    else
-      return done;
-    fi;
   od;
+  return f;
 end);
 
 ### This function checks if <rack1> and <rack2> are isomorphic
